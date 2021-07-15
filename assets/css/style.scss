@@ -636,22 +636,27 @@ nav.menu-dropdown {
 		margin: 0.7rem 0;
 	}
 
+	.sidebarPlaceholder {
+		// width: 17rem;
+		// // background: rgba(66, 47, 161, 0.05);
+		// border-radius: 10px;
+		// height: max-content;
+		// margin-left: -2rem;
+		margin-left: -36px;
+	}
+
 	// Desktop sidebar
 	.sidebar {
 		width: 17rem;
 		background: rgba(66, 47, 161, 0.05);
 		border-radius: 10px;
-		height: max-content;
+		// min-height: 450px;
 		margin-left: -2rem;
-
-		&.posFixed {
-			position: fixed;
-			top: 20px;
-		}
 
 		.dropdown-content {
 			list-style: none;
 			padding: 0;
+
 			z-index: 1;
 			width: 100%;
 

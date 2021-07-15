@@ -42,15 +42,16 @@ function handleSidebarAnimation() {
 
 function sidebarSticky() {
   ScrollTrigger.create({
-    trigger: '.articles',
+    trigger: '.sidebar',
     id: 'st-sticky-id',
     start: 'top 15px',
+    markers: true,
     end: (self) =>
       `+=${
         document.querySelector('.articles').offsetHeight - self.pin.offsetHeight
       }`,
-    pin: '.sidebar',
-    pinSpacing: false,
+    pin: '.dropdown-content',
+    // pinSpacing: false,
   });
 }
 
@@ -96,7 +97,7 @@ const Chapter = ({ chapter, chapters }) => {
   };
 
   return (
-    <>
+    <div>
       <Seo seo={seo} />
 
       <ArticleHeader chapter={chapterDetails} />
@@ -105,18 +106,20 @@ const Chapter = ({ chapter, chapters }) => {
       )}
       {chapter.articles.length > 0 ? (
         <div className="content wrapper">
-          <section className="sidebar" key="desktopSidebar">
-            <ul className="dropdown-content">
-              {chapter.articles.map((article, index) => (
-                <li key={`menu-${article.id}`} keyid={article.slug}>
-                  <a href={`#${article.slug}`}>
-                    <p>{LocaleString(index + 1)}</p>
-                    <p>{article.Title}</p>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
+          <div className="sidebarPlaceholder">
+            <section className="sidebar" key="desktopSidebar">
+              <ul className="dropdown-content">
+                {chapter.articles.map((article, index) => (
+                  <li key={`menu-${article.id}`} keyid={article.slug}>
+                    <a href={`#${article.slug}`}>
+                      <p>{LocaleString(index + 1)}</p>
+                      <p>{article.Title}</p>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </div>
 
           <section className="articles">
             {chapter.articles.map((article) => (
@@ -137,7 +140,7 @@ const Chapter = ({ chapter, chapters }) => {
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
       />
-    </>
+    </div>
   );
 };
 

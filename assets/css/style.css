@@ -724,19 +724,15 @@ nav.menu-dropdown.active {
   margin: 0.7rem 0;
 }
 
+.content .sidebarPlaceholder {
+  margin-left: -36px;
+}
+
 .content .sidebar {
   width: 17rem;
   background: rgba(66, 47, 161, 0.05);
   border-radius: 10px;
-  height: -webkit-max-content;
-  height: -moz-max-content;
-  height: max-content;
   margin-left: -2rem;
-}
-
-.content .sidebar.posFixed {
-  position: fixed;
-  top: 20px;
 }
 
 .content .sidebar .dropdown-content {
