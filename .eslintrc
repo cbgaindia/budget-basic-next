@@ -1,0 +1,26 @@
+{
+	"rules": {
+		"import/no-unresolved": [2, { "caseSensitive": false }],
+		"react/no-danger": "off",
+		"sort-keys": "off",
+		"no-param-reassign": [1, { "props": false }],
+		"no-unused-vars": [1],
+		"prettier/prettier": [1, {"singleQuote": true, "parser": "flow"}],
+		"eqeqeq": "off",
+		"jsx-a11y/no-autofocus": "off"
+	},
+	"extends": [
+		"@ijsto",
+		"plugin:import/errors",
+		"plugin:import/warnings",
+		"plugin:import/typescript"
+	],
+	"settings": {
+		"import/resolver": {
+			"node": {
+				"paths": ["."],
+				"extensions": [".js", ".jsx", ".ts", ".tsx"]
+			}
+		}
+	}
+}

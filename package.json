@@ -1,0 +1,27 @@
+{
+  "name": "budget-basic",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "debug": "^2.6.9",
+    "gsap": "3.6.1",
+    "meilisearch": "^0.19.0",
+    "next": "^11.0.1",
+    "next-react-svg": "^1.1.2",
+    "nextjs-progressbar": "0.0.11",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "react-responsive": "^8.2.0"
+  },
+  "devDependencies": {
+    "@ijsto/eslint-config": "^4.1.6",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-next": "^11.0.1"
+  }
+}
