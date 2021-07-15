@@ -1,13 +1,16 @@
 import React from 'react';
 import Search from 'components/search';
+import Link from 'next/link';
 
 const ArticleHeader = ({ chapter }) => (
   <header className="articleHeader" bgcolor={chapter.number % 6}>
     <div className="wrapper">
       <section className="branding">
-        <a href="/" className="logo">
-          <h1>Budget Basics</h1>
-        </a>
+        <Link href="/">
+          <a className="logo">
+            <h1>Budget Basics</h1>
+          </a>
+        </Link>
 
         <span className="icon-seperator" />
 

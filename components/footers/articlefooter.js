@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 const ArticleFooter = ({ back, forward }) => (
   <footer className="footer articleFooter">
     <div className="wrapper">
@@ -19,16 +21,18 @@ const ArticleFooter = ({ back, forward }) => (
       <section className="forward">
         {forward != undefined && (
           <>
-            <a className="forward" href={`/${forward.slug}`}>
-              <img
-                src="assets/icons/arrowBack.svg"
-                alt="back arrow budget basics"
-              />
-              <span>
-                <p>read next</p>
-                <h2>{forward.Title}</h2>
-              </span>
-            </a>
+            <Link href={`/${forward.slug}`}>
+              <a className="forward">
+                <img
+                  src="assets/icons/arrowBack.svg"
+                  alt="back arrow budget basics"
+                />
+                <span>
+                  <p>read next</p>
+                  <h2>{forward.Title}</h2>
+                </span>
+              </a>
+            </Link>
           </>
         )}
       </section>

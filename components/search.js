@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { MeiliSearch } from 'meilisearch';
+import Link from 'next/link';
 
 const client = new MeiliSearch({
   host: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
@@ -78,9 +79,16 @@ const Search = ({ blur, resultClick, onResultClick }) => {
             <ul>
               {search.map((item, index) => (
                 <li key={`search-${index}`}>
-                  <a href={item.slug} onClick={onClick}>
-                    {item.title}
-                  </a>
+                  <Link href={`/${item.slug}`}>
+                    <a
+                      onKeyUp={onClick}
+                      onClick={onClick}
+                      role="link"
+                      tabIndex="0"
+                    >
+                      {item.title}
+                    </a>
+                  </Link>
                 </li>
               ))}
             </ul>

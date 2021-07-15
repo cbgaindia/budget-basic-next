@@ -3,6 +3,7 @@ import Seo from 'components/seo';
 import Card from 'components/card';
 import { sortList } from 'utils/helpers';
 import HomeHeader from 'components/headers/homeHeader';
+import Link from 'next/link';
 
 export default function Home({ homepage, chapters }) {
   sortList(chapters);
@@ -24,14 +25,11 @@ export default function Home({ homepage, chapters }) {
             };
             bgColorIndex.push(bgColorIndex[index]);
             return (
-              <a
-                href={chapter.slug}
-                key={index}
-                className="card"
-                bgcolor={bgColorIndex[index]}
-              >
-                <Card chapter={chapterDetails} />
-              </a>
+              <Link key={index} href={`/${chapter.slug}`}>
+                <a className="card" bgcolor={bgColorIndex[index]}>
+                  <Card chapter={chapterDetails} />
+                </a>
+              </Link>
             );
           })}
         </div>

@@ -34,7 +34,13 @@ function MyApp({ Component, pageProps }) {
           sizes="16x16"
           href="/favicon/favicon-16x16.png"
         />
-        <link rel="icon" type="image/x-icon" href="/favicon/favicon.ico" />
+        <link rel="alternate icon" href="/favicon/favicon.ico" />
+        <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+        <link
+          rel="mask-icon"
+          href="/favicon/safari-pinned-tab.svg"
+          color="#ff8a01"
+        />
       </Head>
       <NextNprogress
         color="#4b4697"

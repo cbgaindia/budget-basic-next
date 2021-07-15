@@ -1,14 +1,16 @@
 import React from 'react';
-// import Image from 'next/image';
 import Search from 'components/search';
+import Link from 'next/link';
 
 const HomeHeader = () => (
   <header className="homeHeader">
     <div>
       <section className="branding">
-        <a href="/" className="logo">
-          <h1>Budget Basics</h1>
-        </a>
+        <Link href="/">
+          <a className="logo">
+            <h1>Budget Basics</h1>
+          </a>
+        </Link>
 
         <span className="icon-seperator" />
 

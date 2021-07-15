@@ -71,10 +71,12 @@ const Menu = ({ chapter, isMobile }) => {
     handleMenuAnimation();
 
     return () => {
-      ScrollTrigger.getById('st-sticky-mobile').kill();
-      ScrollTrigger.getById('st-id-mobile').kill();
+      if (ScrollTrigger.getById('st-id-mobile')) {
+        ScrollTrigger.getById('st-sticky-mobile').kill();
+        ScrollTrigger.getById('st-id-mobile').kill();
+      }
     };
-  }, [isMobile]);
+  }, [isMobile, chapter]);
 
   return (
     <nav className="menu-dropdown" key="menu-dropdown">

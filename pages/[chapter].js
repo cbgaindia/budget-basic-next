@@ -73,10 +73,12 @@ const Chapter = ({ chapter, chapters }) => {
     }
 
     return () => {
-      ScrollTrigger.getById('st-sticky-id').kill();
-      ScrollTrigger.getById('st-id').kill();
+      if (ScrollTrigger.getById('st-id')) {
+        ScrollTrigger.getById('st-sticky-id').kill();
+        ScrollTrigger.getById('st-id').kill();
+      }
     };
-  }, [isMobile, chapter.articles.length]);
+  }, [isMobile, chapter]);
 
   sortList(chapter.articles);
   sortList(chapters);
