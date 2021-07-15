@@ -45,13 +45,11 @@ function sidebarSticky() {
     trigger: '.sidebar',
     id: 'st-sticky-id',
     start: 'top 15px',
-    markers: true,
     end: (self) =>
       `+=${
         document.querySelector('.articles').offsetHeight - self.pin.offsetHeight
       }`,
     pin: '.dropdown-content',
-    // pinSpacing: false,
   });
 }
 
