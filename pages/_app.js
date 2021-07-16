@@ -4,6 +4,7 @@ import Head from 'next/head';
 import { createContext } from 'react';
 import { fetchAPI } from 'lib/api';
 import Footer from 'components/footers/footer';
+import Layout from 'components/layout';
 import NextNprogress from 'nextjs-progressbar';
 
 export const GlobalContext = createContext({});
@@ -42,17 +43,19 @@ function MyApp({ Component, pageProps }) {
           color="#ff8a01"
         />
       </Head>
-      <NextNprogress
-        color="#4b4697"
-        startPosition={0.3}
-        stopDelayMs={100}
-        height={3}
-        options={{ easing: 'ease', speed: 300, showSpinner: false }}
-      />
-      <GlobalContext.Provider value={global}>
-        <Component {...pageProps} />
-      </GlobalContext.Provider>
-      <Footer />
+
+      <Layout>
+        <NextNprogress
+          color="#4b4697"
+          startPosition={0.3}
+          stopDelayMs={100}
+          height={3}
+          options={{ easing: 'ease', speed: 300, showSpinner: false }}
+        />
+        <GlobalContext.Provider value={global}>
+          <Component {...pageProps} />
+        </GlobalContext.Provider>
+      </Layout>
     </>
   );
 }

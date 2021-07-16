@@ -7,9 +7,10 @@ const client = new MeiliSearch({
   apiKey: process.env.NEXT_PUBLIC_MEILISEARCH_API,
 });
 
-const Search = ({ blur, resultClick, onResultClick }) => {
+const Search = ({ blur, resultClick, onResultClick, suggested }) => {
   const [search, setSearch] = useState([]);
   const [showSearch, setShowSearch] = useState(false);
+  const [showPlaceholder, setShowPlaceholder] = useState(false);
   const [query, setQuery] = useState('');
 
   useEffect(() => {
@@ -22,10 +23,10 @@ const Search = ({ blur, resultClick, onResultClick }) => {
 
   function inputFocus() {
     if (blur == true) document.querySelector('body').classList.add('addBlur');
-
     if (query.length > 0) {
       setShowSearch(true);
-    }
+      setShowPlaceholder(false);
+    } else if (suggested != undefined) setShowPlaceholder(true);
   }
 
   function inputBlur() {
@@ -36,12 +37,14 @@ const Search = ({ blur, resultClick, onResultClick }) => {
       document.querySelector('body').classList.remove('addBlur');
     window.setTimeout(() => {
       setShowSearch(false);
+      setShowPlaceholder(false);
     }, 200);
   }
 
   async function onChange(e) {
     setQuery(e);
     if (e.length > 0) {
+      setShowPlaceholder(false);
       await client
         .index('topic')
         .search(e, {
@@ -55,10 +58,14 @@ const Search = ({ blur, resultClick, onResultClick }) => {
           setSearch(list);
           setShowSearch(true);
         });
+    } else {
+      setShowSearch(false);
+      if (suggested != undefined) setShowPlaceholder(true);
     }
   }
 
   const onClick = () => {
+    setShowPlaceholder(false);
     setShowSearch(false);
     if (resultClick == true) onResultClick();
   };
@@ -95,6 +102,31 @@ const Search = ({ blur, resultClick, onResultClick }) => {
           ) : (
             <p className="noResults">No results found</p>
           )}
+        </div>
+      )}
+      {showPlaceholder && (
+        <div className="searchResults">
+          <p className="suggested">Suggested Articles</p>
+          <ul>
+            {suggested.map((item, index) => (
+              <li key={`suggested-${index}`}>
+                <Link
+                  href={`/${item.chapter ? item.chapter.slug : '/'}#${
+                    item.slug
+                  }`}
+                >
+                  <a
+                    onKeyUp={onClick}
+                    onClick={onClick}
+                    role="link"
+                    tabIndex="0"
+                  >
+                    {item.Title}
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
     </>

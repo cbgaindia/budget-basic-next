@@ -2,7 +2,7 @@ import React from 'react';
 import Search from 'components/search';
 import Link from 'next/link';
 
-const HomeHeader = () => (
+const HomeHeader = ({ suggested }) => (
   <header className="homeHeader">
     <div>
       <section className="branding">
@@ -31,7 +31,7 @@ const HomeHeader = () => (
 
       <section className="headerContent">
         <p className="headerText">How can we help you?</p>
-        <Search blur />
+        <Search blur suggested={suggested} />
       </section>
     </div>
   </header>

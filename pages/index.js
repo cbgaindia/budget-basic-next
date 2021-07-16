@@ -5,13 +5,13 @@ import { sortList } from 'utils/helpers';
 import HomeHeader from 'components/headers/homeHeader';
 import Link from 'next/link';
 
-export default function Home({ homepage, chapters }) {
+export default function Home({ homepage, chapters, suggested }) {
   sortList(chapters);
   const bgColorIndex = [1, 2, 3, 4, 5, 6];
 
   return (
     <>
-      <HomeHeader />
+      <HomeHeader suggested={suggested} />
       <div className="home-wrapper">
         <Seo seo={homepage.seo} />
         <div className="homeCards">
@@ -41,9 +41,10 @@ export default function Home({ homepage, chapters }) {
 export async function getStaticProps() {
   const homepage = await fetchAPI('/homepage');
   const chapters = await fetchAPI('/chapters');
+  const suggested = await fetchAPI('/topics?Suggested=1');
 
   return {
-    props: { homepage, chapters },
+    props: { homepage, chapters, suggested },
     revalidate: 1,
   };
 }

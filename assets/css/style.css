@@ -157,7 +157,7 @@ a {
 }
 
 .homeHeader {
-  background-color: #29314F;
+  background-color: #29314f;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -393,7 +393,7 @@ a {
 }
 
 .articleHeader {
-  background-color: #29314F;
+  background-color: #29314f;
   display: -ms-grid;
   display: grid;
   -webkit-box-pack: center;
@@ -710,6 +710,19 @@ nav.menu-dropdown.active {
   nav.menu-dropdown {
     display: none;
   }
+}
+
+.suggested {
+  height: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.4);
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 130%;
+  text-align: start;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
 }
 
 .content {

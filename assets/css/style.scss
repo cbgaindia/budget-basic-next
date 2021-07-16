@@ -86,10 +86,10 @@ body {
 }
 
 .homeCards,
-	.headerText {
-		transition: filter 0.3s ease;
-		will-change: filter;
-	}
+.headerText {
+	transition: filter 0.3s ease;
+	will-change: filter;
+}
 
 a {
 	color: inherit;
@@ -144,7 +144,7 @@ a {
 
 // Landing Page
 .homeHeader {
-	background-color: #29314F;
+	background-color: #29314f;
 	justify-content: center;
 	height: 350px;
 	color: #fff;
@@ -301,7 +301,8 @@ a {
 
 		&[bgcolor='1'] {
 			background: linear-gradient(218.46deg, #9779d3 9.79%, #febbba 74.73%);
-			border: 2px solid linear-gradient(218.46deg, #9779d3 9.79%, #febbba 74.73%);
+			border: 2px solid
+				linear-gradient(218.46deg, #9779d3 9.79%, #febbba 74.73%);
 		}
 
 		&[bgcolor='2'] {
@@ -363,7 +364,7 @@ a {
 
 // Article Page
 .articleHeader {
-	background-color: #29314F;
+	background-color: #29314f;
 	display: grid;
 	justify-content: center;
 	height: 200px;
@@ -627,6 +628,19 @@ nav.menu-dropdown {
 	}
 }
 
+.suggested {
+	height: 12px;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: rgba(0, 0, 0, 0.4);
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 130%;
+	text-align: start;
+	padding-left: 1rem;
+	padding-top: 0.5rem;
+}
+
 .content {
 	margin: 2rem auto;
 	display: grid;
@@ -742,8 +756,6 @@ nav.menu-dropdown {
 			filter: blur(5px);
 			pointer-events: none;
 		}
-
-		
 	}
 
 	@media screen and (max-width: 1000px) {
