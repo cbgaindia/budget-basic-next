@@ -5,16 +5,18 @@ const ArticleFooter = ({ back, forward }) => (
     <div className="wrapper">
       <section className="back">
         {back != undefined && (
-          <a className="back" href={`/${back.slug}`}>
-            <img
-              src="assets/icons/arrowBack.svg"
-              alt="back arrow budget basics"
-            />
-            <span>
-              <p>go back to</p>
-              <h2>{back.Title}</h2>
-            </span>
-          </a>
+          <Link href={`/${back.slug}`}>
+            <a className="back">
+              <img
+                src="assets/icons/arrowBack.svg"
+                alt="back arrow budget basics"
+              />
+              <span>
+                <p>go back to</p>
+                <h2>{back.Title}</h2>
+              </span>
+            </a>
+          </Link>
         )}
       </section>
 

@@ -89,7 +89,7 @@ const Menu = ({ chapter, isMobile }) => {
             src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSI1IiB2aWV3Qm94PSIwIDAgOSA1IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNNC41OTc4MyA1TDkgMEwwIC0zLjkzNDAyZS0wN0w0LjU5NzgzIDVaIiBmaWxsPSIjNjA0Mjk0Ii8+Cjwvc3ZnPgo="
           />
         </button>
-        <ul className="dropdown-content">
+        <ul className="dropdown-content-mobile">
           {chapter.articles.map((article, index) => (
             <li key={`menu-${article.id}`} keyid={article.slug}>
               <a href={`#${article.slug}`} onClick={handleContentClick}>

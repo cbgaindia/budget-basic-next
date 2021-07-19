@@ -569,7 +569,7 @@ nav.menu-dropdown .mobileContent .dropbtn.hide {
   display: none;
 }
 
-nav.menu-dropdown .mobileContent .dropdown-content {
+nav.menu-dropdown .mobileContent .dropdown-content-mobile {
   list-style: none;
   z-index: 1;
   width: 100%;
@@ -586,18 +586,18 @@ nav.menu-dropdown .mobileContent .dropdown-content {
   overflow-y: scroll;
 }
 
-nav.menu-dropdown .mobileContent .dropdown-content::-webkit-scrollbar-track {
+nav.menu-dropdown .mobileContent .dropdown-content-mobile::-webkit-scrollbar-track {
   background: #f6f5fa;
 }
 
-nav.menu-dropdown .mobileContent .dropdown-content li {
+nav.menu-dropdown .mobileContent .dropdown-content-mobile li {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   padding-right: 1rem;
 }
 
-nav.menu-dropdown .mobileContent .dropdown-content li a {
+nav.menu-dropdown .mobileContent .dropdown-content-mobile li a {
   display: block;
   width: inherit;
   height: inherit;
@@ -612,21 +612,21 @@ nav.menu-dropdown .mobileContent .dropdown-content li a {
   padding: 0.5rem 0;
 }
 
-nav.menu-dropdown .mobileContent .dropdown-content li a p {
+nav.menu-dropdown .mobileContent .dropdown-content-mobile li a p {
   line-height: 150%;
 }
 
-nav.menu-dropdown .mobileContent .dropdown-content li a p:first-child {
+nav.menu-dropdown .mobileContent .dropdown-content-mobile li a p:first-child {
   margin-right: 1rem;
 }
 
-nav.menu-dropdown .mobileContent .dropdown-content li:hover {
+nav.menu-dropdown .mobileContent .dropdown-content-mobile li:hover {
   background: rgba(66, 47, 161, 0.1);
   border-color: transparent;
   border-radius: 10px;
 }
 
-nav.menu-dropdown .mobileContent .dropdown-content li.activeSidebar {
+nav.menu-dropdown .mobileContent .dropdown-content-mobile li.activeSidebar {
   background: rgba(66, 47, 161, 0.1);
   border: 1px solid #a090ff;
   -webkit-box-sizing: border-box;
@@ -634,7 +634,7 @@ nav.menu-dropdown .mobileContent .dropdown-content li.activeSidebar {
   border-radius: 5px;
 }
 
-nav.menu-dropdown .mobileContent.active .dropdown-content {
+nav.menu-dropdown .mobileContent.active .dropdown-content-mobile {
   display: block;
 }
 
