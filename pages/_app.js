@@ -1,13 +1,32 @@
 import 'assets/css/style.css';
 import App from 'next/app';
 import Head from 'next/head';
-import { createContext } from 'react';
+import React, { createContext } from 'react';
 import { fetchAPI } from 'lib/api';
 import Layout from 'components/layout';
 import NextNprogress from 'nextjs-progressbar';
+import Router from 'next/router';
 
 export const GlobalContext = createContext({});
 function MyApp({ Component, pageProps }) {
+  React.useEffect(() => {
+    const resetScroll = () => {
+      document.body.classList.remove('disable_scroll');
+      if (document.querySelector('.articles'))
+        document.querySelector('.articles').classList.remove('addBlur');
+      if (document.querySelector('.menu-dropdown')) {
+        document.querySelector('.menu-dropdown').classList.remove('active');
+        document.querySelector('.mobileContent').classList.remove('active');
+        document.querySelector('.searchMenu').classList.remove('active');
+      }
+    };
+
+    Router.events.on('routeChangeStart', resetScroll);
+
+    return () => {
+      Router.events.off('routeChangeStart', resetScroll);
+    };
+  });
   const { global } = pageProps;
   return (
     <>

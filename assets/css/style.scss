@@ -369,7 +369,10 @@ a {
 			}
 
 			.cardDetail {
-				align-self: center;
+				align-self: flex-start;
+				transform: translateY(0);
+				margin-top: 2rem;
+
 				.title {
 					font-size: 1.5rem;
 				}

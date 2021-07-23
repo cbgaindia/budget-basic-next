@@ -404,9 +404,11 @@ a {
     display: none;
   }
   .homeCards .card .cardDetail {
-    -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    margin-top: 2rem;
   }
   .homeCards .card .cardDetail .title {
     font-size: 1.5rem;
