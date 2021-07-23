@@ -3,7 +3,6 @@ import App from 'next/app';
 import Head from 'next/head';
 import { createContext } from 'react';
 import { fetchAPI } from 'lib/api';
-import Footer from 'components/footers/footer';
 import Layout from 'components/layout';
 import NextNprogress from 'nextjs-progressbar';
 

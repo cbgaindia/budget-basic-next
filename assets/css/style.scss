@@ -343,24 +343,13 @@ a {
 			left: -3px;
 		}
 
-		.infoButton {
-			position: absolute;
-			top: 0;
-			right: 10px;
-			color: #126868;
-			font-size: 1.5rem;
-			z-index: 100;
-		}
-
 		.desc {
 			position: absolute;
 			transform: translateY(120%);
 			opacity: 0;
-
-			p {
-				font-size: 1rem;
-				padding: 0 1rem;
-			}
+			font-size: 1rem;
+			padding: 0 1rem;
+			color: #000000;
 			
 		}
 

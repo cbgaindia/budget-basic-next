@@ -31,14 +31,7 @@ export default function Card({ chapter }) {
       <div className="cardDetail">
         <h2 className="title">{chapter.title}</h2>
       </div>
-      {chapter.Desc && (
-        <div
-          className="desc"
-          dangerouslySetInnerHTML={{ __html: `<p>${chapter.Desc}</p>` }}
-        />
-      )}
-
-      {/* <p>{chapter.Desc}</p> */}
+      {chapter.Desc && <p className="desc">{chapter.Desc}</p>}
     </div>
   );
 }
