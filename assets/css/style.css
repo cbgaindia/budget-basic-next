@@ -43,6 +43,8 @@ a {
 }
 
 :root {
+  --d: 700ms;
+  --e: cubic-bezier(0.19, 1, 0.22, 1);
   font-size: 12px;
 }
 
@@ -269,24 +271,44 @@ a {
 }
 
 .homeCards .card {
-  -ms-grid-column-align: center;
-      justify-self: center;
+  justify-self: center;
   width: 100%;
   min-width: 165px;
   max-width: 265px;
   height: 320px;
   margin-bottom: 1.5rem;
-  text-align: center;
   border-radius: 12px;
   color: #fff;
+  border: 2px solid white;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  background: linear-gradient(218.46deg, #00138f 9.79%, #604294 74.73%);
+}
+
+.homeCards .card .card-content {
+  height: 100%;
   display: -ms-grid;
   display: grid;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border: 2px solid white;
+  width: 100%;
+  text-align: center;
   position: relative;
-  background: linear-gradient(218.46deg, #00138f 9.79%, #604294 74.73%);
+  -webkit-transition: -webkit-transform var(--d) var(--e);
+  transition: -webkit-transform var(--d) var(--e);
+  transition: transform var(--d) var(--e);
+  transition: transform var(--d) var(--e), -webkit-transform var(--d) var(--e);
+  z-index: 1;
+}
+
+.homeCards .card .card-content > * + * {
+  margin-top: 1rem;
 }
 
 .homeCards .card:hover {
@@ -329,8 +351,29 @@ a {
 
 .homeCards .card .comingSoon {
   position: absolute;
-  top: 17px;
+  top: 1rem;
   left: -3px;
+}
+
+.homeCards .card .infoButton {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  color: #126868;
+  font-size: 1.5rem;
+  z-index: 100;
+}
+
+.homeCards .card .desc {
+  position: absolute;
+  -webkit-transform: translateY(120%);
+          transform: translateY(120%);
+  opacity: 0;
+}
+
+.homeCards .card .desc p {
+  font-size: 1rem;
+  padding: 0 1rem;
 }
 
 .homeCards .card[bgcolor='1'] {
@@ -389,6 +432,61 @@ a {
   .homeCards {
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (hover: hover) and (min-width: 640px) {
+  picture,
+  .cardDetail {
+    -webkit-transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+    transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+    transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+    transition: transform var(--d) var(--e), opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+  }
+  .desc {
+    opacity: 0;
+    -webkit-transform: translateY(1rem);
+            transform: translateY(1rem);
+    -webkit-transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+    transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+    transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+    transition: transform var(--d) var(--e), opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+  }
+  .card:hover picture,
+  .card:focus picture {
+    opacity: 0;
+    -webkit-transform: translateY(-120%);
+            transform: translateY(-120%);
+  }
+  .card:hover .cardDetail,
+  .card:focus .cardDetail {
+    -webkit-transform: translateY(-9rem);
+            transform: translateY(-9rem);
+  }
+}
+
+@media screen and (hover: hover) and (min-width: 640px) and (max-width: 640px) {
+  .card:hover .cardDetail,
+  .card:focus .cardDetail {
+    -webkit-transform: translateY(-5rem);
+            transform: translateY(-5rem);
+  }
+}
+
+@media (hover: hover) and (min-width: 640px) {
+  .card:hover .desc,
+  .card:focus .desc {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    -webkit-transition-delay: calc(var(--d) / 8);
+            transition-delay: calc(var(--d) / 8);
+  }
+  .card:focus .card-content,
+  .card:focus picture,
+  .card:focus .desc {
+    -webkit-transition-duration: 0s;
+            transition-duration: 0s;
   }
 }
 
@@ -1017,7 +1115,7 @@ nav.menu-dropdown.active {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
   .site-footer .footer-links-container {
     -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;

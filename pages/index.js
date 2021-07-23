@@ -22,6 +22,7 @@ export default function Home({ homepage, chapters, suggested }) {
               slug: chapter.slug,
               totalArticles: chapter.articles.length,
               icon: chapter.icon,
+              Desc: chapter.Desc,
             };
             bgColorIndex.push(bgColorIndex[index]);
             return (

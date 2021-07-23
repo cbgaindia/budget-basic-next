@@ -43,6 +43,8 @@ a {
 }
 
 :root {
+	--d: 700ms;
+	--e: cubic-bezier(0.19, 1, 0.22, 1);
 	font-size: 12px;
 
 	@media (min-width: 400px) {
@@ -251,19 +253,61 @@ a {
 		max-width: 265px;
 		height: 320px;
 		margin-bottom: 1.5rem;
-		text-align: center;
 		border-radius: 12px;
 		color: #fff;
-		display: grid;
-		align-items: center;
 		border: 2px solid white;
+
 		position: relative;
+		display: flex;
+		align-items: flex-end;
+		// overflow: hidden;
 
 		background: linear-gradient(
 			218.46deg,
 			hsl(232, 100%, 28%) 9.79%,
 			hsl(262, 38%, 42%) 74.73%
 		);
+
+		// &:before {
+		// 	content: '';
+		// 	position: absolute;
+		// 	top: 0;
+		// 	left: 0;
+		// 	width: 100%;
+		// 	height: 110%;
+		// 	background-size: cover;
+		// 	background-position: 0 0;
+		// 	transition: transform calc(var(--d) * 1.5) var(--e);
+		// 	pointer-events: none;
+		// }
+
+		// &:after {
+		// 	content: '';
+		// 	display: block;
+		// 	position: absolute;
+		// 	top: 0;
+		// 	left: 0;
+		// 	width: 100%;
+		// 	height: 200%;
+		// 	pointer-events: none;
+		// 	transform: translateY(-50%);
+		// 	transition: transform calc(var(--d) * 2) var(--e);
+		// }
+
+		.card-content {
+			height: 100%;
+			display: grid;
+			align-items: center;
+			width: 100%;
+			text-align: center;
+			position: relative;
+			transition: transform var(--d) var(--e);
+			z-index: 1;
+
+			> * + * {
+				margin-top: 1rem;
+			}
+		}
 
 		&:hover {
 			border: 2px solid #4b4797;
@@ -295,8 +339,29 @@ a {
 
 		.comingSoon {
 			position: absolute;
-			top: 17px;
+			top: 1rem;
 			left: -3px;
+		}
+
+		.infoButton {
+			position: absolute;
+			top: 0;
+			right: 10px;
+			color: #126868;
+			font-size: 1.5rem;
+			z-index: 100;
+		}
+
+		.desc {
+			position: absolute;
+			transform: translateY(120%);
+			opacity: 0;
+
+			p {
+				font-size: 1rem;
+				padding: 0 1rem;
+			}
+			
 		}
 
 		&[bgcolor='1'] {
@@ -338,10 +403,6 @@ a {
 				display: none;
 			}
 
-			// img {
-			// 	display: none;
-			// }
-
 			.cardDetail {
 				align-self: center;
 				.title {
@@ -359,6 +420,48 @@ a {
 
 	@media screen and (max-width: 700px) {
 		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (hover: hover) and (min-width: 640px) {
+	picture,
+	.cardDetail {
+		transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+	}
+	.desc {
+		opacity: 0;
+		transform: translateY(1rem);
+		transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+	}
+
+	.card:hover,
+	.card:focus {
+		picture {
+			opacity: 0;
+			transform: translateY(-120%);
+		}
+
+		.cardDetail {
+			transform: translateY(-9rem);
+
+			@media screen and (max-width: 640px) {
+				transform: translateY(-5rem);
+			}
+		}
+
+		.desc {
+			opacity: 1;
+			transform: translateY(0);
+			transition-delay: calc(var(--d) / 8);
+		}
+	}
+
+	.card:focus {
+		.card-content,
+		picture,
+		.desc {
+			transition-duration: 0s;
+		}
 	}
 }
 
@@ -917,7 +1020,7 @@ nav.menu-dropdown {
 			}
 		}
 
-		@media screen and (max-width: 600px) {
+		@media screen and (max-width: 640px) {
 			grid-template-columns: 1fr;
 
 			.site-logo {

@@ -1,6 +1,6 @@
 export default function Card({ chapter }) {
   return (
-    <>
+    <div className="card-content">
       {chapter.totalArticles == 0 && (
         <img
           src="/assets/icons/coming_soon.png"
@@ -31,6 +31,14 @@ export default function Card({ chapter }) {
       <div className="cardDetail">
         <h2 className="title">{chapter.title}</h2>
       </div>
-    </>
+      {chapter.Desc && (
+        <div
+          className="desc"
+          dangerouslySetInnerHTML={{ __html: `<p>${chapter.Desc}</p>` }}
+        />
+      )}
+
+      {/* <p>{chapter.Desc}</p> */}
+    </div>
   );
 }
