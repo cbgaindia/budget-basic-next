@@ -41,10 +41,11 @@ a {
 ::-webkit-scrollbar-thumb:hover {
 	background: #555;
 }
+$d: 700ms;
+$e: cubic-bezier(0.19, 1, 0.22, 1);
+$midMobile: 640px;
 
 :root {
-	--d: 700ms;
-	--e: cubic-bezier(0.19, 1, 0.22, 1);
 	font-size: 12px;
 
 	@media (min-width: 400px) {
@@ -268,32 +269,6 @@ a {
 			hsl(262, 38%, 42%) 74.73%
 		);
 
-		// &:before {
-		// 	content: '';
-		// 	position: absolute;
-		// 	top: 0;
-		// 	left: 0;
-		// 	width: 100%;
-		// 	height: 110%;
-		// 	background-size: cover;
-		// 	background-position: 0 0;
-		// 	transition: transform calc(var(--d) * 1.5) var(--e);
-		// 	pointer-events: none;
-		// }
-
-		// &:after {
-		// 	content: '';
-		// 	display: block;
-		// 	position: absolute;
-		// 	top: 0;
-		// 	left: 0;
-		// 	width: 100%;
-		// 	height: 200%;
-		// 	pointer-events: none;
-		// 	transform: translateY(-50%);
-		// 	transition: transform calc(var(--d) * 2) var(--e);
-		// }
-
 		.card-content {
 			height: 100%;
 			display: grid;
@@ -301,7 +276,7 @@ a {
 			width: 100%;
 			text-align: center;
 			position: relative;
-			transition: transform var(--d) var(--e);
+			transition: transform $d $e;
 			z-index: 1;
 
 			> * + * {
@@ -309,7 +284,7 @@ a {
 			}
 		}
 
-		&:hover {
+		&:hover, &:focus {
 			border: 2px solid #4b4797;
 			box-shadow: 0px 8px 16px rgba(116, 111, 111, 0.14);
 		}
@@ -339,18 +314,19 @@ a {
 
 		.comingSoon {
 			position: absolute;
-			top: 1rem;
+			top: 0.5rem;
 			left: -3px;
+
+			@media screen and (max-width: $midMobile) {
+				width: 85px;
+			}
 		}
 
 		.desc {
 			position: absolute;
-			transform: translateY(120%);
-			opacity: 0;
 			font-size: 1rem;
 			padding: 0 1rem;
 			color: #000000;
-			
 		}
 
 		&[bgcolor='1'] {
@@ -380,7 +356,7 @@ a {
 			background: linear-gradient(218.46deg, #d14981 9.79%, #dae3fe 79.73%);
 		}
 
-		@media screen and (max-width: 640px) {
+		@media screen and (max-width: $midMobile) {
 			grid-template-rows: 1fr;
 			height: 18rem;
 
@@ -399,10 +375,8 @@ a {
 				}
 			}
 
-			.cardButton {
-				width: 8rem;
-				height: 2.2rem;
-				font-size: 1rem;
+			.desc {
+				opacity: 1;
 			}
 		}
 	}
@@ -412,44 +386,53 @@ a {
 	}
 }
 
-@media (hover: hover) and (min-width: 640px) {
-	picture,
+@media screen and (max-width: $midMobile) {
 	.cardDetail {
-		transition: transform var(--d) var(--e), opacity var(--d) var(--e);
+		transform: translateY(-60px);
 	}
-	.desc {
-		opacity: 0;
-		transform: translateY(1rem);
-		transition: transform var(--d) var(--e), opacity var(--d) var(--e);
-	}
+}
 
-	.card:hover,
-	.card:focus {
-		picture {
-			opacity: 0;
-			transform: translateY(-120%);
+@media screen and (min-width: $midMobile) {
+	.card.card-desc {
+		picture,
+		.cardDetail {
+			transition: transform $d $e, opacity $d $e;
 		}
 
-		.cardDetail {
-			transform: translateY(-9rem);
+		.desc {
+			opacity: 0;
+			transform: translateY(1rem);
+			transition: transform $d $e, opacity $d $e;
+		}
 
-			@media screen and (max-width: 640px) {
-				transform: translateY(-5rem);
+		&:hover,
+		&:focus {
+			picture {
+				opacity: 0;
+				transform: translateY(-120%);
+			}
+
+			.cardDetail {
+				transform: translateY(-9rem);
+
+				@media screen and (max-width: $midMobile) {
+					transform: translateY(-15rem);
+				}
+			}
+
+			.desc {
+				opacity: 1;
+				transform: translateY(0);
+				transition-delay: calc($d / 8);
 			}
 		}
 
-		.desc {
-			opacity: 1;
-			transform: translateY(0);
-			transition-delay: calc(var(--d) / 8);
-		}
-	}
-
-	.card:focus {
-		.card-content,
-		picture,
-		.desc {
-			transition-duration: 0s;
+		&:focus {
+			.card-content,
+			picture,
+			.desc {
+				transition-duration: 0s;
+			}
 		}
 	}
 }
@@ -544,9 +527,6 @@ a {
 			display: none;
 		}
 	}
-	// @media screen and (max-width: 499px) {
-	// 	// height: 160px;
-	// }
 }
 
 // Mobile menu
@@ -936,14 +916,6 @@ nav.menu-dropdown {
 					}
 				}
 			}
-
-			// .back {
-			// 	width: min-content;
-			// }
-
-			// .forward {
-			// 	width: min-content;
-			// }
 		}
 	}
 }

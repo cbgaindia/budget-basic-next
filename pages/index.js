@@ -27,7 +27,10 @@ export default function Home({ homepage, chapters, suggested }) {
             bgColorIndex.push(bgColorIndex[index]);
             return (
               <Link key={index} href={`/${chapter.slug}`}>
-                <a className="card" bgcolor={bgColorIndex[index]}>
+                <a
+                  className={chapter.Desc ? 'card card-desc' : 'card'}
+                  bgcolor={bgColorIndex[index]}
+                >
                   <Card chapter={chapterDetails} />
                 </a>
               </Link>

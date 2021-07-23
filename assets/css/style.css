@@ -43,8 +43,6 @@ a {
 }
 
 :root {
-  --d: 700ms;
-  --e: cubic-bezier(0.19, 1, 0.22, 1);
   font-size: 12px;
 }
 
@@ -300,10 +298,10 @@ a {
   width: 100%;
   text-align: center;
   position: relative;
-  -webkit-transition: -webkit-transform var(--d) var(--e);
-  transition: -webkit-transform var(--d) var(--e);
-  transition: transform var(--d) var(--e);
-  transition: transform var(--d) var(--e), -webkit-transform var(--d) var(--e);
+  -webkit-transition: -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
   z-index: 1;
 }
 
@@ -311,7 +309,7 @@ a {
   margin-top: 1rem;
 }
 
-.homeCards .card:hover {
+.homeCards .card:hover, .homeCards .card:focus {
   border: 2px solid #4b4797;
   -webkit-box-shadow: 0px 8px 16px rgba(116, 111, 111, 0.14);
           box-shadow: 0px 8px 16px rgba(116, 111, 111, 0.14);
@@ -351,15 +349,18 @@ a {
 
 .homeCards .card .comingSoon {
   position: absolute;
-  top: 1rem;
+  top: 0.5rem;
   left: -3px;
+}
+
+@media screen and (max-width: 640px) {
+  .homeCards .card .comingSoon {
+    width: 85px;
+  }
 }
 
 .homeCards .card .desc {
   position: absolute;
-  -webkit-transform: translateY(120%);
-          transform: translateY(120%);
-  opacity: 0;
   font-size: 1rem;
   padding: 0 1rem;
   color: #000000;
@@ -410,10 +411,8 @@ a {
   .homeCards .card .cardDetail .title {
     font-size: 1.5rem;
   }
-  .homeCards .card .cardButton {
-    width: 8rem;
-    height: 2.2rem;
-    font-size: 1rem;
+  .homeCards .card .desc {
+    opacity: 1;
   }
 }
 
@@ -424,56 +423,59 @@ a {
   }
 }
 
-@media (hover: hover) and (min-width: 640px) {
-  picture,
+@media screen and (max-width: 640px) {
   .cardDetail {
-    -webkit-transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
-    transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
-    transition: transform var(--d) var(--e), opacity var(--d) var(--e);
-    transition: transform var(--d) var(--e), opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+    -webkit-transform: translateY(-60px);
+            transform: translateY(-60px);
   }
-  .desc {
+}
+
+@media screen and (min-width: 640px) {
+  .card.card-desc picture,
+  .card.card-desc .cardDetail {
+    -webkit-transition: opacity 700ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: opacity 700ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1), opacity 700ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1), opacity 700ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  }
+  .card.card-desc .desc {
     opacity: 0;
     -webkit-transform: translateY(1rem);
             transform: translateY(1rem);
-    -webkit-transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
-    transition: opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
-    transition: transform var(--d) var(--e), opacity var(--d) var(--e);
-    transition: transform var(--d) var(--e), opacity var(--d) var(--e), -webkit-transform var(--d) var(--e);
+    -webkit-transition: opacity 700ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: opacity 700ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1), opacity 700ms cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1), opacity 700ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
   }
-  .card:hover picture,
-  .card:focus picture {
+  .card.card-desc:hover picture, .card.card-desc:focus picture {
     opacity: 0;
     -webkit-transform: translateY(-120%);
             transform: translateY(-120%);
   }
-  .card:hover .cardDetail,
-  .card:focus .cardDetail {
+  .card.card-desc:hover .cardDetail, .card.card-desc:focus .cardDetail {
     -webkit-transform: translateY(-9rem);
             transform: translateY(-9rem);
   }
 }
 
-@media screen and (hover: hover) and (min-width: 640px) and (max-width: 640px) {
-  .card:hover .cardDetail,
-  .card:focus .cardDetail {
-    -webkit-transform: translateY(-5rem);
-            transform: translateY(-5rem);
+@media screen and (min-width: 640px) and (max-width: 640px) {
+  .card.card-desc:hover .cardDetail, .card.card-desc:focus .cardDetail {
+    -webkit-transform: translateY(-15rem);
+            transform: translateY(-15rem);
   }
 }
 
-@media (hover: hover) and (min-width: 640px) {
-  .card:hover .desc,
-  .card:focus .desc {
+@media screen and (min-width: 640px) {
+  .card.card-desc:hover .desc, .card.card-desc:focus .desc {
     opacity: 1;
     -webkit-transform: translateY(0);
             transform: translateY(0);
-    -webkit-transition-delay: calc(var(--d) / 8);
-            transition-delay: calc(var(--d) / 8);
+    -webkit-transition-delay: calc($d / 8);
+            transition-delay: calc($d / 8);
   }
-  .card:focus .card-content,
-  .card:focus picture,
-  .card:focus .desc {
+  .card.card-desc:focus .card-content,
+  .card.card-desc:focus picture,
+  .card.card-desc:focus .desc {
     -webkit-transition-duration: 0s;
             transition-duration: 0s;
   }
