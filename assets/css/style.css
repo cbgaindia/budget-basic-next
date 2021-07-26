@@ -451,8 +451,8 @@ a {
   }
   .card.card-desc:hover picture, .card.card-desc:focus picture {
     opacity: 0;
-    -webkit-transform: translateY(-120%);
-            transform: translateY(-120%);
+    -webkit-transform: translateY(-30%);
+            transform: translateY(-30%);
   }
   .card.card-desc:hover .cardDetail, .card.card-desc:focus .cardDetail {
     -webkit-transform: translateY(-9rem);
