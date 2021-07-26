@@ -4,7 +4,8 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { fetchAPI } from 'lib/api';
 import { sortList, LocaleString } from 'utils/helpers';
 import Seo from 'components/seo';
-import ArticleHeader from 'components/headers/articleHeader';
+// import ArticleHeader from 'components/headers/articleHeader';
+import Header from 'components/header';
 import ArticleFooter from 'components/footers/articlefooter';
 import Article from 'components/article';
 import Menu from 'components/menu';
@@ -88,17 +89,21 @@ const Chapter = ({ chapter, chapters }) => {
     article: true,
   };
 
-  const chapterDetails = {
-    number: chapter.Chapter_No,
-    title: chapter.Title,
-    totalArticles: chapter.articles.length,
-  };
+  // const chapterDetails = {
+  //   number: chapter.Chapter_No,
+  //   title: chapter.Title,
+  //   totalArticles: chapter.articles.length,
+  // };
+
+  function headerDesc() {
+    return <h2>{chapter.Title}</h2>;
+  }
 
   return (
     <div>
       <Seo seo={seo} />
 
-      <ArticleHeader chapter={chapterDetails} />
+      <Header desc={headerDesc()} color="#29314F" />
       {isMobile && chapter.articles.length > 0 && (
         <Menu chapter={chapter} key="mobilemenu" isMobile={isMobile} />
       )}
