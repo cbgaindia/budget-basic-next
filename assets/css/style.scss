@@ -103,6 +103,11 @@ a {
 	box-sizing: border-box;
 }
 
+button {
+	cursor: pointer;
+	border: none;
+}
+
 .wrapper {
 	min-width: 300px;
 	max-width: 1200px;
@@ -119,6 +124,53 @@ a {
 
 .footer {
 	background-color: #0f1525;
+}
+
+.highlights-container {
+	height: 80px;
+	background-color: #29314F;
+	color: #ffffff;
+
+	span {
+		height: 48px;
+		border: 2px solid #A090FF;
+		position: fixed;
+		border-radius: 4px;
+	}
+
+	.wrapper {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 100%;
+	}
+
+	.highlight-text {
+		margin-left: 1.5rem;
+		font-size: 12px;
+		line-height: 135%;
+		max-width: 900px;
+	}
+
+	button {
+		background: #0F1525;
+		border-radius: 2px;
+		border: none;
+		width: 43px;
+		height: 30px;
+
+		&.disabled {
+			background-color:rgba(255, 255, 255, 0.1);
+			pointer-events: none;
+		}
+	}
+
+	.back {
+		img {
+			transform: rotate(180deg);
+		}
+		margin-right: .5rem;
+	}
 }
 
 .branding {

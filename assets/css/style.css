@@ -107,6 +107,11 @@ a {
           box-sizing: border-box;
 }
 
+button {
+  cursor: pointer;
+  border: none;
+}
+
 .wrapper {
   min-width: 300px;
   max-width: 1200px;
@@ -123,6 +128,61 @@ a {
 
 .footer {
   background-color: #0f1525;
+}
+
+.highlights-container {
+  height: 80px;
+  background-color: #29314F;
+  color: #ffffff;
+}
+
+.highlights-container span {
+  height: 48px;
+  border: 2px solid #A090FF;
+  position: fixed;
+  border-radius: 4px;
+}
+
+.highlights-container .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 100%;
+}
+
+.highlights-container .highlight-text {
+  margin-left: 1.5rem;
+  font-size: 12px;
+  line-height: 135%;
+  max-width: 900px;
+}
+
+.highlights-container button {
+  background: #0F1525;
+  border-radius: 2px;
+  border: none;
+  width: 43px;
+  height: 30px;
+}
+
+.highlights-container button.disabled {
+  background-color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.highlights-container .back {
+  margin-right: .5rem;
+}
+
+.highlights-container .back img {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
 }
 
 .branding {

@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { fetchAPI } from 'lib/api';
 import { sortList, LocaleString } from 'utils/helpers';
 import Seo from 'components/seo';
-// import ArticleHeader from 'components/headers/articleHeader';
 import Header from 'components/header';
 import ArticleFooter from 'components/footers/articlefooter';
 import Article from 'components/article';

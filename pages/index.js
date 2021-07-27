@@ -2,27 +2,21 @@ import { fetchAPI } from 'lib/api';
 import Seo from 'components/seo';
 import Card from 'components/card';
 import { sortList } from 'utils/helpers';
-// import HomeHeader from 'components/headers/homeHeader';
 import Header from 'components/header';
+import Highlight from 'components/highlights';
 import Link from 'next/link';
 
 export default function Home({ homepage, chapters, suggested }) {
   sortList(chapters);
   const bgColorIndex = [1, 2, 3, 4, 5, 6];
   function headerDesc() {
-    return (
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam
-      </p>
-    );
+    return <p>{homepage.heading}</p>;
   }
 
   return (
     <>
       <Header desc={headerDesc()} color="#101524" />
-      {/* <Header suggested={suggested} /> */}
+      <Highlight data={homepage.highlight} />
       <div className="home-wrapper">
         <Seo seo={homepage.seo} />
         <div className="homeCards">

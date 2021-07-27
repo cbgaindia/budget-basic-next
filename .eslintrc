@@ -7,7 +7,8 @@
 		"no-unused-vars": [1],
 		"prettier/prettier": [1, {"singleQuote": true, "parser": "flow"}],
 		"eqeqeq": "off",
-		"jsx-a11y/no-autofocus": "off"
+		"jsx-a11y/no-autofocus": "off",
+		"no-multi-str": "off"
 	},
 	"extends": [
 		"@ijsto",
