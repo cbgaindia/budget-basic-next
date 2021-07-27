@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 const Seo = ({ seo }) => {
   const router = useRouter();
-  const { defaultSeo, siteName } = useContext(GlobalContext);
+  const { defaultSeo, siteName, title } = useContext(GlobalContext);
 
   const seoWithDefaults = {
     ...defaultSeo,
@@ -14,12 +14,12 @@ const Seo = ({ seo }) => {
   };
   const fullSeo = {
     ...seoWithDefaults,
-    metaTitle: `${seoWithDefaults.metaTitle} - Budget Basics | ${siteName}`,
+    metaTitle: `${seoWithDefaults.metaTitle} - ${title} | ${siteName}`,
     shareImage: getStrapiMedia(seoWithDefaults.shareImage),
   };
 
   if (router.route == '/') {
-    fullSeo.metaTitle = `${seoWithDefaults.metaTitle} | ${siteName}`;
+    fullSeo.metaTitle = `${title} | ${siteName}`;
   }
 
   return (
