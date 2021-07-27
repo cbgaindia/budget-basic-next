@@ -41,7 +41,7 @@ const Highlight = ({ data }) => {
             type="button"
             className="back"
             onClick={() => updateHighlight(-1)}
-            onKeyDown={() => updateHighlight(-1)}
+            onKeyPress={() => updateHighlight(-1)}
           >
             <img
               src="/assets/icons/header_navigation.png"
@@ -52,7 +52,7 @@ const Highlight = ({ data }) => {
             type="button"
             className="forward"
             onClick={() => updateHighlight(1)}
-            onKeyDown={() => updateHighlight(1)}
+            onKeyPress={() => updateHighlight(1)}
           >
             <img
               src="/assets/icons/header_navigation.png"

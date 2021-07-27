@@ -4,9 +4,10 @@ import Card from 'components/card';
 import { sortList } from 'utils/helpers';
 import Header from 'components/header';
 import Highlight from 'components/highlights';
+import Carousel from 'components/carousel';
 import Link from 'next/link';
 
-export default function Home({ homepage, chapters, suggested }) {
+export default function Home({ homepage, chapters }) {
   sortList(chapters);
   const bgColorIndex = [1, 2, 3, 4, 5, 6];
   function headerDesc() {
@@ -43,6 +44,7 @@ export default function Home({ homepage, chapters, suggested }) {
           })}
         </div>
       </div>
+      <Carousel />
     </>
   );
 }

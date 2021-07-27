@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { MeiliSearch } from 'meilisearch';
 import Link from 'next/link';
+import { GlobalContext } from 'pages/_app';
 
 const client = new MeiliSearch({
   host: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
   apiKey: process.env.NEXT_PUBLIC_MEILISEARCH_API,
 });
 
-const Search = ({ blur, resultClick, onResultClick, suggested }) => {
+const Search = ({ blur, resultClick, onResultClick }) => {
+  const { articles } = useContext(GlobalContext);
+
   const [search, setSearch] = useState([]);
   const [showSearch, setShowSearch] = useState(false);
   const [showPlaceholder, setShowPlaceholder] = useState(false);
@@ -26,7 +29,7 @@ const Search = ({ blur, resultClick, onResultClick, suggested }) => {
     if (query.length > 0) {
       setShowSearch(true);
       setShowPlaceholder(false);
-    } else if (suggested != undefined) setShowPlaceholder(true);
+    } else if (articles != undefined) setShowPlaceholder(true);
   }
 
   function inputBlur() {
@@ -60,7 +63,7 @@ const Search = ({ blur, resultClick, onResultClick, suggested }) => {
         });
     } else {
       setShowSearch(false);
-      if (suggested != undefined) setShowPlaceholder(true);
+      if (articles != undefined) setShowPlaceholder(true);
     }
   }
 
@@ -108,7 +111,7 @@ const Search = ({ blur, resultClick, onResultClick, suggested }) => {
         <div className="searchResults">
           <p className="suggested">Suggested Articles</p>
           <ul>
-            {suggested.map((item, index) => (
+            {articles.map((item, index) => (
               <li key={`suggested-${index}`}>
                 <Link
                   href={`/${item.chapter ? item.chapter.slug : '/'}#${
