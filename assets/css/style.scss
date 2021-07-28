@@ -174,7 +174,8 @@ button {
 			grid-template-columns: 1fr;
 			grid-template-rows: 1fr max-content;
 
-			.highlight-text, span{
+			.highlight-text,
+			span {
 				grid-row-start: 1;
 			}
 
@@ -191,6 +192,23 @@ button {
 		font-size: 12px;
 		line-height: 135%;
 		max-width: 900px;
+	}
+}
+
+.searchMenu.homeSearch {
+	width: 100%;
+	max-height: 55px;
+	height: 55px;
+	padding: 0 1rem;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+
+	input {
+		display: block;
+		width: 100%;
+	}
+
+	img {
+		width: 30px;
 	}
 }
 
@@ -423,7 +441,6 @@ button {
 		padding-left: 0;
 
 		li {
-
 			&:hover {
 				background: rgba(66, 47, 161, 0.1);
 				border-color: transparent;
@@ -761,55 +778,6 @@ nav.menu-dropdown {
 		}
 	}
 
-	.searchMenu {
-		display: flex;
-		align-items: center;
-		position: relative;
-
-		input {
-			display: none;
-			border: none;
-			height: 70%;
-			caret-color: #604294;
-			outline: none;
-			font-size: 16px;
-			line-height: 150%;
-		}
-
-		.searchIcon {
-			margin-right: 1.5rem;
-
-			img {
-				width: 1.5rem;
-			}
-			&.hide {
-				display: none;
-			}
-		}
-
-		&.active {
-			width: 100%;
-			justify-content: space-between;
-
-			input {
-				display: block;
-				margin-left: 1.5rem;
-			}
-		}
-
-		.searchResults {
-			width: 100%;
-			max-width: 100%;
-			position: absolute;
-			margin: 0;
-			top: 55px;
-			background: #f6f5fa;
-			box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-			border-radius: 0px 0px 5px 5px;
-			padding-left: 1.5rem;
-		}
-	}
-
 	&.active {
 		border: 1px solid #604294;
 		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
@@ -817,6 +785,55 @@ nav.menu-dropdown {
 
 	@media screen and (min-width: 1001px) {
 		display: none;
+	}
+}
+
+.searchMenu {
+	display: flex;
+	align-items: center;
+	position: relative;
+
+	input {
+		display: none;
+		border: none;
+		height: 70%;
+		caret-color: #604294;
+		outline: none;
+		font-size: 16px;
+		line-height: 150%;
+	}
+
+	.searchIcon {
+		margin-right: 1.5rem;
+
+		img {
+			width: 1.5rem;
+		}
+		&.hide {
+			display: none;
+		}
+	}
+
+	&.active {
+		width: 100%;
+		justify-content: space-between;
+
+		input {
+			display: block;
+			margin-left: 1.5rem;
+		}
+	}
+
+	.searchResults {
+		width: 100%;
+		max-width: 100%;
+		position: absolute;
+		margin: 0;
+		top: 55px;
+		background: #f6f5fa;
+		box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+		border-radius: 0px 0px 5px 5px;
+		padding-left: 1.5rem;
 	}
 }
 
