@@ -108,18 +108,16 @@ const Carousel = ({ youtube }) => {
         </div>
         <div className="videos_container">
           <div className="videos">
-            {youtube.map((video) => (
-              <div>
-                <iframe
-                  width="360"
-                  height="190"
-                  src={`https://www.youtube.com/embed/${video.link}`}
-                  title={video.title}
-                  frameBorder="0"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+            {youtube.map((video, index) => (
+              <iframe
+                key={`youtube_video_${index}`}
+                width="360"
+                height="190"
+                src={`https://www.youtube-nocookie.com/embed/${video.link}`}
+                title={video.title}
+                frameBorder="0"
+                allowFullScreen
+              />
             ))}
           </div>
         </div>

@@ -293,7 +293,7 @@ button {
   margin-bottom: 2rem;
 }
 
-.footer-carousel .videos div {
+.footer-carousel .videos iframe {
   width: 360px;
   height: 190px;
   margin-right: 2rem;
@@ -997,7 +997,6 @@ nav.menu-dropdown.active {
   width: 17rem;
   background: rgba(66, 47, 161, 0.05);
   border-radius: 10px;
-  margin-left: -2rem;
 }
 
 .content .sidebar .dropdown-content {

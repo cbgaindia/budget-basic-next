@@ -261,7 +261,7 @@ button {
 		align-self: flex-end;
 		margin-bottom: 2rem;
 
-		div {
+		iframe {
 			width: 360px;
 			height: 190px;
 			margin-right: 2rem;
@@ -868,7 +868,6 @@ nav.menu-dropdown {
 		width: 17rem;
 		background: rgba(66, 47, 161, 0.05);
 		border-radius: 10px;
-		margin-left: -2rem;
 
 		.dropdown-content {
 			list-style: none;
