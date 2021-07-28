@@ -615,7 +615,7 @@ button {
 .homeCards .card .cardDetail .title {
   color: #0f1525;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1rem;
   line-height: 135%;
 }
 
@@ -683,7 +683,7 @@ button {
     margin-top: 2rem;
   }
   .homeCards .card .cardDetail .title {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   .homeCards .card .desc {
     opacity: 1;

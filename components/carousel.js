@@ -9,9 +9,10 @@ const Carousel = ({ youtube }) => {
     document
       .querySelector('.videos_container')
       .addEventListener('scroll', () => {
-        const { scrollLeft, scrollLeftMax } =
+        const { scrollLeft, scrollWidth, clientWidth } =
           document.querySelector('.videos_container');
-        if (scrollLeft == 0) {
+        const scrollLeftMax = scrollWidth - clientWidth;
+        if (scrollLeft <= 0) {
           document
             .querySelector('.footer-carousel .forward')
             .classList.remove('disabled');
@@ -19,7 +20,7 @@ const Carousel = ({ youtube }) => {
             .querySelector('.footer-carousel .back')
             .classList.add('disabled');
         }
-        if (scrollLeft >= scrollLeftMax) {
+        if (scrollLeft >= scrollLeftMax - 10) {
           document
             .querySelector('.footer-carousel .back')
             .classList.remove('disabled');
@@ -28,7 +29,7 @@ const Carousel = ({ youtube }) => {
             .querySelector('.footer-carousel .forward')
             .classList.add('disabled');
         } else if (
-          scrollLeft > 0 &&
+          scrollLeft > 10 &&
           scrollLeft < scrollLeftMax &&
           document.querySelector('.footer-carousel .disabled')
         )
