@@ -126,7 +126,11 @@ const Chapter = ({ chapter, chapters }) => {
           <section className="articles">
             {chapter.articles.map((article) => (
               <article id={article.slug} key={article.id}>
-                <h2>{article.Title}</h2>
+                <div className="article_heading">
+                  <span />
+                  <h2>{article.Title}</h2>
+                </div>
+
                 <Article article={article.Content} />
               </article>
             ))}

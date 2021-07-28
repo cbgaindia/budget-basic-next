@@ -67,10 +67,9 @@ export default function Home({ homepage, chapters }) {
 export async function getStaticProps() {
   const homepage = await fetchAPI('/homepage');
   const chapters = await fetchAPI('/chapters');
-  const suggested = await fetchAPI('/topics?Suggested=1');
 
   return {
-    props: { homepage, chapters, suggested },
+    props: { homepage, chapters },
     revalidate: 1,
   };
 }
