@@ -44,7 +44,7 @@ export default function Home({ homepage, chapters }) {
           })}
         </div>
       </div>
-      <Carousel />
+      <Carousel youtube={homepage.youtube} />
     </>
   );
 }

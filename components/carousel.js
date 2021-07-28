@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-const Carousel = () => {
+const Carousel = ({ youtube }) => {
   function updateSlider(n) {
     document.querySelector('.videos_container').scrollLeft += n * 300;
   }
@@ -68,9 +68,15 @@ const Carousel = () => {
   }
 
   useEffect(() => {
+    if (document.querySelector('.videos_container').scrollLeft == 0)
+      document
+        .querySelector('.footer-carousel .back')
+        .classList.add('disabled');
+
     buttonDisable();
     scrollOnDrag();
   }, []);
+
   return (
     <div className="footer-carousel">
       <div className="wrapper">
@@ -101,36 +107,19 @@ const Carousel = () => {
         </div>
         <div className="videos_container">
           <div className="videos">
-            <div>
-              <span>
-                <img alt="" src="/assets/icons/play.png" />
-              </span>
-            </div>
-            <div>
-              <span>
-                <img alt="" src="/assets/icons/play.png" />
-              </span>
-            </div>
-            <div>
-              <span>
-                <img alt="" src="/assets/icons/play.png" />
-              </span>
-            </div>
-            <div>
-              <span>
-                <img alt="" src="/assets/icons/play.png" />
-              </span>
-            </div>
-            <div>
-              <span>
-                <img alt="" src="/assets/icons/play.png" />
-              </span>
-            </div>
-            <div>
-              <span>
-                <img alt="" src="/assets/icons/play.png" />
-              </span>
-            </div>
+            {youtube.map((video) => (
+              <div>
+                <iframe
+                  width="360"
+                  height="190"
+                  src={`https://www.youtube.com/embed/${video.link}`}
+                  title={video.title}
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            ))}
           </div>
         </div>
       </div>
