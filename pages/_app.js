@@ -18,6 +18,8 @@ function MyApp({ Component, pageProps }) {
         document.querySelector('.menu-dropdown').classList.remove('active');
         document.querySelector('.mobileContent').classList.remove('active');
         document.querySelector('.searchMenu').classList.remove('active');
+        document.querySelector('.dropbtn').classList.remove('hide');
+        document.querySelector('.searchIcon').classList.remove('hide');
       }
     };
 

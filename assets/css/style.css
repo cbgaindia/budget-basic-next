@@ -996,14 +996,14 @@ nav.menu-dropdown.active {
   width: 100%;
 }
 
-.content .sidebar .dropdown-content li {
+.content .sidebar .dropdown-content li.sidebarLink {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   margin: 0.5rem;
 }
 
-.content .sidebar .dropdown-content li a {
+.content .sidebar .dropdown-content li.sidebarLink a {
   display: block;
   width: inherit;
   height: inherit;
@@ -1017,18 +1017,36 @@ nav.menu-dropdown.active {
   text-align: start;
 }
 
-.content .sidebar .dropdown-content li:hover {
-  background: rgba(66, 47, 161, 0.1);
-  border-color: transparent;
-  border-radius: 10px;
-}
-
-.content .sidebar .dropdown-content li.activeSidebar {
+.content .sidebar .dropdown-content > div.activeSidebar .sidebarLink {
   background: rgba(66, 47, 161, 0.1);
   border-color: transparent;
   -webkit-box-shadow: 0 0 0 1px #a090ff;
           box-shadow: 0 0 0 1px #a090ff;
   border-radius: 10px;
+}
+
+.content .sidebar .dropdown-content > div.activeSidebar .subHeading {
+  display: block;
+}
+
+.content .sidebar .dropdown-content > div:hover .sidebarLink {
+  background: rgba(66, 47, 161, 0.1);
+  border-color: transparent;
+  border-radius: 10px;
+}
+
+.content .subHeading {
+  list-style: none;
+  margin-left: .5rem;
+  display: none;
+}
+
+.content .subHeading li {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 135%;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .content .articles {
@@ -1055,7 +1073,8 @@ nav.menu-dropdown.active {
   opacity: 0;
 }
 
-.content .articles .article_heading h2:hover a, .content .articles .article_heading h2:focus a {
+.content .articles .article_heading h2:hover a,
+.content .articles .article_heading h2:focus a {
   opacity: 1;
 }
 
@@ -1068,8 +1087,8 @@ nav.menu-dropdown.active {
 }
 
 .content .articles article {
-  margin-bottom: 3rem;
-  scroll-margin-top: 3rem;
+  margin-bottom: 2.8rem;
+  scroll-margin-top: 2.8rem;
   font-size: 16px;
   line-height: 150%;
 }
@@ -1087,7 +1106,7 @@ nav.menu-dropdown.active {
 }
 
 .content .articles article table tr:first-of-type {
-  background-color: #E9EFFD;
+  background-color: #e9effd;
 }
 
 .content .articles article table td {

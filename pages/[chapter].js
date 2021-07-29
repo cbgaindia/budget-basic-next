@@ -15,13 +15,13 @@ function handleSidebarAnimation() {
   const articles = gsap.utils.toArray('article');
   articles.forEach((article) => {
     const sideLink = document.querySelector(
-      `li[keyid=${article.getAttribute('id')}]`
+      `div[keyid=${article.getAttribute('id')}]`
     );
     ScrollTrigger.create({
       id: 'st-id',
       trigger: article,
-      start: 'top 22%',
-      end: 'bottom 18%',
+      start: 'top 60px',
+      end: 'bottom 10px',
       refreshPriority: 1,
       toggleActions: 'restart complete reverse reset',
       onEnter() {
@@ -53,6 +53,31 @@ function sidebarSticky() {
   });
 }
 
+function generateSubHeadings() {
+  const headings = document.querySelectorAll('h3');
+  headings.forEach((heading) => {
+    const text = heading.childNodes[0].innerText;
+    const id = text.toLowerCase().replace(/\W/g, '-');
+    heading.setAttribute('id', id);
+  });
+
+  const articles = document.querySelectorAll('article');
+  articles.forEach((article) => {
+    const subHeadings = article.querySelectorAll('h3');
+    if (subHeadings.length > 0) {
+      const sideLink = document.querySelector(
+        `div[keyid=${article.getAttribute('id')}]`
+      );
+      const subHeadingList = sideLink.querySelector('ul');
+      subHeadings.forEach((subHeading) => {
+        const li = document.createElement('li');
+        li.innerHTML = subHeading.childNodes[0].innerText;
+        subHeadingList.appendChild(li);
+      });
+    }
+  });
+}
+
 const Chapter = ({ chapter, chapters }) => {
   const isMobile = useMediaQuery({ query: `(max-width: 1001px)` });
 
@@ -70,6 +95,7 @@ const Chapter = ({ chapter, chapters }) => {
         }
       });
     }
+    generateSubHeadings();
 
     return () => {
       if (ScrollTrigger.getById('st-id')) {
@@ -87,12 +113,6 @@ const Chapter = ({ chapter, chapters }) => {
     metaDescription: chapter.Desc,
     article: true,
   };
-
-  // const chapterDetails = {
-  //   number: chapter.Chapter_No,
-  //   title: chapter.Title,
-  //   totalArticles: chapter.articles.length,
-  // };
 
   function headerDesc() {
     return <h2>{chapter.Title}</h2>;
@@ -112,12 +132,15 @@ const Chapter = ({ chapter, chapters }) => {
             <section className="sidebar" key="desktopSidebar">
               <ul className="dropdown-content">
                 {chapter.articles.map((article, index) => (
-                  <li key={`menu-${article.id}`} keyid={article.slug}>
-                    <a href={`#${article.slug}`}>
-                      <p>{LocaleString(index + 1)}</p>
-                      <p>{article.Title}</p>
-                    </a>
-                  </li>
+                  <div key={`menu-${article.id}`} keyid={article.slug}>
+                    <li className="sidebarLink">
+                      <a href={`#${article.slug}`}>
+                        <p>{LocaleString(index + 1)}</p>
+                        <p>{article.Title}</p>
+                      </a>
+                    </li>
+                    <ul className="subHeading" />
+                  </div>
                 ))}
               </ul>
             </section>
