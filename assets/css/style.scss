@@ -906,6 +906,19 @@ nav.menu-dropdown {
 			display: flex;
 			align-items: center;
 			margin-bottom: 1.2rem;
+
+			a {
+				color: #a090ff;
+				margin-left: 5px;
+				transition: opacity 120ms ease;
+				opacity: 0;
+			}
+
+			h2:hover, h2:focus {
+				a {
+					opacity: 1;
+				}
+			}
 		}
 		span {
 			min-height: 40px;
@@ -922,10 +935,12 @@ nav.menu-dropdown {
 			line-height: 150%;
 
 			table {
-				table-layout: fixed;
+				// table-layout: fixed;
 				width: 100%;
-				// border-collapse: collapse;
 
+				td {
+					min-width: 100px;
+				}
 				tr {
 					background-color: rgba(233, 239, 253, 0.3);
 
@@ -941,7 +956,7 @@ nav.menu-dropdown {
 
 			h2 {
 				font-weight: 600;
-				margin: 1.5rem;
+				margin-left: 1.5rem;
 			}
 
 			.articleContent {
@@ -975,6 +990,14 @@ nav.menu-dropdown {
 
 			@media screen and (max-width: 1001px) {
 				scroll-margin-top: 5rem;
+
+				h2 {
+					margin-left: 1rem;
+				}
+
+				.articleContent {
+					margin-left: 2rem;
+				}
 			}
 		}
 

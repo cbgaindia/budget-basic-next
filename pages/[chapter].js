@@ -128,7 +128,12 @@ const Chapter = ({ chapter, chapters }) => {
               <article id={article.slug} key={article.id}>
                 <div className="article_heading">
                   <span />
-                  <h2>{article.Title}</h2>
+                  <h2>
+                    {article.Title}
+                    <a href={`#${article.slug}`} className="header-anchor">
+                      #
+                    </a>
+                  </h2>
                 </div>
 
                 <Article article={article.Content} />

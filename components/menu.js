@@ -40,6 +40,7 @@ function menuSticky() {
     trigger: '.menu-dropdown',
     start: 'top top',
     id: 'st-sticky-mobile',
+    refreshPriority: 1,
     end: (self) =>
       `+=${
         document.querySelector('.articles').offsetHeight - self.pin.offsetHeight
@@ -50,18 +51,21 @@ function menuSticky() {
 }
 
 const Menu = ({ chapter, isMobile }) => {
-  function handleContentClick() {
+  function disableScroll() {
     document.querySelector('.menu-dropdown').classList.toggle('active');
-    document.querySelector('.mobileContent').classList.toggle('active');
-    document.querySelector('.searchIcon').classList.toggle('hide');
-    document.querySelector('body').classList.toggle('disable_scroll');
-  }
-  function handleSearchClick() {
-    document.querySelector('.menu-dropdown').classList.toggle('active');
-    document.querySelector('.searchMenu').classList.toggle('active');
-    document.querySelector('.dropbtn').classList.toggle('hide');
     document.querySelector('body').classList.toggle('disable_scroll');
     document.querySelector('.articles').classList.toggle('addBlur');
+  }
+
+  function handleContentClick() {
+    disableScroll();
+    document.querySelector('.mobileContent').classList.toggle('active');
+    document.querySelector('.searchIcon').classList.toggle('hide');
+  }
+  function handleSearchClick() {
+    disableScroll();
+    document.querySelector('.searchMenu').classList.toggle('active');
+    document.querySelector('.dropbtn').classList.toggle('hide');
   }
 
   useIsomorphicLayoutEffect(() => {

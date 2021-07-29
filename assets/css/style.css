@@ -1047,6 +1047,18 @@ nav.menu-dropdown.active {
   margin-bottom: 1.2rem;
 }
 
+.content .articles .article_heading a {
+  color: #a090ff;
+  margin-left: 5px;
+  -webkit-transition: opacity 120ms ease;
+  transition: opacity 120ms ease;
+  opacity: 0;
+}
+
+.content .articles .article_heading h2:hover a, .content .articles .article_heading h2:focus a {
+  opacity: 1;
+}
+
 .content .articles span {
   min-height: 40px;
   height: 100%;
@@ -1063,8 +1075,11 @@ nav.menu-dropdown.active {
 }
 
 .content .articles article table {
-  table-layout: fixed;
   width: 100%;
+}
+
+.content .articles article table td {
+  min-width: 100px;
 }
 
 .content .articles article table tr {
@@ -1081,7 +1096,7 @@ nav.menu-dropdown.active {
 
 .content .articles article h2 {
   font-weight: 600;
-  margin: 1.5rem;
+  margin-left: 1.5rem;
 }
 
 .content .articles article .articleContent {
@@ -1116,6 +1131,12 @@ nav.menu-dropdown.active {
 @media screen and (max-width: 1001px) {
   .content .articles article {
     scroll-margin-top: 5rem;
+  }
+  .content .articles article h2 {
+    margin-left: 1rem;
+  }
+  .content .articles article .articleContent {
+    margin-left: 2rem;
   }
 }
 
