@@ -1001,6 +1001,7 @@ nav.menu-dropdown.active {
       -ms-flex-align: center;
           align-items: center;
   margin: 0.5rem;
+  font-size: 16px;
 }
 
 .content .sidebar .dropdown-content li.sidebarLink a {
@@ -1043,10 +1044,15 @@ nav.menu-dropdown.active {
 
 .content .subHeading li {
   font-weight: normal;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 135%;
   margin-left: 0.5rem;
   margin-bottom: 0.5rem;
+}
+
+.content .subHeading li.activeSubLink {
+  color: #4B4797;
+  font-weight: bold;
 }
 
 .content .articles {

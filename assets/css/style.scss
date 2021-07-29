@@ -870,7 +870,7 @@ nav.menu-dropdown {
 			li.sidebarLink {
 				align-items: center;
 				margin: 0.5rem;
-				// position: relative;
+				font-size: 16px;
 
 				a {
 					display: block;
@@ -913,10 +913,15 @@ nav.menu-dropdown {
 
 		li {
 			font-weight: normal;
-			font-size: 12px;
+			font-size: 14px;
 			line-height: 135%;
 			margin-left: 0.5rem;
 			margin-bottom: 0.5rem;
+
+			&.activeSubLink {
+				color: #4B4797;
+				font-weight: bold;
+			}
 		}
 	}
 

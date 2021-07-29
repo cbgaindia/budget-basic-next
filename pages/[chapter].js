@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { fetchAPI } from 'lib/api';
@@ -13,12 +13,12 @@ import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
 
 function handleSidebarAnimation() {
   const articles = gsap.utils.toArray('article');
-  articles.forEach((article) => {
+  articles.forEach((article, index) => {
     const sideLink = document.querySelector(
       `div[keyid=${article.getAttribute('id')}]`
     );
     ScrollTrigger.create({
-      id: 'st-id',
+      id: `st-${index}`,
       trigger: article,
       start: 'top 60px',
       end: 'bottom 10px',
@@ -42,27 +42,25 @@ function handleSidebarAnimation() {
 
 function handleSubheadingAnimation() {
   const subheadings = gsap.utils.toArray('h3');
-  subheadings.forEach((subheading) => {
+  subheadings.forEach((subheading, index) => {
     const subLink = document.querySelector(
       `li[subid=${subheading.getAttribute('id')}]`
     );
     ScrollTrigger.create({
-      id: 'subheading-id',
+      id: `subheading-${index}`,
       trigger: subheading,
       start: 'top 60px',
-      end: 'bottom 10px',
+      endTrigger: () =>
+        index == subheadings.length - 1 ? '.footer' : subheadings[index + 1],
+      end: () => (index < subheadings.length ? 'top 60px' : 'end 60px'),
       refreshPriority: 1,
       toggleActions: 'restart complete reverse reset',
       onEnter() {
-        if (document.querySelector('.activeSubLink'))
-          document
-            .querySelector('.activeSubLink')
-            .classList.remove('activeSubLink');
         subLink.classList.add('activeSubLink');
       },
-      // onLeave() {
-      //   subLink.classList.remove('activeSidebar');
-      // },
+      onLeave() {
+        subLink.classList.remove('activeSubLink');
+      },
       onEnterBack() {
         subLink.classList.add('activeSubLink');
       },
