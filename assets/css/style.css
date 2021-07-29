@@ -1127,6 +1127,7 @@ nav.menu-dropdown.active {
   font-size: 16px;
   line-height: 150%;
   margin: 1.2rem 0;
+  scroll-margin-top: 1.2rem;
 }
 
 .content .articles article li {

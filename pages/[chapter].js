@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { fetchAPI } from 'lib/api';
@@ -120,6 +120,15 @@ function generateSubHeadings() {
 const Chapter = ({ chapter, chapters }) => {
   const isMobile = useMediaQuery({ query: `(max-width: 1001px)` });
 
+  useEffect(() => {
+    generateSubHeadings();
+    handleSubheadingAnimation();
+    return () => {
+      if (ScrollTrigger.getById('subheading-id')) {
+        ScrollTrigger.getById('subheading-id').kill();
+      }
+    };
+  }, []);
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     if (chapter.articles.length > 0) {
@@ -134,9 +143,6 @@ const Chapter = ({ chapter, chapters }) => {
         }
       });
     }
-    generateSubHeadings();
-    handleSubheadingAnimation();
-
     return () => {
       if (ScrollTrigger.getById('st-id')) {
         ScrollTrigger.getById('st-sticky-id').kill();
