@@ -120,20 +120,13 @@ function generateSubHeadings() {
 const Chapter = ({ chapter, chapters }) => {
   const isMobile = useMediaQuery({ query: `(max-width: 1001px)` });
 
-  useEffect(() => {
-    generateSubHeadings();
-    handleSubheadingAnimation();
-    return () => {
-      if (ScrollTrigger.getById('subheading-id')) {
-        ScrollTrigger.getById('subheading-id').kill();
-      }
-    };
-  }, []);
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     if (chapter.articles.length > 0) {
       handleSidebarAnimation();
       sidebarSticky();
+      generateSubHeadings();
+      handleSubheadingAnimation();
 
       document.querySelectorAll('img').forEach((img) => {
         if (img.complete) {
@@ -147,6 +140,9 @@ const Chapter = ({ chapter, chapters }) => {
       if (ScrollTrigger.getById('st-id')) {
         ScrollTrigger.getById('st-sticky-id').kill();
         ScrollTrigger.getById('st-id').kill();
+      }
+      if (ScrollTrigger.getById('subheading-id')) {
+        ScrollTrigger.getById('subheading-id').kill();
       }
     };
   }, [isMobile, chapter]);
