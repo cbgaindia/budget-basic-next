@@ -52,7 +52,6 @@ function handleSubheadingAnimation() {
       start: 'top 60px',
       end: 'bottom 10px',
       refreshPriority: 1,
-      markers: true,
       toggleActions: 'restart complete reverse reset',
       onEnter() {
         if (document.querySelector('.activeSubLink'))
