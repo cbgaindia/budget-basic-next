@@ -40,6 +40,40 @@ function handleSidebarAnimation() {
   });
 }
 
+function handleSubheadingAnimation() {
+  const subheadings = gsap.utils.toArray('h3');
+  subheadings.forEach((subheading) => {
+    const subLink = document.querySelector(
+      `li[subid=${subheading.getAttribute('id')}]`
+    );
+    ScrollTrigger.create({
+      id: 'subheading-id',
+      trigger: subheading,
+      start: 'top 60px',
+      end: 'bottom 10px',
+      refreshPriority: 1,
+      markers: true,
+      toggleActions: 'restart complete reverse reset',
+      onEnter() {
+        if (document.querySelector('.activeSubLink'))
+          document
+            .querySelector('.activeSubLink')
+            .classList.remove('activeSubLink');
+        subLink.classList.add('activeSubLink');
+      },
+      // onLeave() {
+      //   subLink.classList.remove('activeSidebar');
+      // },
+      onEnterBack() {
+        subLink.classList.add('activeSubLink');
+      },
+      onLeaveBack() {
+        subLink.classList.remove('activeSubLink');
+      },
+    });
+  });
+}
+
 function sidebarSticky() {
   ScrollTrigger.create({
     trigger: '.sidebar',
@@ -54,13 +88,15 @@ function sidebarSticky() {
 }
 
 function generateSubHeadings() {
-  const headings = document.querySelectorAll('h3');
-  headings.forEach((heading) => {
+  // adding ids to h3 tags (subheadings)
+  const allHeadings = document.querySelectorAll('h3');
+  allHeadings.forEach((heading) => {
     const text = heading.childNodes[0].innerText;
     const id = text.toLowerCase().replace(/\W/g, '-');
     heading.setAttribute('id', id);
   });
 
+  // adding subheadings to the sidebar for each article
   const articles = document.querySelectorAll('article');
   articles.forEach((article) => {
     const subHeadings = article.querySelectorAll('h3');
@@ -71,7 +107,11 @@ function generateSubHeadings() {
       const subHeadingList = sideLink.querySelector('ul');
       subHeadings.forEach((subHeading) => {
         const li = document.createElement('li');
-        li.innerHTML = subHeading.childNodes[0].innerText;
+        const a = document.createElement('a');
+        a.innerHTML = subHeading.childNodes[0].innerText;
+        a.setAttribute('href', `#${subHeading.id}`);
+        li.setAttribute('subid', subHeading.id);
+        li.appendChild(a);
         subHeadingList.appendChild(li);
       });
     }
@@ -96,6 +136,7 @@ const Chapter = ({ chapter, chapters }) => {
       });
     }
     generateSubHeadings();
+    handleSubheadingAnimation();
 
     return () => {
       if (ScrollTrigger.getById('st-id')) {
@@ -139,6 +180,7 @@ const Chapter = ({ chapter, chapters }) => {
                         <p>{article.Title}</p>
                       </a>
                     </li>
+
                     <ul className="subHeading" />
                   </div>
                 ))}
