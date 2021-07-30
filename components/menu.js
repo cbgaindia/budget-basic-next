@@ -1,22 +1,24 @@
 import React from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
-import { LocaleString } from 'utils/helpers';
+import { LocaleString, generateSubHeadings } from 'utils/helpers';
 import Search from 'components/search';
 import useIsomorphicLayoutEffect from 'utils/use-isomorphic-layout-effect';
 
 function handleMenuAnimation() {
   const articles = gsap.utils.toArray('article');
 
-  articles.forEach((article) => {
+  articles.forEach((article, index) => {
     const sideLink = document.querySelector(
-      `li[keyid=${article.getAttribute('id')}]`
+      `div[keyid=${article.getAttribute('id')}]`
     );
     ScrollTrigger.create({
-      id: 'st-id-mobile',
+      id: `st-id-${index}`,
       trigger: article,
-      start: 'top 22%',
-      end: 'bottom 18%',
+      start: 'top 100px',
+      endTrigger: () =>
+        index == articles.length - 1 ? '.footer' : articles[index + 1],
+      end: () => (index < articles.length ? 'top 100px' : 'end 100px'),
       refreshPriority: 1,
       toggleActions: 'restart complete reverse reset',
       onEnter() {
@@ -30,6 +32,37 @@ function handleMenuAnimation() {
       },
       onLeaveBack() {
         sideLink.classList.remove('activeSidebar');
+      },
+    });
+  });
+}
+
+function handleSubheadingAnimation() {
+  const subheadings = gsap.utils.toArray('h3');
+  subheadings.forEach((subheading, index) => {
+    const subLink = document.querySelector(
+      `li[subid=${subheading.getAttribute('id')}]`
+    );
+    ScrollTrigger.create({
+      id: `subheading-mobile-id`,
+      trigger: subheading,
+      start: 'top 60px',
+      endTrigger: () =>
+        index == subheadings.length - 1 ? '.footer' : subheadings[index + 1],
+      end: () => (index < subheadings.length ? 'top 60px' : 'end 60px'),
+      refreshPriority: 1,
+      toggleActions: 'restart complete reverse reset',
+      onEnter() {
+        subLink.classList.add('activeSubLink');
+      },
+      onLeave() {
+        subLink.classList.remove('activeSubLink');
+      },
+      onEnterBack() {
+        subLink.classList.add('activeSubLink');
+      },
+      onLeaveBack() {
+        subLink.classList.remove('activeSubLink');
       },
     });
   });
@@ -73,12 +106,22 @@ const Menu = ({ chapter, isMobile }) => {
     ScrollTrigger.config({ syncInterval: 999999999 });
     menuSticky();
     handleMenuAnimation();
+    generateSubHeadings();
+    handleSubheadingAnimation();
+
+    document.querySelectorAll('.subHeading li').forEach((list) => {
+      list.addEventListener('click', handleContentClick);
+    });
 
     return () => {
       if (ScrollTrigger.getById('st-id-mobile')) {
         ScrollTrigger.getById('st-sticky-mobile').kill();
         ScrollTrigger.getById('st-id-mobile').kill();
       }
+
+      document.querySelectorAll('.subHeading li').forEach((list) => {
+        list.removeEventListener('click', handleContentClick);
+      });
     };
   }, [isMobile, chapter]);
 
@@ -95,12 +138,16 @@ const Menu = ({ chapter, isMobile }) => {
         </button>
         <ul className="dropdown-content-mobile">
           {chapter.articles.map((article, index) => (
-            <li key={`menu-${article.id}`} keyid={article.slug}>
-              <a href={`#${article.slug}`} onClick={handleContentClick}>
-                <p>{LocaleString(index + 1)}</p>
-                <p>{article.Title}</p>
-              </a>
-            </li>
+            <div key={`menu-${article.id}`} keyid={article.slug}>
+              <li className="menubarLink">
+                <a href={`#${article.slug}`} onClick={handleContentClick}>
+                  <p>{LocaleString(index + 1)}</p>
+                  <p>{article.Title}</p>
+                </a>
+              </li>
+
+              <ul className="subHeading" />
+            </div>
           ))}
         </ul>
       </section>

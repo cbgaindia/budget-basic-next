@@ -2,23 +2,23 @@ import React from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { fetchAPI } from 'lib/api';
-import { sortList, LocaleString } from 'utils/helpers';
+import { sortList, LocaleString, generateSubHeadings } from 'utils/helpers';
+import useWindowDimensions from 'utils/useWindowDimensions';
 import Seo from 'components/seo';
 import Header from 'components/header';
 import ArticleFooter from 'components/footers/articlefooter';
 import Article from 'components/article';
 import Menu from 'components/menu';
-import { useMediaQuery } from 'react-responsive';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
 
 function handleSidebarAnimation() {
   const articles = gsap.utils.toArray('article');
-  articles.forEach((article, index) => {
+  articles.forEach((article) => {
     const sideLink = document.querySelector(
       `div[keyid=${article.getAttribute('id')}]`
     );
     ScrollTrigger.create({
-      id: `st-${index}`,
+      id: `st-id`,
       trigger: article,
       start: 'top 60px',
       end: 'bottom 10px',
@@ -47,7 +47,7 @@ function handleSubheadingAnimation() {
       `li[subid=${subheading.getAttribute('id')}]`
     );
     ScrollTrigger.create({
-      id: `subheading-${index}`,
+      id: `subheading-id`,
       trigger: subheading,
       start: 'top 60px',
       endTrigger: () =>
@@ -84,47 +84,18 @@ function sidebarSticky() {
   });
 }
 
-function generateSubHeadings() {
-  // adding ids to h3 tags (subheadings)
-  const allHeadings = document.querySelectorAll('h3');
-  allHeadings.forEach((heading) => {
-    const text = heading.childNodes[0].innerText;
-    const id = text.toLowerCase().replace(/\W/g, '-');
-    heading.setAttribute('id', id);
-  });
-
-  // adding subheadings to the sidebar for each article
-  const articles = document.querySelectorAll('article');
-  articles.forEach((article) => {
-    const subHeadings = article.querySelectorAll('h3');
-    if (subHeadings.length > 0) {
-      const sideLink = document.querySelector(
-        `div[keyid=${article.getAttribute('id')}]`
-      );
-      const subHeadingList = sideLink.querySelector('ul');
-      subHeadings.forEach((subHeading) => {
-        const li = document.createElement('li');
-        const a = document.createElement('a');
-        a.innerHTML = subHeading.childNodes[0].innerText;
-        a.setAttribute('href', `#${subHeading.id}`);
-        li.setAttribute('subid', subHeading.id);
-        li.appendChild(a);
-        subHeadingList.appendChild(li);
-      });
-    }
-  });
-}
-
 const Chapter = ({ chapter, chapters }) => {
-  const isMobile = useMediaQuery({ query: `(max-width: 1001px)` });
+  const { width } = useWindowDimensions();
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     if (chapter.articles.length > 0) {
-      handleSidebarAnimation();
-      sidebarSticky();
-      generateSubHeadings();
-      handleSubheadingAnimation();
+      if (width >= 1001) {
+        sidebarSticky();
+        handleSidebarAnimation();
+        generateSubHeadings();
+        handleSubheadingAnimation();
+      }
 
       document.querySelectorAll('img').forEach((img) => {
         if (img.complete) {
@@ -143,7 +114,7 @@ const Chapter = ({ chapter, chapters }) => {
         ScrollTrigger.getById('subheading-id').kill();
       }
     };
-  }, [isMobile, chapter]);
+  }, [chapter, width]);
 
   sortList(chapter.articles);
   sortList(chapters);
@@ -163,8 +134,8 @@ const Chapter = ({ chapter, chapters }) => {
       <Seo seo={seo} />
 
       <Header desc={headerDesc()} color="#29314F" />
-      {isMobile && chapter.articles.length > 0 && (
-        <Menu chapter={chapter} key="mobilemenu" isMobile={isMobile} />
+      {width < 1000 && chapter.articles.length > 0 && (
+        <Menu chapter={chapter} key="mobilemenu" isMobile={width < 1000} />
       )}
       {chapter.articles.length > 0 ? (
         <div className="content wrapper">

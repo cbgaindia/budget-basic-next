@@ -6,11 +6,12 @@ import Header from 'components/header';
 import Highlight from 'components/highlights';
 import Carousel from 'components/carousel';
 import Link from 'next/link';
-import { useMediaQuery } from 'react-responsive';
 import Search from 'components/search';
+import useWindowDimensions from 'utils/useWindowDimensions';
 
 export default function Home({ homepage, chapters }) {
-  const isMobile = useMediaQuery({ query: `(max-width: 1001px)` });
+  const { width } = useWindowDimensions();
+  // const isMobile = useMediaQuery({ query: `(max-width: 1001px)` });
 
   sortList(chapters);
   const bgColorIndex = [1, 2, 3, 4, 5, 6];
@@ -23,7 +24,7 @@ export default function Home({ homepage, chapters }) {
       <Header desc={headerDesc()} color="#101524" />
       <Highlight data={homepage.highlight} />
 
-      {isMobile && (
+      {width < 1001 && (
         <section className="searchMenu homeSearch" key="searchMenu">
           <Search />
           <img

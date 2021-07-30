@@ -832,6 +832,18 @@ nav.menu-dropdown .mobileContent .dropdown-content-mobile::-webkit-scrollbar-tra
   background: #f6f5fa;
 }
 
+nav.menu-dropdown .mobileContent .dropdown-content-mobile > div.activeSidebar .menubarLink {
+  background: rgba(66, 47, 161, 0.1);
+  border: 1px solid #a090ff;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 5px;
+}
+
+nav.menu-dropdown .mobileContent .dropdown-content-mobile > div.activeSidebar .subHeading {
+  display: block;
+}
+
 nav.menu-dropdown .mobileContent .dropdown-content-mobile li {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -860,20 +872,6 @@ nav.menu-dropdown .mobileContent .dropdown-content-mobile li a p {
 
 nav.menu-dropdown .mobileContent .dropdown-content-mobile li a p:first-child {
   margin-right: 1rem;
-}
-
-nav.menu-dropdown .mobileContent .dropdown-content-mobile li:hover {
-  background: rgba(66, 47, 161, 0.1);
-  border-color: transparent;
-  border-radius: 10px;
-}
-
-nav.menu-dropdown .mobileContent .dropdown-content-mobile li.activeSidebar {
-  background: rgba(66, 47, 161, 0.1);
-  border: 1px solid #a090ff;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 5px;
 }
 
 nav.menu-dropdown .mobileContent.active .dropdown-content-mobile {
@@ -1036,25 +1034,6 @@ nav.menu-dropdown.active {
   border-radius: 10px;
 }
 
-.content .subHeading {
-  list-style: none;
-  margin-left: .5rem;
-  display: none;
-}
-
-.content .subHeading li {
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 135%;
-  margin-left: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.content .subHeading li.activeSubLink {
-  color: #4B4797;
-  font-weight: bold;
-}
-
 .content .articles {
   -ms-grid-column: 2;
       grid-column-start: 2;
@@ -1156,10 +1135,13 @@ nav.menu-dropdown.active {
 
 @media screen and (max-width: 1001px) {
   .content .articles article {
-    scroll-margin-top: 5rem;
+    scroll-margin-top: 4rem;
   }
   .content .articles article h2 {
     margin-left: 1rem;
+  }
+  .content .articles article h3 {
+    scroll-margin-top: 3.5rem;
   }
   .content .articles article .articleContent {
     margin-left: 2rem;
@@ -1181,6 +1163,25 @@ nav.menu-dropdown.active {
   .content .sidebar {
     display: none;
   }
+}
+
+.subHeading {
+  list-style: none;
+  margin-left: 0.5rem;
+  display: none;
+}
+
+.subHeading li {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 135%;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.subHeading li.activeSubLink {
+  color: #4b4797;
+  font-weight: bold;
 }
 
 .articleFooter {

@@ -68,6 +68,11 @@ const Carousel = ({ youtube }) => {
     });
   }
 
+  function handleVideoLink(link) {
+    if (['http', 'www'].some((keyword) => link.includes(keyword))) return link;
+    return `https://www.youtube-nocookie.com/embed/${link}`;
+  }
+
   useEffect(() => {
     if (document.querySelector('.videos_container').scrollLeft == 0)
       document
@@ -113,7 +118,7 @@ const Carousel = ({ youtube }) => {
                 key={`youtube_video_${index}`}
                 width="360"
                 height="190"
-                src={`https://www.youtube-nocookie.com/embed/${video.link}`}
+                src={handleVideoLink(video.link)}
                 title={video.title}
                 frameBorder="0"
                 allowFullScreen
