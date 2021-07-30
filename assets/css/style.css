@@ -1080,22 +1080,27 @@ nav.menu-dropdown.active {
 
 .content .articles article table {
   width: 100%;
+  border-collapse: collapse;
 }
 
 .content .articles article table td {
   min-width: 100px;
 }
 
-.content .articles article table tr {
-  background-color: rgba(233, 239, 253, 0.3);
-}
-
-.content .articles article table tr:nth-of-type(2n + 1) {
-  background-color: #e9effd;
-}
-
 .content .articles article table td {
   border: none !important;
+}
+
+.content .articles article table tr.solitude {
+  background-color: rgba(232, 238, 253, 0.5);
+}
+
+.content .articles article table tr.sol_border {
+  border-bottom: 1px solid #91b3fa !important;
+}
+
+.content .articles article table tr:first-of-type {
+  background-color: #e8eefd;
 }
 
 .content .articles article h2 {

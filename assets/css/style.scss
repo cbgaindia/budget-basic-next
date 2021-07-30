@@ -966,20 +966,25 @@ nav.menu-dropdown {
 
 			table {
 				width: 100%;
+				border-collapse: collapse;
 
 				td {
 					min-width: 100px;
 				}
-				tr {
-					background-color: rgba(233, 239, 253, 0.3);
-
-					&:nth-of-type(2n + 1) {
-						background-color: #e9effd;
-					}
-				}
-
 				td {
 					border: none !important;
+				}
+				tr {
+					&.solitude {
+						background-color: hsla(223, 84%, 95%, 0.5);
+					}
+					&.sol_border {
+						border-bottom: 1px solid #91b3fa !important;
+
+					}
+					&:first-of-type {
+						background-color: hsl(222, 83%, 95%);
+					}
 				}
 			}
 

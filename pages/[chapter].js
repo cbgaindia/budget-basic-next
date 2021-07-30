@@ -84,6 +84,49 @@ function sidebarSticky() {
   });
 }
 
+function stripTable() {
+  const tables = document.querySelectorAll('table');
+  tables.forEach((table) => {
+    let check = 1;
+    const rows = table.querySelectorAll('tr');
+    let rowspan = 0;
+    let isRowspan = false;
+
+    rows.forEach((tr) => {
+      const tds = tr.querySelectorAll('td');
+      tds.forEach((td) => {
+        const rowLength = td.getAttribute('rowspan');
+        if (rowLength) {
+          isRowspan = true;
+          rowspan = Number(rowLength);
+        }
+      });
+      if (!isRowspan && check == 1) {
+        tr.classList.add('solitude');
+        check *= -1;
+      } else if (isRowspan && check == 1) {
+        tr.classList.add('solitude');
+        rowspan -= 1;
+        if (rowspan == 0) {
+          isRowspan = false;
+          check *= -1;
+          tr.classList.add('sol_border');
+        }
+      } else if (isRowspan && check == -1) {
+        rowspan -= 1;
+        if (rowspan == 0) {
+          isRowspan = false;
+          check *= -1;
+          tr.classList.add('sol_border');
+        }
+      } else {
+        check *= -1;
+        tr.classList.add('sol_border');
+      }
+    });
+  });
+}
+
 const Chapter = ({ chapter, chapters }) => {
   const { width } = useWindowDimensions();
 
@@ -96,6 +139,8 @@ const Chapter = ({ chapter, chapters }) => {
         generateSubHeadings();
         handleSubheadingAnimation();
       }
+
+      stripTable();
 
       document.querySelectorAll('img').forEach((img) => {
         if (img.complete) {
