@@ -56,7 +56,9 @@ const Sidebar = ({ chapter }) => {
       if (img.complete) {
         ScrollTrigger.refresh();
       } else {
-        img.addEventListener('load', () => ScrollTrigger.refresh());
+        img.addEventListener('load', () => ScrollTrigger.refresh(), {
+          passive: true,
+        });
       }
     });
     return () => {

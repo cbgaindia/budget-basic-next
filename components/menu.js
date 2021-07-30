@@ -110,7 +110,7 @@ const Menu = ({ chapter, isMobile }) => {
     handleSubheadingAnimation();
 
     document.querySelectorAll('.subHeading li').forEach((list) => {
-      list.addEventListener('click', handleContentClick);
+      list.addEventListener('click', handleContentClick, { passive: true });
     });
 
     return () => {

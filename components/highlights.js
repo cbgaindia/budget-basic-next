@@ -44,6 +44,8 @@ const Highlight = ({ data }) => {
             onKeyPress={() => updateHighlight(-1)}
           >
             <img
+              width="24"
+              height="15"
               src="/assets/icons/header_navigation.png"
               alt="highlight back"
             />
@@ -55,6 +57,8 @@ const Highlight = ({ data }) => {
             onKeyPress={() => updateHighlight(1)}
           >
             <img
+              width="24"
+              height="15"
               src="/assets/icons/header_navigation.png"
               alt="highlight forward"
             />

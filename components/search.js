@@ -18,9 +18,13 @@ const Search = ({ blur, resultClick, onResultClick }) => {
 
   useEffect(() => {
     if (document.querySelector('.searchIcon')) {
-      document.querySelector('.searchIcon').addEventListener('click', () => {
-        setShowSearch(false);
-      });
+      document.querySelector('.searchIcon').addEventListener(
+        'click',
+        () => {
+          setShowSearch(false);
+        },
+        { passive: true }
+      );
     }
   }, []);
 
