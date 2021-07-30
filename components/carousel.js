@@ -118,6 +118,7 @@ const Carousel = ({ youtube }) => {
                 key={`youtube_video_${index}`}
                 width="360"
                 height="190"
+                loading="lazy"
                 src={handleVideoLink(video.link)}
                 title={video.title}
                 frameBorder="0"
