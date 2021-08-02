@@ -151,6 +151,30 @@ const Chapter = ({ chapter, chapters }) => {
           });
         }
       });
+
+      const tooltipKeywords = document.querySelectorAll('p a[href="#"]');
+      tooltipKeywords.forEach((keyword, index) => {
+        const tooltip = chapter.Tooltip.find(
+          (obj) => obj.keyword == keyword.innerText
+        );
+        keyword.addEventListener('click', (e) => {
+          e.preventDefault();
+        });
+        keyword.setAttribute(
+          'aria-describedby',
+          `${chapter.slug}-tooltip-${index}`
+        );
+        keyword.setAttribute('class', 'tooltip-wrapper');
+
+        if (tooltip) {
+          const span = document.createElement('span');
+          span.setAttribute('role', 'tooltip');
+          span.setAttribute('class', 'tooltip');
+          span.setAttribute('id', `${chapter.slug}-tooltip-${index}`);
+          span.innerText = tooltip.desc;
+          keyword.appendChild(span);
+        }
+      });
     }
     return () => {
       if (ScrollTrigger.getById('st-id')) {
