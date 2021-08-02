@@ -154,8 +154,8 @@ const Chapter = ({ chapter, chapters }) => {
 
       const tooltipKeywords = document.querySelectorAll('p a[href="#"]');
       tooltipKeywords.forEach((keyword, index) => {
-        const tooltip = chapter.Tooltip.find(
-          (obj) => obj.keyword == keyword.innerText
+        const tooltip = chapter.tooltips.find(
+          (obj) => obj.keyword.toLowerCase() == keyword.innerText.toLowerCase()
         );
         keyword.addEventListener('click', (e) => {
           e.preventDefault();
