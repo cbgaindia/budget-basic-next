@@ -19,16 +19,34 @@ We welcome all contributions and pull requests!
 
 <p align="center">Visit<a href="https://budgetbasics.openbudgetsindia.org/"> Budget Basics</a></p>
 
+- [Features](#features)
+  * [For Developers](#for-developers)
+- [Getting Started](#getting-started)
+  * [Environment Variables](#environment-variables)
+  * [Backend](#backend)
+- [Guide](#guide)
+  * [Styling](#styling)
+  * [Pages](#pages)
+  * [Components](#components)
+  * [Assets](#assets)
+  * [Utils](#utils)
+  * [GSAP](#gsap)
+- [Data Fetching](#data-fetching)
+  * [Global Data](#global-data)
+  * [Homepage Data](#homepage-data)
+  * [Dynamic Routes Data](#dynamic-routes-data)
+- [Run Locally](#run-locally)
+
 ## Features
 
 - Fully Responsive Documentation platform.
-- JAMStack approach to make it fast and developer friendly.
+- JAMStack approach to make it fast and developer-friendly.
 - MeiliSearch to make search fast and easy.
 - Easy to add or remove based on usage -
-  - Highlights to show multiple important content/news on header
-  - Custom lightweight carousel to show Youtube videos which are lazy loaded.
-  - Sticky sidebar to list all sections and sub sections available.
-  - Footer Buttons to naviagte to next or previous category.
+  - Highlights to show multiple important content/news on the header
+  - Custom lightweight carousel to show Youtube videos that are lazy-loaded.
+  - Sticky sidebar to list all sections and sub-sections available.
+  - Footer Buttons to navigate to the next or previous category.
 
 ### For Developers
 
@@ -43,7 +61,7 @@ Make sure to have a recent version of Node. You'll need Node 10.13 or later.
 
 ### Environment Variables
 
-To run this project, you will need to create a new .env file on root directory add the following environment variables.
+To run this project, you will need to create a new .env file on the root directory add the following environment variables.
 
 `NEXT_PUBLIC_STRAPI_API_URL` - required to fetch content. Setup the [strapi instance](https://github.com/cbgaindia/budget-basic-strapi)
 
@@ -55,21 +73,21 @@ eg: `NEXT_PUBLIC_STRAPI_API_URL = "https://strapi-api-server.com/"`
 
 ### Backend
 
-Follow the steps at [budget-basic-strapi](https://github.com/cbgaindia/budget-basic-strapi) first to setup the backend instance
-before booting up the frontend. This should setup Postgresql database, Strapi CMS and Meilisearch Instance.
+Follow the steps at [budget-basic-strapi](https://github.com/cbgaindia/budget-basic-strapi) first to set up the backend instance
+before booting up the frontend. This should set up Postgresql database, Strapi CMS and Meilisearch Instance.
 
 ## Guide
 
 ### Styling
 
-This project uses Sass preprocessor to handle styling. If you are using VSCode, you will need [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass)
-to convert sass to css.
+This project uses a Sass preprocessor to handle styling. If you are using VSCode, you will need [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass)
+to convert sass to CSS.
 
-Style file is located at `/assets/css/style.scss`. It's a single file which includes all of the styling for the platform.
-It's divided in sections to make it more accessible.
+Style File is located at `/assets/css/style.scss`. It's a single file that includes all of the stylings for the platform.
+It's divided into sections to make it more accessible.
 
 On `/pages/[chapter].js`, there is a `stripTable` function which is a hacky way to add strip background styling to a table with
-dynamic rowspans. You can find it's usage on this [Codepen](https://codepen.io/PixeledCode/pen/BaRxmNw).
+dynamic row spans. You can find its usage on this [Codepen](https://codepen.io/PixeledCode/pen/BaRxmNw).
 
 ### Pages
 
@@ -82,20 +100,20 @@ landing page and [chapter].js page the [dynamic route](https://nextjs.org/docs/r
 
 ### Components
 
-It is a component based project which makes it easier to add, edit or remove features in future.
+It is a component-based project which makes it easier to add, edit or remove features in the future.
 
 All the components are available at `/components`.
 
 ### Assets
 
-Assets used in js files are placed in `/public/assets` folder whereas the one used in css file are placed in `/assets/icons`
+Assets used in js files are placed in the `/public/assets` folder whereas the ones used in css file is placed in `/assets/icons`
 folder.
 
 ### Utils
 
-The project contains a `/utils` folder which container helper functions.
+The project contains a `/utils` folder in which container helper functions.
 
-- `helpers.js` - contains functions which are used multiple times over different components.
+- `helpers.js` - contains functions that are used multiple times over different components.
 - `use-isomorphic-layout-effect.js` - A React helper hook for scheduling a layout effect with a fallback to a regular effect.
 
 ```javascript
@@ -168,7 +186,7 @@ const Search = ({ Component, pageProps }) => {
 
 ### Homepage Data
 
-Homepage data includes description for header, content for highlights slider, youtube links for carousel and some meta data.
+Homepage data includes a description for header, content for highlights slider, youtube links for carousel, and some metadata.
 
 We can fetch all of that and all of different chapters (categories) easily:
 
