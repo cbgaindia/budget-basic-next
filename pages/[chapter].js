@@ -152,6 +152,7 @@ const Chapter = ({ chapter, chapters }) => {
         }
       });
 
+      // adds the tooltip over links with href="#"
       const tooltipKeywords = document.querySelectorAll('p a[href="#"]');
       tooltipKeywords.forEach((keyword, index) => {
         const tooltip = chapter.tooltips.find(
@@ -174,6 +175,12 @@ const Chapter = ({ chapter, chapters }) => {
           span.innerText = tooltip.desc;
           keyword.appendChild(span);
         }
+      });
+
+      document.addEventListener('scroll', () => {
+        if (window.scrollY > 600)
+          document.querySelector('.backToTop').classList.add('active');
+        else document.querySelector('.backToTop').classList.remove('active');
       });
     }
     return () => {
@@ -257,6 +264,9 @@ const Chapter = ({ chapter, chapters }) => {
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
       />
+      <button type="button" className="backToTop">
+        <a href="#">&#x25B2;</a>
+      </button>
     </div>
   );
 };
