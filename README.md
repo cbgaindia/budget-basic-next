@@ -136,14 +136,14 @@ export const GlobalContext = createContext({})
 function MyApp({ Component, pageProps }) {
  const { global } = pageProps
  return (
-  <>
-    <Layout>
-		  <GlobalContext.Provider value={global}>
-			  <Component {...pageProps} />
-			  </GlobalContext.Provider>
-		</Layout>
-	</>
- )
+    <>
+      <Layout>
+        <GlobalContext.Provider value={global}>
+          <Component {...pageProps} />
+        </GlobalContext.Provider>
+      </Layout>
+    </>
+  );
 }
 
 MyApp.getInitialProps = async (ctx) => {
