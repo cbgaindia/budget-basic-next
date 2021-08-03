@@ -101,7 +101,7 @@ The project contains a `/utils` folder which container helper functions.
 ```javascript
 import useWindowDimensions from 'utils/use-isomorphic-layout-effect.js'
 useLayoutEffect(() => {
-	// some cool stuff to run on render/re-render
+ // some cool stuff to run on render/re-render
 }, [])
 ```
 
@@ -134,22 +134,22 @@ import React, { createContext } from 'react'
 export const GlobalContext = createContext({})
 
 function MyApp({ Component, pageProps }) {
-	const { global } = pageProps
-	return (
-		<>
-			<Layout>
-				<GlobalContext.Provider value={global}>
-					<Component {...pageProps} />
-				</GlobalContext.Provider>
-			</Layout>
-		</>
-	)
+ const { global } = pageProps
+ return (
+  <>
+    <Layout>
+		  <GlobalContext.Provider value={global}>
+			  <Component {...pageProps} />
+			  </GlobalContext.Provider>
+		</Layout>
+	</>
+ )
 }
 
 MyApp.getInitialProps = async (ctx) => {
-	const appProps = await App.getInitialProps(ctx)
-	const global = await fetchAPI('/global')
-	return { ...appProps, pageProps: { global } }
+ const appProps = await App.getInitialProps(ctx)
+ const global = await fetchAPI('/global')
+ return { ...appProps, pageProps: { global } }
 }
 ```
 
@@ -160,9 +160,9 @@ import React, { useContext } from 'react'
 import { GlobalContext } from 'pages/_app'
 
 const Search = ({ Component, pageProps }) => {
-	const { articles } = useContext(GlobalContext)
+ const { articles } = useContext(GlobalContext)
 
-	// some cool stuff
+ // some cool stuff
 }
 ```
 
@@ -174,13 +174,12 @@ We can fetch all of that and all of different chapters (categories) easily:
 
 ```javascript
 export async function getStaticProps() {
-	const homepage = await fetchAPI('/homepage')
-	const chapters = await fetchAPI('/chapters')
-
-	return {
-		props: { homepage, chapters },
-		revalidate: 1,
-	}
+ const homepage = await fetchAPI('/homepage')
+ const chapters = await fetchAPI('/chapters') 
+ return {
+  props: { homepage, chapters },
+  revalidate: 1,
+ }
 }
 ```
 
@@ -194,25 +193,24 @@ requires `getStaticPaths` to list paths during build time. [Read more](https://n
 
 ```javascript
 export async function getStaticPaths() {
-	const chapters = await fetchAPI('/chapters')
-	return {
-		paths: chapters.map((chapter) => ({
-			params: {
-				chapter: chapter.slug,
-			},
-		})),
-		fallback: false,
-	}
+ const chapters = await fetchAPI('/chapters')
+ return {
+  paths: chapters.map((chapter) => ({
+   params: {
+    chapter: chapter.slug,
+ 	 },
+  })),
+  fallback: false,
+ }
 }
 
 export async function getStaticProps({ params }) {
-	const chapter = await fetchAPI(`/chapters?slug=${params.chapter}`)
-	const chapters = await fetchAPI(`/chapters`)
-
-	return {
-		props: { chapter: chapter[0], chapters },
-		revalidate: 1,
-	}
+ const chapter = await fetchAPI(`/chapters?slug=${params.chapter}`)
+ const chapters = await fetchAPI(`/chapters`) 
+ return {
+  props: { chapter: chapter[0], chapters },
+  revalidate: 1,
+ }
 }
 ```
 
