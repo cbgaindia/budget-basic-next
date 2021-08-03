@@ -1,35 +1,249 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1 align="center">Budget Basics</h1>
+<h3 align="center">Part of the <a href="https://openbudgetsindia.org/">Open Budgets India</a> Project</h3>
+
+---
+
+<p align="center">
+<img alt="Budget Basics Logo" src="https://budgetbasics.openbudgetsindia.org/api/uploads/Budget_Basics_fc00737f71.png"/>
+<br/>
+<br/>
+<a href="https://github.com/cbgaindia/budget-basic-next">
+<img alt="MIT License" src="https://img.shields.io/apm/l/atomic-design-ui.svg?"/>
+</a>
+</p>
+
+Budget Basics aims to demystify concepts and processes of Government budgets in India. 
+Built as a documentation platform, it provides the content in easily digestible form. 
+This is the front end of the platform built using nextjs. 
+We welcome all contributions and pull requests!
+
+<p align="center">Visit<a href="https://budgetbasics.openbudgetsindia.org/"> Budget Basics</a></p>
+
+## Features
+
+- Fully Responsive Documentation platform.
+- JAMStack approach to make it fast and developer friendly.
+- MeiliSearch to make search fast and easy.
+- Easy to add or remove based on usage -
+  - Highlights to show multiple important content/news on header
+  - Custom lightweight carousel to show Youtube videos which are lazy loaded.
+  - Sticky sidebar to list all sections and sub sections available.
+  - Footer Buttons to naviagte to next or previous category.
+
+### For Developers
+
+- Built Nextjs and Headless CMS to make the whole developer experience a smooth ride.
+- Incremental Static Regeneration gives the advantage of both SSG and SSR.
+- MeiliSearch handles all of the search functionality with ease.
+- Sass preprocessor makes styling easy and efficient.
 
 ## Getting Started
 
-First, run the development server:
+Make sure to have a recent version of Node. You'll need Node 10.13 or later.
 
-```bash
-npm run dev
-# or
-yarn dev
+### Environment Variables
+
+To run this project, you will need to create a new .env file on root directory add the following environment variables.
+
+`NEXT_PUBLIC_STRAPI_API_URL` - required to fetch content. Setup the [strapi instance](https://github.com/cbgaindia/budget-basic-strapi)
+
+`NEXT_PUBLIC_MEILISEARCH_URL` - required to enable search functionality
+
+`NEXT_PUBLIC_MEILISEARCH_API` - required to enable search functionality
+
+eg: `NEXT_PUBLIC_STRAPI_API_URL = "https://strapi-api-server.com/"`
+
+### Backend
+
+Follow the steps at [budget-basic-strapi](https://github.com/cbgaindia/budget-basic-strapi) first to setup the backend instance
+before booting up the frontend. This should setup Postgresql database, Strapi CMS and Meilisearch Instance.
+
+## Guide
+
+### Styling
+
+This project uses Sass preprocessor to handle styling. If you are using VSCode, you will need [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass)
+to convert sass to css.
+
+Style file is located at `/assets/css/style.scss`. It's a single file which includes all of the styling for the platform.
+It's divided in sections to make it more accessible.
+
+On `/pages/[chapter].js`, there is a `stripTable` function which is a hacky way to add strip background styling to a table with
+dynamic rowspans. You can find it's usage on this [Codepen](https://codepen.io/PixeledCode/pen/BaRxmNw).
+
+### Pages
+
+Next.js uses [pages](https://nextjs.org/docs/basic-features/pages) to automatically creates [routes](https://nextjs.org/docs/routing/introduction) for any file created inside
+it.
+
+Here, we have a custom [\_app](https://nextjs.org/docs/advanced-features/custom-app), [\_document](https://nextjs.org/docs/advanced-features/custom-document),
+[404](https://nextjs.org/docs/advanced-features/custom-error-page#404-page) pages. We also have an index.js as the
+landing page and [chapter].js page the [dynamic route](https://nextjs.org/docs/routing/dynamic-routes).
+
+### Components
+
+It is a component based project which makes it easier to add, edit or remove features in future.
+
+All the components are available at `/components`.
+
+### Assets
+
+Assets used in js files are placed in `/public/assets` folder whereas the one used in css file are placed in `/assets/icons`
+folder.
+
+### Utils
+
+The project contains a `/utils` folder which container helper functions.
+
+- `helpers.js` - contains functions which are used multiple times over different components.
+- `use-isomorphic-layout-effect.js` - A React helper hook for scheduling a layout effect with a fallback to a regular effect.
+
+```javascript
+import useWindowDimensions from 'utils/use-isomorphic-layout-effect.js'
+useLayoutEffect(() => {
+	// some cool stuff to run on render/re-render
+}, [])
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `useWindowDimensions.js` - A React helper hook to get window screen size in pixels.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```javascript
+import useWindowDimensions from 'utils/useWindowDimensions'
+const { width, height } = useWindowDimensions()
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+### GSAP
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+To handle sticky sidebar for desktop and menubar for mobile, [GSAP](https://greensock.com/gsap/) is used. You will find following
+function in `/pages/[chapter].js`: `sidebarSticky`, `handleSidebarAnimation`, `handleSubheadingAnimation` and the following in
+`/components/menu.js`: `menuSticky`, `handleMenuAnimation`.
 
-## Learn More
+These functions use GSAP [ScrollTrigger](https://greensock.com/scrolltrigger/) to handle pinning and other animations.
 
-To learn more about Next.js, take a look at the following resources:
+## Data Fetching
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+All the data is being fetched from a Strapi CMS. You can use any [headless CMS](https://nextjs.org/docs/basic-features/data-fetching).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Global Data
 
-## Deploy on Vercel
+Fetching Global Settings and data on `_app.js` which then can be passed to other components using `createContext`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```javascript
+import React, { createContext } from 'react'
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-# budget-basic-next
+export const GlobalContext = createContext({})
+
+function MyApp({ Component, pageProps }) {
+	const { global } = pageProps
+	return (
+		<>
+			<Layout>
+				<GlobalContext.Provider value={global}>
+					<Component {...pageProps} />
+				</GlobalContext.Provider>
+			</Layout>
+		</>
+	)
+}
+
+MyApp.getInitialProps = async (ctx) => {
+	const appProps = await App.getInitialProps(ctx)
+	const global = await fetchAPI('/global')
+	return { ...appProps, pageProps: { global } }
+}
+```
+
+For example, on `/components/search.js` we can use this global data:
+
+```javascript
+import React, { useContext } from 'react'
+import { GlobalContext } from 'pages/_app'
+
+const Search = ({ Component, pageProps }) => {
+	const { articles } = useContext(GlobalContext)
+
+	// some cool stuff
+}
+```
+
+### Homepage Data
+
+Homepage data includes description for header, content for highlights slider, youtube links for carousel and some meta data.
+
+We can fetch all of that and all of different chapters (categories) easily:
+
+```javascript
+export async function getStaticProps() {
+	const homepage = await fetchAPI('/homepage')
+	const chapters = await fetchAPI('/chapters')
+
+	return {
+		props: { homepage, chapters },
+		revalidate: 1,
+	}
+}
+```
+
+`revalidate: 1` - allows us to create or update static pages after building the site. Read
+[Incremental Static Regeneration](https://nextjs.org/docs/basic-features/data-fetching#incremental-static-regeneration)
+
+### Dynamic Routes Data
+
+In our project, we have one [dynamic route](https://nextjs.org/docs/routing/dynamic-routes), `[chapter].js`. Dynamic routes
+requires `getStaticPaths` to list paths during build time. [Read more](https://nextjs.org/docs/basic-features/data-fetching#getstaticpaths-static-generation).
+
+```javascript
+export async function getStaticPaths() {
+	const chapters = await fetchAPI('/chapters')
+	return {
+		paths: chapters.map((chapter) => ({
+			params: {
+				chapter: chapter.slug,
+			},
+		})),
+		fallback: false,
+	}
+}
+
+export async function getStaticProps({ params }) {
+	const chapter = await fetchAPI(`/chapters?slug=${params.chapter}`)
+	const chapters = await fetchAPI(`/chapters`)
+
+	return {
+		props: { chapter: chapter[0], chapters },
+		revalidate: 1,
+	}
+}
+```
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://github.com/cbgaindia/budget-basic-next.git
+```
+
+Go to the project directory
+
+```bash
+  cd budget-basic-next
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server in development
+
+```bash
+  npm run dev
+```
+
+or build and start production mode
+
+```bash
+  npm run build && npm run start
+```

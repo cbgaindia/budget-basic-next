@@ -83,8 +83,7 @@ function MyApp({ Component, pageProps }) {
 MyApp.getInitialProps = async (ctx) => {
   const appProps = await App.getInitialProps(ctx);
   const global = await fetchAPI('/global');
-  const chapters = await fetchAPI('/chapters');
-  return { ...appProps, pageProps: { global }, chapters };
+  return { ...appProps, pageProps: { global } };
 };
 
 export default MyApp;

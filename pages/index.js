@@ -11,7 +11,6 @@ import useWindowDimensions from 'utils/useWindowDimensions';
 
 export default function Home({ homepage, chapters }) {
   const { width } = useWindowDimensions();
-  // const isMobile = useMediaQuery({ query: `(max-width: 1001px)` });
 
   sortList(chapters);
   const bgColorIndex = [1, 2, 3, 4, 5, 6];
