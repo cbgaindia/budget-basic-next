@@ -1518,29 +1518,34 @@ nav.menu-dropdown.active {
 
 .backToTop {
   position: fixed;
-  background-color: #604294;
-  color: #ffffff;
-  width: 40px;
-  height: 40px;
   bottom: 20px;
   right: 40px;
-  border-radius: 50%;
+  visibility: hidden;
   opacity: 0;
-  -webkit-transition: opacity 700ms cubic-bezier(0.19, 1, 0.22, 1);
-  transition: opacity 700ms cubic-bezier(0.19, 1, 0.22, 1);
-  font-size: 24px;
-  font-weight: bold;
+  -webkit-transition: opacity 700ms cubic-bezier(0.19, 1, 0.22, 1), visibility 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: opacity 700ms cubic-bezier(0.19, 1, 0.22, 1), visibility 700ms cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.backToTop a {
-  display: block;
-  width: inherit;
-  height: inherit;
-  padding-right: 8px;
-  padding-top: 2px;
+.backToTop svg {
+  fill: #604294;
 }
 
 .backToTop.active {
   opacity: 1;
+  visibility: visible;
+}
+
+.screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  -webkit-clip-path: inset(50%);
+          clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
 }
 /*# sourceMappingURL=style.css.map */
