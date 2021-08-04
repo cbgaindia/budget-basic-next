@@ -263,3 +263,9 @@ or build and start production mode
 ```bash
   npm run build && npm run start
 ```
+
+
+## Contributing
+
+For any new feature or fixes, please request it in [issues](https://github.com/cbgaindia/budget-basic-next/issues) 
+or create a new [pull request](https://github.com/cbgaindia/budget-basic-next/pulls). 
