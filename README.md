@@ -50,7 +50,7 @@ We welcome all contributions and pull requests!
 
 ### For Developers
 
-- Built Nextjs and Headless CMS to make the whole developer experience a smooth ride.
+- Built with Nextjs and Headless CMS to make the whole developer experience a smooth ride.
 - Incremental Static Regeneration gives the advantage of both SSG and SSR.
 - MeiliSearch handles all of the search functionality with ease.
 - Sass preprocessor makes styling easy and efficient.
