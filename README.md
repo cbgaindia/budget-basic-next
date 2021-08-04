@@ -42,7 +42,7 @@ We welcome all contributions and pull requests!
 - Fully Responsive Documentation platform.
 - JAMStack approach to make it fast and developer-friendly.
 - MeiliSearch to make search fast and easy.
-- Easy to add or remove based on usage -
+- Easy to add or remove components based on usage -
   - Highlights to show multiple important content/news on the header
   - Custom lightweight carousel to show Youtube videos that are lazy-loaded.
   - Sticky sidebar to list all sections and sub-sections available.
