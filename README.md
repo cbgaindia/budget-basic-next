@@ -112,7 +112,7 @@ folder.
 
 ### Utils
 
-The project contains a `/utils` folder in which container helper functions.
+The project includes a `/utils` folder which contains few helper functions.
 
 - `helpers.js` - contains functions that are used multiple times over different components.
 - `use-isomorphic-layout-effect.js` - A React helper hook for scheduling a layout effect with a fallback to a regular effect.
