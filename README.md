@@ -36,6 +36,7 @@ We welcome all contributions and pull requests!
   * [Homepage Data](#homepage-data)
   * [Dynamic Routes Data](#dynamic-routes-data)
 - [Run Locally](#run-locally)
+- [Contributing](#contributing)
 
 ## Features
 
