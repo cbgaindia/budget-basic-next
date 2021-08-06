@@ -20,21 +20,19 @@ We welcome all contributions and pull requests!
 <p align="center">Visit<a href="https://budgetbasics.openbudgetsindia.org/"> Budget Basics</a></p>
 
 - [Features](#features)
-  * [For Developers](#for-developers)
+  - [For Developers](#for-developers)
 - [Getting Started](#getting-started)
-  * [Environment Variables](#environment-variables)
-  * [Backend](#backend)
+  - [Environment Variables](#environment-variables)
+  - [Backend](#backend)
 - [Guide](#guide)
-  * [Styling](#styling)
-  * [Pages](#pages)
-  * [Components](#components)
-  * [Assets](#assets)
-  * [Utils](#utils)
-  * [GSAP](#gsap)
+  - [Styling](#styling)
+  - [Directory Structure](#directory-structure)
+  - [Components](#components)
+  - [GSAP](#gsap)
 - [Data Fetching](#data-fetching)
-  * [Global Data](#global-data)
-  * [Homepage Data](#homepage-data)
-  * [Dynamic Routes Data](#dynamic-routes-data)
+  - [Global Data](#global-data)
+  - [Homepage Data](#homepage-data)
+  - [Dynamic Routes Data](#dynamic-routes-data)
 - [Run Locally](#run-locally)
 - [Contributing](#contributing)
 
@@ -90,52 +88,38 @@ It's divided into sections to make it more accessible.
 On `/pages/[chapter].js`, there is a `stripTable` function which is a hacky way to add strip background styling to a table with
 dynamic row spans. You can find its usage on this [Codepen](https://codepen.io/PixeledCode/pen/BaRxmNw).
 
-### Pages
+### Directory Structure
 
-Next.js uses [pages](https://nextjs.org/docs/basic-features/pages) to automatically creates [routes](https://nextjs.org/docs/routing/introduction) for any file created inside
-it.
-
-Here, we have a custom [\_app](https://nextjs.org/docs/advanced-features/custom-app), [\_document](https://nextjs.org/docs/advanced-features/custom-document),
-[404](https://nextjs.org/docs/advanced-features/custom-error-page#404-page) pages. We also have an index.js as the
-landing page and [chapter].js page the [dynamic route](https://nextjs.org/docs/routing/dynamic-routes).
-
+```
+budget-basics-next/
+┣ assets/
+┃ ┣ css/
+┣ components/
+┣ lib/
+┣ pages/
+┣ public/
+┃ ┣ assets/
+┃ ┃ ┣ fonts/
+┃ ┃ ┣ icons/
+┣ utils/
+```
 ### Components
 
 It is a component-based project which makes it easier to add, edit or remove features in the future.
 
 All the components are available at `/components`.
 
-### Assets
-
-Assets used in js files are placed in the `/public/assets` folder whereas the ones used in css file is placed in `/assets/icons`
-folder.
-
-### Utils
-
-The project includes a `/utils` folder which contains few helper functions.
-
-- `helpers.js` - contains functions that are used multiple times over different components.
-- `use-isomorphic-layout-effect.js` - A React helper hook for scheduling a layout effect with a fallback to a regular effect.
-
-```javascript
-import useWindowDimensions from 'utils/use-isomorphic-layout-effect.js'
-useLayoutEffect(() => {
- // some cool stuff to run on render/re-render
-}, [])
-```
-
-- `useWindowDimensions.js` - A React helper hook to get window screen size in pixels.
-
-```javascript
-import useWindowDimensions from 'utils/useWindowDimensions'
-const { width, height } = useWindowDimensions()
-```
-
 ### GSAP
 
 To handle sticky sidebar for desktop and menubar for mobile, [GSAP](https://greensock.com/gsap/) is used. You will find following
-function in `/pages/[chapter].js`: `sidebarSticky`, `handleSidebarAnimation`, `handleSubheadingAnimation` and the following in
-`/components/menu.js`: `menuSticky`, `handleMenuAnimation`.
+function in `/pages/[chapter].js`:
+- `sidebarSticky`
+- `handleSidebarAnimation`
+- `handleSubheadingAnimation` 
+
+and the following in `/components/menu.js`: 
+- `menuSticky`
+- `handleMenuAnimation`.
 
 These functions use GSAP [ScrollTrigger](https://greensock.com/scrolltrigger/) to handle pinning and other animations.
 
@@ -272,4 +256,4 @@ For any new feature or bug reports, please request it in [issues](https://github
 
 See [CONTRIBUTING.md](https://github.com/cbgaindia/budget-basic-next/blob/main/CONTRIBUTING.md) for ways to get started.
 
-Please adhere to [Code of Conduct](https://github.com/cbgaindia/budget-basic-next/blob/main/CODE_OF_CONDUCT.md)
+Please adhere to [Code of Conduct](https://github.com/cbgaindia/budget-basic-next/blob/main/CODE_OF_CONDUCT.md).
