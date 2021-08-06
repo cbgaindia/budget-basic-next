@@ -271,3 +271,5 @@ or build and start production mode
 For any new feature or bug reports, please request it in [issues](https://github.com/cbgaindia/budget-basic-next/issues).
 
 See [CONTRIBUTING.md](https://github.com/cbgaindia/budget-basic-next/blob/main/CONTRIBUTING.md) for ways to get started.
+
+Please adhere to [Code of Conduct](https://github.com/cbgaindia/budget-basic-next/blob/main/CODE_OF_CONDUCT.md)
