@@ -9,7 +9,7 @@ const client = new MeiliSearch({
 });
 
 const Search = ({ blur, resultClick, onResultClick }) => {
-  const { articles } = useContext(GlobalContext);
+  const { suggested_sections } = useContext(GlobalContext);
 
   const [search, setSearch] = useState([]);
   const [showSearch, setShowSearch] = useState(false);
@@ -33,7 +33,7 @@ const Search = ({ blur, resultClick, onResultClick }) => {
     if (query.length > 0) {
       setShowSearch(true);
       setShowPlaceholder(false);
-    } else if (articles != undefined) setShowPlaceholder(true);
+    } else if (suggested_sections != undefined) setShowPlaceholder(true);
   }
 
   function inputBlur() {
@@ -67,7 +67,7 @@ const Search = ({ blur, resultClick, onResultClick }) => {
         });
     } else {
       setShowSearch(false);
-      if (articles != undefined) setShowPlaceholder(true);
+      if (suggested_sections != undefined) setShowPlaceholder(true);
     }
   }
 
@@ -115,7 +115,7 @@ const Search = ({ blur, resultClick, onResultClick }) => {
         <div className="searchResults">
           <p className="suggested">Suggested Articles</p>
           <ul>
-            {articles.map((item, index) => (
+            {suggested_sections.map((item, index) => (
               <li key={`suggested-${index}`}>
                 <Link
                   href={`/${item.chapter ? item.chapter.slug : '/'}#${
