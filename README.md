@@ -7,7 +7,7 @@
 <img alt="Budget Basics Logo" src="https://budgetbasics.openbudgetsindia.org/api/uploads/Budget_Basics_fc00737f71.png"/>
 <br/>
 <br/>
-<a href="https://github.com/cbgaindia/budget-basic-next">
+<a href="https://github.com/cbgaindia/budget-basic-next/blob/main/LICENSE">
 <img alt="MIT License" src="https://img.shields.io/apm/l/atomic-design-ui.svg?"/>
 </a>
 </p>
