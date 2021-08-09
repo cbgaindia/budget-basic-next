@@ -1,8 +1,6 @@
 <h1 align="center">Budget Basics</h1>
 <h3 align="center">Part of the <a href="https://openbudgetsindia.org/">Open Budgets India</a> Project</h3>
-
----
-
+<br/>
 <p align="center">
 <img alt="Budget Basics Logo" src="https://budgetbasics.openbudgetsindia.org/api/uploads/Budget_Basics_fc00737f71.png"/>
 <br/>
