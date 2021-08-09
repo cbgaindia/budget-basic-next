@@ -6,10 +6,15 @@ import { fetchAPI } from 'lib/api';
 import Layout from 'components/layout';
 import NextNprogress from 'nextjs-progressbar';
 import Router from 'next/router';
+import * as ga from '../lib/ga';
 
 export const GlobalContext = createContext({});
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
+    const handleRouteChange = (url) => {
+      ga.pageview(url);
+    };
+
     const resetScroll = () => {
       document.body.classList.remove('disable_scroll');
       if (document.querySelector('.articles'))
@@ -24,9 +29,11 @@ function MyApp({ Component, pageProps }) {
     };
 
     Router.events.on('routeChangeStart', resetScroll);
+    Router.events.on('routeChangeComplete', handleRouteChange);
 
     return () => {
       Router.events.off('routeChangeStart', resetScroll);
+      Router.events.off('routeChangeComplete', handleRouteChange);
     };
   });
   const { global } = pageProps;
