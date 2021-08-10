@@ -732,13 +732,6 @@ nav.menu-dropdown {
 						display: block;
 					}
 				}
-				// &:hover {
-				// 	.menubarLink {
-				// 		background: rgba(66, 47, 161, 0.1);
-				// 		border-color: transparent;
-				// 		border-radius: 10px;
-				// 	}
-				// }
 			}
 
 			li {
@@ -764,19 +757,6 @@ nav.menu-dropdown {
 						}
 					}
 				}
-
-				// &:hover {
-				// 	background: rgba(66, 47, 161, 0.1);
-				// 	border-color: transparent;
-				// 	border-radius: 10px;
-				// }
-
-				// &.activeSidebar {
-				// 	background: rgba(66, 47, 161, 0.1);
-				// 	border: 1px solid #a090ff;
-				// 	box-sizing: border-box;
-				// 	border-radius: 5px;
-				// }
 			}
 		}
 
@@ -1065,7 +1045,6 @@ nav.menu-dropdown {
 
 .subHeading {
 	list-style: none;
-	margin-left: 0.5rem;
 	display: none;
 
 	li {
@@ -1073,12 +1052,25 @@ nav.menu-dropdown {
 		font-size: 14px;
 		line-height: 135%;
 		margin-left: 0.5rem;
-		margin-bottom: 0.5rem;
+
+		a {
+			display: block;
+			width: inherit;
+			height: inherit;
+			display: grid;
+			grid-template-columns: max-content 1fr;
+			grid-gap: 0.5rem;
+			text-align: start;
+		}
 
 		&.activeSubLink {
 			color: #4b4797;
 			font-weight: bold;
 		}
+	}
+
+	@media screen and (max-width: 1001px) {
+		padding-left: 20px;
 	}
 }
 
@@ -1101,7 +1093,7 @@ nav.menu-dropdown {
 		pointer-events: none;
 		position: absolute;
 		text-align: left;
-		background-color: #E2DFF1;
+		background-color: #e2dff1;
 		color: black !important;
 
 		&:before {
@@ -1369,7 +1361,7 @@ nav.menu-dropdown {
 	bottom: 20px;
 	right: 40px;
 	visibility: hidden;
-	
+
 	opacity: 0;
 	transition: opacity $d $e, visibility $d $e;
 
@@ -1384,14 +1376,14 @@ nav.menu-dropdown {
 }
 
 .screen-reader-text {
-	border:0;
-	clip:rect(1px,1px,1px,1px);
-	clip-path:inset(50%);
-	height:1px;
-	margin:-1px;
-	overflow:hidden;
-	padding:0;
-	position:absolute;
-	width:1px;
-	word-wrap:normal!important
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+	word-wrap: normal !important;
 }

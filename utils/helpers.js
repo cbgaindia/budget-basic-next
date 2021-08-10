@@ -23,6 +23,12 @@ export function LocaleString(number) {
   });
 }
 
+function generateAlphabets() {
+  const alpha = Array.from(Array(26)).map((e, i) => i + 97);
+  const alphabets = alpha.map((x) => String.fromCharCode(x));
+  return alphabets;
+}
+
 export function generateSubHeadings() {
   // adding ids to h3 tags (subheadings)
   const allHeadings = document.querySelectorAll('h3');
@@ -46,10 +52,17 @@ export function generateSubHeadings() {
       if (subHeadingList.childNodes.length > 0) return;
 
       // else populate
-      subHeadings.forEach((subHeading) => {
+      const alphabets = generateAlphabets();
+      subHeadings.forEach((subHeading, index) => {
         const li = document.createElement('li');
         const a = document.createElement('a');
-        a.innerHTML = subHeading.childNodes[0].innerText;
+        const alpha = document.createElement('p');
+        const text = document.createElement('p');
+        alpha.innerHTML = `${alphabets[index]}.`;
+        a.appendChild(alpha);
+        text.innerHTML = subHeading.childNodes[0].innerText;
+        a.appendChild(text);
+        // a.innerHTML = `${alphabets[index]}. ${subHeading.childNodes[0].innerText}`;
         a.setAttribute('href', `#${subHeading.id}`);
         li.setAttribute('subid', subHeading.id);
         li.appendChild(a);
