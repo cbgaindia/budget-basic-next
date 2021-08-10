@@ -521,7 +521,7 @@ button {
 			.title {
 				color: #0f1525;
 				font-weight: 600;
-				font-size: 1rem;
+				font-size: 1.3rem;
 				line-height: 135%;
 			}
 		}
@@ -1101,7 +1101,8 @@ nav.menu-dropdown {
 		pointer-events: none;
 		position: absolute;
 		text-align: left;
-		color: white !important;
+		background-color: #E2DFF1;
+		color: black !important;
 
 		&:before {
 			bottom: -1.2em;
@@ -1116,7 +1117,7 @@ nav.menu-dropdown {
 		&:after {
 			border-left: solid transparent 0.8em;
 			border-right: solid transparent 0.8em;
-			border-top: solid #a090ff 0.8em;
+			border-top: solid rgba(66, 47, 161, 0.1) 0.8em;
 			bottom: -0.8em;
 			content: ' ';
 			height: 0;

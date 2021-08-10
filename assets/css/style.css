@@ -605,7 +605,7 @@ button {
 .homeCards .card .cardDetail .title {
   color: #0f1525;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.3rem;
   line-height: 135%;
 }
 
@@ -1222,7 +1222,8 @@ nav.menu-dropdown.active {
   pointer-events: none;
   position: absolute;
   text-align: left;
-  color: white !important;
+  background-color: #E2DFF1;
+  color: black !important;
 }
 
 .tooltip-wrapper span[role='tooltip']:before {
@@ -1238,7 +1239,7 @@ nav.menu-dropdown.active {
 .tooltip-wrapper span[role='tooltip']:after {
   border-left: solid transparent 0.8em;
   border-right: solid transparent 0.8em;
-  border-top: solid #a090ff 0.8em;
+  border-top: solid rgba(66, 47, 161, 0.1) 0.8em;
   bottom: -0.8em;
   content: ' ';
   height: 0;
