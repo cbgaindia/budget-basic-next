@@ -21,7 +21,7 @@ export default function Home({ homepage, chapters }) {
   return (
     <>
       <Header desc={headerDesc()} color="#101524" />
-      <Highlight data={homepage.highlight} />
+      {homepage.highlight.length > 0 && <Highlight data={homepage.highlight} />}
 
       {width < 1001 && (
         <section className="searchMenu homeSearch" key="searchMenu">

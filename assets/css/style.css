@@ -605,7 +605,7 @@ button {
 .homeCards .card .cardDetail .title {
   color: #0f1525;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.3rem;
   line-height: 135%;
 }
 
@@ -1178,7 +1178,6 @@ nav.menu-dropdown.active {
 
 .subHeading {
   list-style: none;
-  margin-left: 0.5rem;
   display: none;
 }
 
@@ -1187,12 +1186,30 @@ nav.menu-dropdown.active {
   font-size: 14px;
   line-height: 135%;
   margin-left: 0.5rem;
-  margin-bottom: 0.5rem;
+}
+
+.subHeading li a {
+  display: block;
+  width: inherit;
+  height: inherit;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: max-content 1fr;
+      grid-template-columns: -webkit-max-content 1fr;
+      grid-template-columns: max-content 1fr;
+  grid-gap: 0.5rem;
+  text-align: start;
 }
 
 .subHeading li.activeSubLink {
   color: #4b4797;
   font-weight: bold;
+}
+
+@media screen and (max-width: 1001px) {
+  .subHeading {
+    padding-left: 20px;
+  }
 }
 
 .tooltip-wrapper {
@@ -1222,7 +1239,8 @@ nav.menu-dropdown.active {
   pointer-events: none;
   position: absolute;
   text-align: left;
-  color: white !important;
+  background-color: #e2dff1;
+  color: black !important;
 }
 
 .tooltip-wrapper span[role='tooltip']:before {
@@ -1238,7 +1256,7 @@ nav.menu-dropdown.active {
 .tooltip-wrapper span[role='tooltip']:after {
   border-left: solid transparent 0.8em;
   border-right: solid transparent 0.8em;
-  border-top: solid #a090ff 0.8em;
+  border-top: solid rgba(66, 47, 161, 0.1) 0.8em;
   bottom: -0.8em;
   content: ' ';
   height: 0;
