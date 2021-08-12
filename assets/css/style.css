@@ -372,23 +372,6 @@ button {
   width: max-content;
 }
 
-.header .wrapper input {
-  margin-top: 1rem;
-  justify-self: flex-end;
-  width: 11.5rem;
-  height: 2.1rem;
-  padding: 12px 8px 12px 16px;
-  outline: none;
-  border: none;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  border-radius: 8px;
-  background-image: url(public/assets/icons/search.svg);
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  opacity: 0.7;
-}
-
 .header .wrapper .headerDesc {
   display: -ms-grid;
   display: grid;
@@ -452,6 +435,32 @@ button {
   .header input {
     display: none;
   }
+}
+
+.header .searchLink {
+  color: #000000;
+  margin-top: 1rem;
+  justify-self: flex-end;
+  width: 7rem;
+  height: 2.1rem;
+  padding-top: 10px;
+  padding-left: 20px;
+  border-radius: 8px;
+  background-image: url(public/assets/icons/search.svg);
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  opacity: 0.7;
+  background-color: #ffffff;
+  font-size: 14px;
+  -webkit-transition: -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 700ms cubic-bezier(0.19, 1, 0.22, 1), -webkit-transform 700ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.header .searchLink:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 .searchResults {
@@ -1094,7 +1103,10 @@ nav.menu-dropdown.active {
 .content .articles article table td {
   min-width: 100px;
   padding: 0.5rem 0;
-  border: none !important;
+  border: 0.2px solid rgba(143, 177, 250, 0.5) !important;
+  padding-right: 1rem !important;
+  padding-left: 1rem !important;
+  word-wrap: break-word;
 }
 
 .content .articles article table tr.solitude {
@@ -1174,6 +1186,15 @@ nav.menu-dropdown.active {
   .content .sidebar {
     display: none;
   }
+}
+
+figure.table {
+  overflow-x: scroll;
+  scrollbar-color: #646262 white;
+}
+
+figure.table::-webkit-scrollbar-track {
+  background: white;
 }
 
 .subHeading {
@@ -1566,5 +1587,71 @@ nav.menu-dropdown.active {
   position: absolute;
   width: 1px;
   word-wrap: normal !important;
+}
+
+.searchPage {
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-height: 90vh;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  -ms-grid-rows: max-content 1fr;
+      grid-template-rows: -webkit-max-content 1fr;
+      grid-template-rows: max-content 1fr;
+}
+
+.searchPage input {
+  height: 40px;
+  width: 100%;
+  margin: 2rem 0 1rem;
+}
+
+.searchPageResults .suggested {
+  font-size: 0.8rem;
+  padding-left: 0;
+  padding-bottom: 1rem;
+  color: #555;
+}
+
+.searchPageResults ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.searchPageResults ul li {
+  margin-bottom: 3rem;
+}
+
+.searchPageResults ul .searchTitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.searchPageResults ul .searchTitle:hover, .searchPageResults ul .searchTitle:focus {
+  color: #604294;
+}
+
+.searchPageResults ul .searchChapter {
+  font-size: 12px;
+  background-color: #e2dff1;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  padding: 0.3rem 0.7rem;
+  margin-top: 0.5rem;
+  border-radius: 8px;
+}
+
+.searchPageResults ul .searchContent {
+  font-size: 1rem;
+  font-weight: 400;
+  padding-top: 0.5rem;
+}
+
+.searchPageResults em {
+  background-color: #fddd48;
 }
 /*# sourceMappingURL=style.css.map */

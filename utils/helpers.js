@@ -6,8 +6,8 @@ export function sortList(list) {
       first = Number(a.Chapter_No);
       second = Number(b.Chapter_No);
     } else {
-      first = Number(a.Article_No);
-      second = Number(b.Article_No);
+      first = Number(a.Section_No);
+      second = Number(b.Section_No);
     }
     if (first < second) return -1;
     if (first > second) return 1;
@@ -21,6 +21,11 @@ export function LocaleString(number) {
     minimumIntegerDigits: 2,
     useGrouping: false,
   });
+}
+
+export function Truncate(str, length) {
+  if (str.length <= length) return str;
+  return `${str.substring(0, length)} ...`;
 }
 
 function generateAlphabets() {

@@ -6,7 +6,6 @@ import Header from 'components/header';
 import Highlight from 'components/highlights';
 import Carousel from 'components/carousel';
 import Link from 'next/link';
-import Search from 'components/search';
 import useWindowDimensions from 'utils/useWindowDimensions';
 
 export default function Home({ homepage, chapters }) {
@@ -25,7 +24,6 @@ export default function Home({ homepage, chapters }) {
 
       {width < 1001 && (
         <section className="searchMenu homeSearch" key="searchMenu">
-          <Search />
           <img
             className="menuSearch"
             alt="menu arrow"
@@ -41,7 +39,7 @@ export default function Home({ homepage, chapters }) {
               number: chapter.Chapter_No,
               title: chapter.Title,
               slug: chapter.slug,
-              totalArticles: chapter.articles.length,
+              totalArticles: chapter.sections.length,
               icon: chapter.icon,
               Desc: chapter.Desc,
             };

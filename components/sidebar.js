@@ -69,7 +69,7 @@ const Sidebar = ({ chapter }) => {
   return (
     <section className="sidebar">
       <ul className="dropdown-content">
-        {chapter.articles.map((article, index) => (
+        {chapter.sections.map((article, index) => (
           <li key={`menu-${article.id}`} keyid={article.slug}>
             <a href={`#${article.slug}`}>
               <p>{LocaleString(index + 1)}</p>

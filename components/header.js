@@ -1,9 +1,8 @@
 import React, { useContext } from 'react';
-import Search from 'components/search';
 import Link from 'next/link';
 import { GlobalContext } from 'pages/_app';
 
-const Header = ({ desc, color }) => {
+const Header = ({ desc, color, searchPage }) => {
   const { title } = useContext(GlobalContext);
 
   return (
@@ -32,7 +31,13 @@ const Header = ({ desc, color }) => {
             />
           </a>
         </section>
-        <Search />
+        {!searchPage && (
+          <Link href="/search">
+            <a className="searchLink">Search</a>
+          </Link>
+        )}
+
+        {/* <Search /> */}
         <section className="headerDesc">{desc}</section>
       </div>
     </header>
