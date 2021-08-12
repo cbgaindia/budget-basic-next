@@ -7,6 +7,7 @@ import Layout from 'components/layout';
 import NextNprogress from 'nextjs-progressbar';
 import Router from 'next/router';
 import * as ga from '../lib/ga';
+// import 'assets/css/micromodal.css';
 
 export const GlobalContext = createContext({});
 function MyApp({ Component, pageProps }) {

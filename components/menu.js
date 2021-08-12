@@ -2,7 +2,6 @@ import React from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { LocaleString, generateSubHeadings } from 'utils/helpers';
-import Search from 'components/search';
 import useIsomorphicLayoutEffect from 'utils/use-isomorphic-layout-effect';
 
 function handleMenuAnimation() {
@@ -137,7 +136,7 @@ const Menu = ({ chapter, isMobile }) => {
           />
         </button>
         <ul className="dropdown-content-mobile">
-          {chapter.articles.map((article, index) => (
+          {chapter.sections.map((article, index) => (
             <div key={`menu-${article.id}`} keyid={article.slug}>
               <li className="menubarLink">
                 <a href={`#${article.slug}`} onClick={handleContentClick}>
@@ -153,7 +152,6 @@ const Menu = ({ chapter, isMobile }) => {
       </section>
 
       <section className="searchMenu" key="searchMenu">
-        <Search resultClick onResultClick={handleSearchClick} />
         <button
           type="button"
           onClick={handleSearchClick}

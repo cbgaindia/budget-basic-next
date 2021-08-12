@@ -127,12 +127,18 @@ function stripTable() {
   });
 }
 
+function goToTopHandler() {
+  if (window.scrollY > 600)
+    document.querySelector('.backToTop').classList.add('active');
+  else document.querySelector('.backToTop').classList.remove('active');
+}
+
 const Chapter = ({ chapter, chapters }) => {
   const { width } = useWindowDimensions();
 
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    if (chapter.articles.length > 0) {
+    if (chapter.sections.length > 0) {
       if (width >= 1001) {
         sidebarSticky();
         handleSidebarAnimation();
@@ -177,13 +183,11 @@ const Chapter = ({ chapter, chapters }) => {
         }
       });
 
-      document.addEventListener('scroll', () => {
-        if (window.scrollY > 600)
-          document.querySelector('.backToTop').classList.add('active');
-        else document.querySelector('.backToTop').classList.remove('active');
-      });
+      document.addEventListener('scroll', goToTopHandler);
     }
     return () => {
+      document.removeEventListener('scroll', goToTopHandler);
+
       if (ScrollTrigger.getById('st-id')) {
         ScrollTrigger.getById('st-sticky-id').kill();
         ScrollTrigger.getById('st-id').kill();
@@ -194,7 +198,7 @@ const Chapter = ({ chapter, chapters }) => {
     };
   }, [chapter, width]);
 
-  sortList(chapter.articles);
+  sortList(chapter.sections);
   sortList(chapters);
 
   const seo = {
@@ -212,15 +216,15 @@ const Chapter = ({ chapter, chapters }) => {
       <Seo seo={seo} />
 
       <Header desc={headerDesc()} color="#29314F" />
-      {width < 1000 && chapter.articles.length > 0 && (
+      {width < 1000 && chapter.sections.length > 0 && (
         <Menu chapter={chapter} key="mobilemenu" isMobile={width < 1000} />
       )}
-      {chapter.articles.length > 0 ? (
+      {chapter.sections.length > 0 ? (
         <div className="content wrapper">
           <div className="sidebarPlaceholder">
             <section className="sidebar" key="desktopSidebar">
               <ul className="dropdown-content">
-                {chapter.articles.map((article, index) => (
+                {chapter.sections.map((article, index) => (
                   <div key={`menu-${article.id}`} keyid={article.slug}>
                     <li className="sidebarLink">
                       <a href={`#${article.slug}`}>
@@ -237,7 +241,7 @@ const Chapter = ({ chapter, chapters }) => {
           </div>
 
           <section className="articles">
-            {chapter.articles.map((article) => (
+            {chapter.sections.map((article) => (
               <article id={article.slug} key={article.id}>
                 <div className="article_heading">
                   <span />
