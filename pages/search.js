@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { MeiliSearch } from 'meilisearch';
 import Header from 'components/header';
 import Link from 'next/link';
-import { Truncate } from 'utils/helpers';
+import { Truncate, debounce } from 'utils/helpers';
 import Seo from 'components/seo';
 
 const client = new MeiliSearch({
@@ -52,6 +52,8 @@ const Search = () => {
     }
   }
 
+  const debouncedOnChange = useMemo(() => debounce(onChange, 150), []);
+
   return (
     <>
       <Seo seo={seo} />
@@ -63,7 +65,7 @@ const Search = () => {
           type="text"
           aria-label="Search through site content"
           placeholder="Search your keywords"
-          onChange={(e) => onChange(e.target.value)}
+          onChange={(e) => debouncedOnChange(e.target.value)}
         />
 
         {showSearch && (

@@ -8,7 +8,8 @@
 		"prettier/prettier": [1, {"singleQuote": true, "parser": "flow"}],
 		"eqeqeq": "off",
 		"jsx-a11y/no-autofocus": "off",
-		"no-multi-str": "off"
+		"no-multi-str": "off",
+		"react-hooks/exhaustive-deps": "off"
 	},
 	"extends": [
 		"@ijsto",
