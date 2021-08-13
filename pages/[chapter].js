@@ -120,6 +120,33 @@ function goToTopHandler() {
   else document.querySelector('.backToTop').classList.remove('active');
 }
 
+// adds the tooltip over links with href="#"
+function tooltipKeyword(chapter) {
+  const tooltipKeywords = document.querySelectorAll('p a[href="#"]');
+  tooltipKeywords.forEach((keyword, index) => {
+    const tooltip = chapter.tooltips.find(
+      (obj) => obj.keyword.toLowerCase() == keyword.innerText.toLowerCase()
+    );
+    keyword.addEventListener('click', (e) => {
+      e.preventDefault();
+    });
+    keyword.setAttribute(
+      'aria-describedby',
+      `${chapter.slug}-tooltip-${index}`
+    );
+    keyword.setAttribute('class', 'tooltip-wrapper');
+
+    if (tooltip) {
+      const span = document.createElement('span');
+      span.setAttribute('role', 'tooltip');
+      span.setAttribute('class', 'tooltip');
+      span.setAttribute('id', `${chapter.slug}-tooltip-${index}`);
+      span.innerText = tooltip.desc;
+      keyword.appendChild(span);
+    }
+  });
+}
+
 const Chapter = ({ chapter, chapters }) => {
   const { width } = useWindowDimensions();
 
@@ -127,13 +154,13 @@ const Chapter = ({ chapter, chapters }) => {
     gsap.registerPlugin(ScrollTrigger);
     if (chapter.sections.length > 0) {
       if (width >= 1001) {
-        // sidebarSticky();
         handleSidebarAnimation();
         generateSubHeadings();
         handleSubheadingAnimation();
       }
 
       stripTable();
+      tooltipKeyword(chapter);
 
       document.querySelectorAll('img').forEach((img) => {
         if (img.complete) {
@@ -142,31 +169,6 @@ const Chapter = ({ chapter, chapters }) => {
           img.addEventListener('load', () => ScrollTrigger.refresh(), {
             passive: true,
           });
-        }
-      });
-
-      // adds the tooltip over links with href="#"
-      const tooltipKeywords = document.querySelectorAll('p a[href="#"]');
-      tooltipKeywords.forEach((keyword, index) => {
-        const tooltip = chapter.tooltips.find(
-          (obj) => obj.keyword.toLowerCase() == keyword.innerText.toLowerCase()
-        );
-        keyword.addEventListener('click', (e) => {
-          e.preventDefault();
-        });
-        keyword.setAttribute(
-          'aria-describedby',
-          `${chapter.slug}-tooltip-${index}`
-        );
-        keyword.setAttribute('class', 'tooltip-wrapper');
-
-        if (tooltip) {
-          const span = document.createElement('span');
-          span.setAttribute('role', 'tooltip');
-          span.setAttribute('class', 'tooltip');
-          span.setAttribute('id', `${chapter.slug}-tooltip-${index}`);
-          span.innerText = tooltip.desc;
-          keyword.appendChild(span);
         }
       });
 
