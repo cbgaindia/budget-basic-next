@@ -109,15 +109,14 @@ All the components are available at `/components`.
 
 ### GSAP
 
-To handle sticky sidebar for desktop and menubar for mobile, [GSAP](https://greensock.com/gsap/) is used. You will find following
+To handle animation for sidebar in desktop and menubar for mobile, [GSAP](https://greensock.com/gsap/) is used. You will find following
 function in `/pages/[chapter].js`:
-- `sidebarSticky`
 - `handleSidebarAnimation`
 - `handleSubheadingAnimation` 
 
 and the following in `/components/menu.js`: 
-- `menuSticky`
-- `handleMenuAnimation`.
+- `handleMenuAnimation`
+- `handleSubheadingAnimation`
 
 These functions use GSAP [ScrollTrigger](https://greensock.com/scrolltrigger/) to handle pinning and other animations.
 
