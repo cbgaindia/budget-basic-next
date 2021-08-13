@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { LocaleString, generateSubHeadings } from 'utils/helpers';
 import useIsomorphicLayoutEffect from 'utils/use-isomorphic-layout-effect';
+import Link from 'next/link';
 
 function handleMenuAnimation() {
   const articles = gsap.utils.toArray('article');
@@ -94,11 +95,11 @@ const Menu = ({ chapter, isMobile }) => {
     document.querySelector('.mobileContent').classList.toggle('active');
     document.querySelector('.searchIcon').classList.toggle('hide');
   }
-  function handleSearchClick() {
-    disableScroll();
-    document.querySelector('.searchMenu').classList.toggle('active');
-    document.querySelector('.dropbtn').classList.toggle('hide');
-  }
+  // function handleSearchClick() {
+  //   disableScroll();
+  //   document.querySelector('.searchMenu').classList.toggle('active');
+  //   document.querySelector('.dropbtn').classList.toggle('hide');
+  // }
 
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -152,17 +153,15 @@ const Menu = ({ chapter, isMobile }) => {
       </section>
 
       <section className="searchMenu" key="searchMenu">
-        <button
-          type="button"
-          onClick={handleSearchClick}
-          className="searchIcon"
-        >
-          <img
-            className="menuSearch"
-            alt="menu arrow"
-            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuOTMzMzMgMEMzLjEwNDE2IDAgMCAzLjEwNDE2IDAgNi45MzMzM0MwIDEwLjc2MjUgMy4xMDQxNiAxMy44NjY3IDYuOTMzMzMgMTMuODY2N0M4LjY1NTk0IDEzLjg2NjcgMTAuMjMxOCAxMy4yMzg1IDExLjQ0NDQgMTIuMTk4NkwxNS4wODk1IDE1Ljg0MzhMMTUuODQzOCAxNS4wODk1TDEyLjE5ODYgMTEuNDQ0NEMxMy4yMzg1IDEwLjIzMTggMTMuODY2NyA4LjY1NTk0IDEzLjg2NjcgNi45MzMzM0MxMy44NjY3IDMuMTA0MTYgMTAuNzYyNSAwIDYuOTMzMzMgMFoiIGZpbGw9IiM0QjQ3OTciLz4KPC9zdmc+Cg=="
-          />
-        </button>
+        <Link href="/search">
+          <a>
+            <img
+              className="searchIcon"
+              alt="menu arrow"
+              src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuOTMzMzMgMEMzLjEwNDE2IDAgMCAzLjEwNDE2IDAgNi45MzMzM0MwIDEwLjc2MjUgMy4xMDQxNiAxMy44NjY3IDYuOTMzMzMgMTMuODY2N0M4LjY1NTk0IDEzLjg2NjcgMTAuMjMxOCAxMy4yMzg1IDExLjQ0NDQgMTIuMTk4NkwxNS4wODk1IDE1Ljg0MzhMMTUuODQzOCAxNS4wODk1TDEyLjE5ODYgMTEuNDQ0NEMxMy4yMzg1IDEwLjIzMTggMTMuODY2NyA4LjY1NTk0IDEzLjg2NjcgNi45MzMzM0MxMy44NjY3IDMuMTA0MTYgMTAuNzYyNSAwIDYuOTMzMzMgMFoiIGZpbGw9IiM0QjQ3OTciLz4KPC9zdmc+Cg=="
+            />
+          </a>
+        </Link>
       </section>
     </nav>
   );

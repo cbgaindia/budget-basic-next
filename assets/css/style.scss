@@ -188,7 +188,7 @@ button {
 	}
 
 	.highlight-text {
-		margin: 0 1.5rem;
+		margin: 1rem 1.5rem;
 		font-size: 12px;
 		line-height: 135%;
 		max-width: 900px;
@@ -199,16 +199,25 @@ button {
 	width: 100%;
 	max-height: 55px;
 	height: 55px;
-	padding: 0 1rem;
 	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+	background-image: url(public/assets/icons/search.svg);
+	background-repeat: no-repeat;
+	background-position: right 3rem center;
+	background-color: #E2DFF1;
+	display: none;
 
-	input {
+	a {
+		font-size: 1.5rem;
 		display: block;
-		width: 100%;
+		width: inherit;
+		height: inherit;
+		display: flex;
+		align-items: center;
+		padding-left: 3rem;
 	}
 
-	img {
-		width: 30px;
+	@media screen and (max-width: 1001px) {
+		display: block;
 	}
 }
 
@@ -336,13 +345,13 @@ button {
 			display: grid;
 			grid-area: 2 / 1 / 2 / 3;
 			margin-top: 1rem;
+			padding: 1rem 0;
 			align-items: center;
 
 			h2 {
 				font-size: 1.5rem;
 				font-weight: 400;
 				align-self: flex-end;
-				margin-bottom: 1rem;
 				width: 100%;
 			}
 
@@ -406,6 +415,10 @@ button {
 
 		&:hover {
 			transform: scale(1.1);
+		}
+
+		@media screen and (max-width: 1001px) {
+			display: none;
 		}
 	}
 }
@@ -1035,14 +1048,14 @@ nav.menu-dropdown {
 			}
 
 			@media screen and (max-width: 1001px) {
-				scroll-margin-top: 4rem;
+				scroll-margin-top: 65px;
 
 				h2 {
 					margin-left: 1rem;
 				}
 
 				h3 {
-					scroll-margin-top: 3.5rem;
+					scroll-margin-top: 65px;
 				}
 
 				.articleContent {

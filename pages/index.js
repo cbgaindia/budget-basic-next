@@ -6,11 +6,8 @@ import Header from 'components/header';
 import Highlight from 'components/highlights';
 import Carousel from 'components/carousel';
 import Link from 'next/link';
-import useWindowDimensions from 'utils/useWindowDimensions';
 
 export default function Home({ homepage, chapters }) {
-  const { width } = useWindowDimensions();
-
   sortList(chapters);
   const bgColorIndex = [1, 2, 3, 4, 5, 6];
   function headerDesc() {
@@ -22,15 +19,11 @@ export default function Home({ homepage, chapters }) {
       <Header desc={headerDesc()} color="#101524" />
       {homepage.highlight.length > 0 && <Highlight data={homepage.highlight} />}
 
-      {width < 1001 && (
-        <section className="searchMenu homeSearch" key="searchMenu">
-          <img
-            className="menuSearch"
-            alt="menu arrow"
-            src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAxNiAxNiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYuOTMzMzMgMEMzLjEwNDE2IDAgMCAzLjEwNDE2IDAgNi45MzMzM0MwIDEwLjc2MjUgMy4xMDQxNiAxMy44NjY3IDYuOTMzMzMgMTMuODY2N0M4LjY1NTk0IDEzLjg2NjcgMTAuMjMxOCAxMy4yMzg1IDExLjQ0NDQgMTIuMTk4NkwxNS4wODk1IDE1Ljg0MzhMMTUuODQzOCAxNS4wODk1TDEyLjE5ODYgMTEuNDQ0NEMxMy4yMzg1IDEwLjIzMTggMTMuODY2NyA4LjY1NTk0IDEzLjg2NjcgNi45MzMzM0MxMy44NjY3IDMuMTA0MTYgMTAuNzYyNSAwIDYuOTMzMzMgMFoiIGZpbGw9IiM0QjQ3OTciLz4KPC9zdmc+Cg=="
-          />
-        </section>
-      )}
+      <section className="searchMenu homeSearch" key="searchMenu">
+        <Link href="/search">
+          <a>Search</a>
+        </Link>
+      </section>
       <div className="home-wrapper">
         <Seo seo={homepage.seo} />
         <div className="homeCards">

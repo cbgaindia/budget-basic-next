@@ -206,7 +206,7 @@ button {
 }
 
 .highlights-container .highlight-text {
-  margin: 0 1.5rem;
+  margin: 1rem 1.5rem;
   font-size: 12px;
   line-height: 135%;
   max-width: 900px;
@@ -216,18 +216,33 @@ button {
   width: 100%;
   max-height: 55px;
   height: 55px;
-  padding: 0 1rem;
   -webkit-box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
           box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+  background-image: url(public/assets/icons/search.svg);
+  background-repeat: no-repeat;
+  background-position: right 3rem center;
+  background-color: #E2DFF1;
+  display: none;
 }
 
-.searchMenu.homeSearch input {
+.searchMenu.homeSearch a {
+  font-size: 1.5rem;
   display: block;
-  width: 100%;
+  width: inherit;
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 3rem;
 }
 
-.searchMenu.homeSearch img {
-  width: 30px;
+@media screen and (max-width: 1001px) {
+  .searchMenu.homeSearch {
+    display: block;
+  }
 }
 
 .footer-carousel {
@@ -380,6 +395,7 @@ button {
   -ms-grid-column-span: 2;
   grid-area: 2 / 1 / 2 / 3;
   margin-top: 1rem;
+  padding: 1rem 0;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -390,7 +406,6 @@ button {
   font-weight: 400;
   -ms-flex-item-align: end;
       align-self: flex-end;
-  margin-bottom: 1rem;
   width: 100%;
 }
 
@@ -461,6 +476,12 @@ button {
 .header .searchLink:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+@media screen and (max-width: 1001px) {
+  .header .searchLink {
+    display: none;
+  }
 }
 
 .searchResults {
@@ -1158,13 +1179,13 @@ nav.menu-dropdown.active {
 
 @media screen and (max-width: 1001px) {
   .content .articles article {
-    scroll-margin-top: 4rem;
+    scroll-margin-top: 65px;
   }
   .content .articles article h2 {
     margin-left: 1rem;
   }
   .content .articles article h3 {
-    scroll-margin-top: 3.5rem;
+    scroll-margin-top: 65px;
   }
   .content .articles article .articleContent {
     margin-left: 2rem;

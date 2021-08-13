@@ -36,8 +36,6 @@ const Header = ({ desc, color, searchPage }) => {
             <a className="searchLink">Search</a>
           </Link>
         )}
-
-        {/* <Search /> */}
         <section className="headerDesc">{desc}</section>
       </div>
     </header>
