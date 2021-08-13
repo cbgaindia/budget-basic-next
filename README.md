@@ -234,6 +234,14 @@ Install dependencies
   npm install
 ```
 
+Create .env in root folder and follows keys
+
+```bash
+NEXT_PUBLIC_STRAPI_API_URL
+NEXT_PUBLIC_MEILISEARCH_URL 
+NEXT_PUBLIC_MEILISEARCH_API
+```
+
 Start the server in development
 
 ```bash
