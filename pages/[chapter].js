@@ -71,19 +71,6 @@ function handleSubheadingAnimation() {
   });
 }
 
-function sidebarSticky() {
-  ScrollTrigger.create({
-    trigger: '.sidebar',
-    id: 'st-sticky-id',
-    start: 'top 15px',
-    end: (self) =>
-      `+=${
-        document.querySelector('.articles').offsetHeight - self.pin.offsetHeight
-      }`,
-    pin: '.dropdown-content',
-  });
-}
-
 function stripTable() {
   const tables = document.querySelectorAll('table');
   tables.forEach((table) => {
@@ -140,7 +127,7 @@ const Chapter = ({ chapter, chapters }) => {
     gsap.registerPlugin(ScrollTrigger);
     if (chapter.sections.length > 0) {
       if (width >= 1001) {
-        sidebarSticky();
+        // sidebarSticky();
         handleSidebarAnimation();
         generateSubHeadings();
         handleSubheadingAnimation();
@@ -189,7 +176,6 @@ const Chapter = ({ chapter, chapters }) => {
       document.removeEventListener('scroll', goToTopHandler);
 
       if (ScrollTrigger.getById('st-id')) {
-        ScrollTrigger.getById('st-sticky-id').kill();
         ScrollTrigger.getById('st-id').kill();
       }
       if (ScrollTrigger.getById('subheading-id')) {

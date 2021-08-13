@@ -46,10 +46,10 @@ function handleSubheadingAnimation() {
     ScrollTrigger.create({
       id: `subheading-mobile-id`,
       trigger: subheading,
-      start: 'top 60px',
+      start: 'top 70px',
       endTrigger: () =>
         index == subheadings.length - 1 ? '.footer' : subheadings[index + 1],
-      end: () => (index < subheadings.length ? 'top 60px' : 'end 60px'),
+      end: () => (index < subheadings.length ? 'top 70px' : 'end 70px'),
       refreshPriority: 1,
       toggleActions: 'restart complete reverse reset',
       onEnter() {
@@ -68,21 +68,6 @@ function handleSubheadingAnimation() {
   });
 }
 
-function menuSticky() {
-  ScrollTrigger.create({
-    trigger: '.menu-dropdown',
-    start: 'top top',
-    id: 'st-sticky-mobile',
-    refreshPriority: 1,
-    end: (self) =>
-      `+=${
-        document.querySelector('.articles').offsetHeight - self.pin.offsetHeight
-      }`,
-    pin: '.menu-dropdown',
-    pinSpacing: false,
-  });
-}
-
 const Menu = ({ chapter, isMobile }) => {
   function disableScroll() {
     document.querySelector('.menu-dropdown').classList.toggle('active');
@@ -95,27 +80,21 @@ const Menu = ({ chapter, isMobile }) => {
     document.querySelector('.mobileContent').classList.toggle('active');
     document.querySelector('.searchIcon').classList.toggle('hide');
   }
-  // function handleSearchClick() {
-  //   disableScroll();
-  //   document.querySelector('.searchMenu').classList.toggle('active');
-  //   document.querySelector('.dropbtn').classList.toggle('hide');
-  // }
 
   useIsomorphicLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.config({ syncInterval: 999999999 });
-    menuSticky();
-    handleMenuAnimation();
-    generateSubHeadings();
-    handleSubheadingAnimation();
+    if (isMobile) {
+      handleMenuAnimation();
+      generateSubHeadings();
+      handleSubheadingAnimation();
 
-    document.querySelectorAll('.subHeading li').forEach((list) => {
-      list.addEventListener('click', handleContentClick, { passive: true });
-    });
+      document.querySelectorAll('.subHeading li').forEach((list) => {
+        list.addEventListener('click', handleContentClick, { passive: true });
+      });
+    }
 
     return () => {
       if (ScrollTrigger.getById('st-id-mobile')) {
-        ScrollTrigger.getById('st-sticky-mobile').kill();
         ScrollTrigger.getById('st-id-mobile').kill();
       }
 
