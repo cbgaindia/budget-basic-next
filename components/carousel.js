@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+// import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 const Carousel = ({ youtube }) => {
   function updateSlider(n) {
@@ -87,8 +89,15 @@ const Carousel = ({ youtube }) => {
   }
 
   function handleVideoLink(link) {
-    if (['http', 'www'].some((keyword) => link.includes(keyword))) return link;
-    return `https://www.youtube-nocookie.com/embed/${link}`;
+    if (link.includes('embed')) {
+      const splitLink = link.split('/');
+      return splitLink[splitLink.length - 1];
+    }
+    if (link.includes('watch')) {
+      const splitLink = link.split('=');
+      return splitLink[splitLink.length - 1];
+    }
+    return link;
   }
 
   useEffect(() => {
@@ -135,16 +144,11 @@ const Carousel = ({ youtube }) => {
         </div>
         <div className="videos_container">
           <div className="videos">
-            {youtube.map((video, index) => (
-              <iframe
-                key={`youtube_video_${index}`}
-                width="360"
-                height="190"
-                loading="lazy"
-                src={handleVideoLink(video.link)}
+            {youtube.map((video) => (
+              <LiteYouTubeEmbed
+                id={handleVideoLink(video.link)}
                 title={video.title}
-                frameBorder="0"
-                allowFullScreen
+                noCookie
               />
             ))}
           </div>

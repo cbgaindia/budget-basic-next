@@ -21,7 +21,7 @@ export default function Card({ chapter }) {
 
         <img
           src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-          alt={chapter.title}
+          alt={`${chapter.title}-mobile`}
           width="1"
           height="1"
           media="(max-width: 640px)"
