@@ -1,4 +1,4 @@
-import Footer from 'components/footers/footer';
+import Footer from 'components/footer/footer';
 
 export default function Layout({ children }) {
   return (
