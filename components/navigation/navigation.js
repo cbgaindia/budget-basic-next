@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-const ArticleFooter = ({ back, forward }) => (
+const Navigation = ({ back, forward }) => (
   <footer className="footer articleFooter">
     <div className="wrapper">
       <section className="back">
@@ -42,4 +42,4 @@ const ArticleFooter = ({ back, forward }) => (
   </footer>
 );
 
-export default ArticleFooter;
+export default Navigation;

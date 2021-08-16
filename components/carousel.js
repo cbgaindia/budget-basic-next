@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
-// import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 const Carousel = ({ youtube }) => {
   function updateSlider(n) {
@@ -89,7 +88,7 @@ const Carousel = ({ youtube }) => {
   }
 
   function handleVideoLink(link) {
-    if (link.includes('embed')) {
+    if (['embed', 'youtu.be'].some((keyword) => link.includes(keyword))) {
       const splitLink = link.split('/');
       return splitLink[splitLink.length - 1];
     }

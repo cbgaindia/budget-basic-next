@@ -6,12 +6,14 @@ import { fetchAPI } from 'lib/api';
 import Layout from 'components/layout';
 import NextNprogress from 'nextjs-progressbar';
 import Router from 'next/router';
+import smoothscroll from 'smoothscroll-polyfill';
 import * as ga from '../lib/ga';
-// import 'assets/css/micromodal.css';
 
 export const GlobalContext = createContext({});
 function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
+    smoothscroll.polyfill();
+
     const handleRouteChange = (url) => {
       ga.pageview(url);
     };
