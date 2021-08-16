@@ -1,11 +1,11 @@
+import Link from 'next/link';
 import { fetchAPI } from 'lib/api';
 import Seo from 'components/seo';
 import Card from 'components/card';
 import { sortList } from 'utils/helpers';
 import Header from 'components/header';
 import Highlight from 'components/highlights';
-import Carousel from 'components/carousel';
-import Link from 'next/link';
+import Carousel from 'components/carousel/carousel';
 
 export default function Home({ homepage, chapters }) {
   sortList(chapters);

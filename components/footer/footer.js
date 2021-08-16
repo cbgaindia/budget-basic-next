@@ -3,7 +3,7 @@ import * as data from './footer_data';
 
 const Footer = () => (
   <footer className="footer">
-    <div className="footer__main footer__wrapper">
+    <div className="footer__main wrapper">
       <a
         rel="noopener noreferrer"
         className="footer__logo"
@@ -20,7 +20,7 @@ const Footer = () => (
       </a>
 
       <div className="footer__links">
-        <section className="footer__links__section">
+        <section className="footer__links-section">
           <p>{data.Dashboards.name}</p>
           {data.Dashboards.links.map((link) => (
             <a
@@ -34,7 +34,7 @@ const Footer = () => (
           ))}
         </section>
 
-        <section className="footer__links__section">
+        <section className="footer__links-section">
           <p>{data.Budget_Datasets.name}</p>
           {data.Budget_Datasets.links.map((link) => (
             <a
@@ -48,7 +48,7 @@ const Footer = () => (
           ))}
         </section>
 
-        <section className="footer__links__section">
+        <section className="footer__links-section">
           <p>{data.OBI_Platform.name}</p>
           {data.OBI_Platform.links.map((link) => (
             <a
@@ -64,9 +64,9 @@ const Footer = () => (
       </div>
     </div>
 
-    <div className="footer__attr">
-      <div className="footer__attr__wrapper footer__wrapper">
-        <div className="footer__attr__links">
+    <div className="attribute">
+      <div className="attribute__container wrapper">
+        <div className="attribute__links">
           {data.Attr_Links.links.map((link) => (
             <a
               rel="noopener noreferrer"
@@ -79,7 +79,7 @@ const Footer = () => (
           ))}
         </div>
 
-        <div className="footer__attr__logos">
+        <div className="attribute__logos">
           {data.Attr_Logos.links.map((link) => (
             <a
               rel="nofollow noopener noreferrer"
@@ -98,7 +98,7 @@ const Footer = () => (
           ))}
         </div>
 
-        <div className="footer__attr__social">
+        <div className="attribute__social">
           {data.Attr_Social.links.map((link) => (
             <a
               rel="nofollow noopener noreferrer"

@@ -1,0 +1,102 @@
+.carousel {
+	height: 290px;
+	background-color: #29314f;
+
+	&__container {
+		position: relative;
+		display: flex;
+		height: 100%;
+	}
+
+	&__heading {
+		color: #ffffff;
+		font-weight: 500;
+		font-size: 1rem;
+		line-height: 150%;
+		text-transform: uppercase;
+		position: absolute;
+		top: 1.5rem;
+	}
+
+	&__controls {
+		position: absolute;
+		right: 0;
+		top: 1rem;
+
+		button {
+			background: #0f1525;
+			border-radius: 2px;
+			border: none;
+			width: 43px;
+			height: 30px;
+
+			&.disabled {
+				background-color: rgba(255, 255, 255, 0.1);
+				pointer-events: none;
+			}
+		}
+	}
+
+	&__back {
+		img {
+			transform: rotate(180deg);
+		}
+		margin-right: 0.5rem;
+	}
+
+	.videos {
+		overflow-x: scroll;
+		display: flex;
+		scrollbar-width: none;
+		user-select: none;
+		cursor: grab;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		&.active {
+			cursor: grabbing;
+		}
+
+		&__container {
+			display: flex;
+			overflow: none;
+			align-self: flex-end;
+			margin-bottom: 2rem;
+
+			iframe {
+				width: 360px;
+				height: 190px;
+				margin-right: 2rem;
+				display: grid;
+				place-content: center;
+				transition: transform 0.3s ease;
+			}
+		}
+	}
+}
+
+// iFrame plugin styling
+.yt-lite {
+	background-color: #000;
+	position: relative;
+	display: block;
+	contain: content;
+	background-position: center center;
+	background-size: cover;
+	cursor: pointer;
+	width: 360px;
+	height: 190px;
+	margin-right: 2rem;
+}
+
+/* play button triangle */
+.yt-lite > .lty-playbtn:before {
+	content: '';
+	border-top: 15px solid transparent;
+	border-left: 30px solid #fff;
+	border-bottom: 15px solid transparent;
+	width: 0;
+	height: 0;
+}
