@@ -1,8 +1,14 @@
-.footer-carousel {
+.carousel {
 	height: 290px;
 	background-color: #29314f;
 
-	.carousel-heading {
+	&__container {
+		position: relative;
+		display: flex;
+		height: 100%;
+	}
+
+	&__heading {
 		color: #ffffff;
 		font-weight: 500;
 		font-size: 1rem;
@@ -12,48 +18,85 @@
 		top: 1.5rem;
 	}
 
-	.wrapper {
-		position: relative;
-		display: flex;
-		height: 100%;
-	}
-
-	.controls {
+	&__controls {
 		position: absolute;
 		right: 0;
 		top: 1rem;
+
+		button {
+			background: #0f1525;
+			border-radius: 2px;
+			border: none;
+			width: 43px;
+			height: 30px;
+
+			&.disabled {
+				background-color: rgba(255, 255, 255, 0.1);
+				pointer-events: none;
+			}
+		}
 	}
 
-	.videos_container {
+	&__back {
+		img {
+			transform: rotate(180deg);
+		}
+		margin-right: 0.5rem;
+	}
+
+	.videos {
 		overflow-x: scroll;
 		display: flex;
-		scroll-behavior: smooth;
 		scrollbar-width: none;
+		user-select: none;
+		cursor: grab;
+
 		&::-webkit-scrollbar {
 			display: none;
 		}
 
-		user-select: none;
-		cursor: grab;
-
 		&.active {
 			cursor: grabbing;
 		}
-	}
 
-	.videos {
-		display: flex;
-		overflow: none;
-		align-self: flex-end;
-		margin-bottom: 2rem;
+		&__container {
+			display: flex;
+			overflow: none;
+			align-self: flex-end;
+			margin-bottom: 2rem;
 
-		iframe {
-			width: 360px;
-			height: 190px;
-			margin-right: 2rem;
-			display: grid;
-			place-content: center;
-			transition: transform 0.3s ease;
+			iframe {
+				width: 360px;
+				height: 190px;
+				margin-right: 2rem;
+				display: grid;
+				place-content: center;
+				transition: transform 0.3s ease;
+			}
 		}
 	}
+}
+
+// iFrame plugin styling
+.yt-lite {
+	background-color: #000;
+	position: relative;
+	display: block;
+	contain: content;
+	background-position: center center;
+	background-size: cover;
+	cursor: pointer;
+	width: 360px;
+	height: 190px;
+	margin-right: 2rem;
+}
+
+/* play button triangle */
+.yt-lite > .lty-playbtn:before {
+	content: '';
+	border-top: 15px solid transparent;
+	border-left: 30px solid #fff;
+	border-bottom: 15px solid transparent;
+	width: 0;
+	height: 0;
 }

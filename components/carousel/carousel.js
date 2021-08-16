@@ -1,40 +1,44 @@
 import React, { useEffect } from 'react';
 import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+import 'react-lite-youtube-embed/dist/LiteYouTubeEmbed.css';
 
 function updateSlider(n) {
-  document.querySelector('.videos_container').scrollLeft += n * 300;
+  const scrollPos = document.querySelector('.videos').scrollLeft;
+  document
+    .querySelector('.videos')
+    .scrollTo({ left: scrollPos + n * 350, behavior: 'smooth' });
 }
 
 function buttonDisable() {
-  document.querySelector('.videos_container').addEventListener(
+  document.querySelector('.videos').addEventListener(
     'scroll',
     () => {
       const { scrollLeft, scrollWidth, clientWidth } =
-        document.querySelector('.videos_container');
+        document.querySelector('.videos');
       const scrollLeftMax = scrollWidth - clientWidth;
       if (scrollLeft <= 0) {
         document
-          .querySelector('.footer-carousel .forward')
+          .querySelector('.carousel .carousel__forward')
           .classList.remove('disabled');
         document
-          .querySelector('.footer-carousel .back')
+          .querySelector('.carousel .carousel__back')
           .classList.add('disabled');
       }
       if (scrollLeft >= scrollLeftMax - 10) {
         document
-          .querySelector('.footer-carousel .back')
+          .querySelector('.carousel .carousel__back')
           .classList.remove('disabled');
 
         document
-          .querySelector('.footer-carousel .forward')
+          .querySelector('.carousel .carousel__forward')
           .classList.add('disabled');
       } else if (
         scrollLeft > 10 &&
         scrollLeft < scrollLeftMax &&
-        document.querySelector('.footer-carousel .disabled')
+        document.querySelector('.carousel .disabled')
       )
         document
-          .querySelector('.footer-carousel .disabled')
+          .querySelector('.carousel .disabled')
           .classList.remove('disabled');
     },
     { passive: true }
@@ -42,7 +46,7 @@ function buttonDisable() {
 }
 
 function scrollOnDrag() {
-  const slider = document.querySelector('.videos_container');
+  const slider = document.querySelector('.videos');
   let isDown = false;
   let startX;
   let scrollLeft;
@@ -100,9 +104,9 @@ function handleVideoLink(link) {
 
 const Carousel = ({ youtube }) => {
   useEffect(() => {
-    if (document.querySelector('.videos_container').scrollLeft == 0)
+    if (document.querySelector('.videos').scrollLeft == 0)
       document
-        .querySelector('.footer-carousel .back')
+        .querySelector('.carousel .carousel__back')
         .classList.add('disabled');
 
     buttonDisable();
@@ -110,13 +114,13 @@ const Carousel = ({ youtube }) => {
   }, []);
 
   return (
-    <div className="footer-carousel">
-      <div className="wrapper">
-        <p className="carousel-heading">Related Videos</p>
-        <div className="controls">
+    <div className="carousel">
+      <div className="carousel__container wrapper">
+        <p className="carousel__heading">Related Videos</p>
+        <div className="carousel__controls">
           <button
             type="button"
-            className="back"
+            className="carousel__back"
             onClick={() => updateSlider(-1)}
             onKeyPress={() => updateSlider(-1)}
           >
@@ -129,7 +133,7 @@ const Carousel = ({ youtube }) => {
           </button>
           <button
             type="button"
-            className="forward"
+            className="carousel__forward"
             onClick={() => updateSlider(1)}
             onKeyPress={() => updateSlider(1)}
           >
@@ -141,8 +145,8 @@ const Carousel = ({ youtube }) => {
             />
           </button>
         </div>
-        <div className="videos_container">
-          <div className="videos">
+        <div className="videos">
+          <div className="videos__container">
             {youtube.map((video) => (
               <LiteYouTubeEmbed
                 id={handleVideoLink(video.link)}

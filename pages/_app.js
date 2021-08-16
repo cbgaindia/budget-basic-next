@@ -11,9 +11,10 @@ import * as ga from '../lib/ga';
 
 export const GlobalContext = createContext({});
 function MyApp({ Component, pageProps }) {
-  React.useEffect(() => {
+  if (typeof window !== 'undefined') {
     smoothscroll.polyfill();
-
+  }
+  React.useEffect(() => {
     const handleRouteChange = (url) => {
       ga.pageview(url);
     };
