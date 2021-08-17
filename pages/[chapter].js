@@ -5,9 +5,8 @@ import { fetchAPI } from 'lib/api';
 import { sortList, LocaleString, generateSubHeadings } from 'utils/helpers';
 import useWindowDimensions from 'utils/useWindowDimensions';
 import Seo from 'components/seo';
-import Header from 'components/header';
+import Header from 'components/header/header';
 import Navigation from 'components/navigation/navigation';
-import Article from 'components/article';
 import Menu from 'components/menu';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
 
@@ -122,7 +121,7 @@ function goToTopHandler() {
 
 // adds the tooltip over links with href="#"
 function tooltipKeyword(chapter) {
-  const tooltipKeywords = document.querySelectorAll('p a[href="#"]');
+  const tooltipKeywords = document.querySelectorAll('a[href="#"]');
   tooltipKeywords.forEach((keyword, index) => {
     const tooltip = chapter.tooltips.find(
       (obj) => obj.keyword.toLowerCase() == keyword.innerText.toLowerCase()
@@ -151,7 +150,9 @@ const Chapter = ({ chapter, chapters }) => {
   const { width } = useWindowDimensions();
 
   useLayoutEffect(() => {
+    const jumpIcon = document.querySelector('.backToTop');
     gsap.registerPlugin(ScrollTrigger);
+
     if (chapter.sections.length > 0) {
       if (width >= 1001) {
         handleSidebarAnimation();
@@ -172,9 +173,16 @@ const Chapter = ({ chapter, chapters }) => {
         }
       });
 
+      // go-to-top
       document.addEventListener('scroll', goToTopHandler);
+      jumpIcon.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }
     return () => {
+      jumpIcon.removeEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
       document.removeEventListener('scroll', goToTopHandler);
 
       if (ScrollTrigger.getById('st-id')) {
@@ -196,7 +204,9 @@ const Chapter = ({ chapter, chapters }) => {
   };
 
   function headerDesc() {
-    return <h2>{chapter.Title}</h2>;
+    return (
+      <h2 className="header__desc header__desc--chapter">{chapter.Title}</h2>
+    );
   }
 
   return (
@@ -241,7 +251,10 @@ const Chapter = ({ chapter, chapters }) => {
                   </h2>
                 </div>
 
-                <Article article={article.Content} />
+                <div
+                  className="articleContent"
+                  dangerouslySetInnerHTML={{ __html: article.Content }}
+                />
               </article>
             ))}
           </section>
@@ -256,7 +269,7 @@ const Chapter = ({ chapter, chapters }) => {
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
       />
-      <a className="backToTop" href="#">
+      <a className="backToTop" href="#to-top">
         <span className="screen-reader-text">Back to Top</span>
         <svg width="32" height="32" viewBox="0 0 100 100">
           <path

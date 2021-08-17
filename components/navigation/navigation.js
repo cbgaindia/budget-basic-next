@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
 const Navigation = ({ back, forward }) => (
-  <footer className="footer articleFooter">
-    <div className="wrapper">
-      <section className="back">
+  <footer className="navigation">
+    <div className="navigation__container wrapper">
+      <section className="navigation__section">
         {back != undefined && (
           <Link href={`/${back.slug}`}>
-            <a className="back">
+            <a className="navigation__button navigation__button--back">
               <img
                 src="assets/icons/arrowBack.svg"
                 alt="back arrow budget basics"
@@ -20,11 +20,11 @@ const Navigation = ({ back, forward }) => (
         )}
       </section>
 
-      <section className="forward">
+      <section className="navigation__section">
         {forward != undefined && (
           <>
             <Link href={`/${forward.slug}`}>
-              <a className="forward">
+              <a className="navigation__button navigation__button--forward">
                 <img
                   src="assets/icons/arrowBack.svg"
                   alt="back arrow budget basics"
