@@ -16,6 +16,8 @@ export default function Home({ homepage, chapters }) {
 
   return (
     <>
+      <Seo seo={homepage.seo} />
+
       <Header desc={headerDesc()} color="#101524" />
       {homepage.highlight.length > 0 && <Highlight data={homepage.highlight} />}
 
@@ -25,16 +27,14 @@ export default function Home({ homepage, chapters }) {
         </Link>
       </section>
       <div className="home-wrapper">
-        <Seo seo={homepage.seo} />
         <div className="homeCards">
           {chapters.map((chapter, index) => {
             const chapterDetails = {
-              number: chapter.Chapter_No,
               title: chapter.Title,
               slug: chapter.slug,
-              totalArticles: chapter.sections.length,
               icon: chapter.icon,
               Desc: chapter.Desc,
+              index,
             };
             bgColorIndex.push(bgColorIndex[index]);
             return (

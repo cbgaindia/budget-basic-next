@@ -11,7 +11,7 @@ export default function Card({ chapter }) {
       )}
 
       <picture>
-        <img
+        <source
           srcSet={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${chapter.icon.url}`}
           alt={chapter.title}
           media="(min-width: 640px)"
@@ -22,9 +22,8 @@ export default function Card({ chapter }) {
         <img
           src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
           alt={`${chapter.title}-mobile`}
-          width="1"
-          height="1"
-          media="(max-width: 640px)"
+          width="150"
+          height="120"
         />
       </picture>
 
