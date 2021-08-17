@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { MeiliSearch } from 'meilisearch';
-import Header from 'components/header';
+import Header from 'components/header/header';
 import Link from 'next/link';
 import { Truncate, debounce } from 'utils/helpers';
 import Seo from 'components/seo';

@@ -204,9 +204,7 @@ const Chapter = ({ chapter, chapters }) => {
   };
 
   function headerDesc() {
-    return (
-      <h2 className="header__desc header__desc--chapter">{chapter.Title}</h2>
-    );
+    return <h2>{chapter.Title}</h2>;
   }
 
   return (

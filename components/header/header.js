@@ -36,7 +36,7 @@ const Header = ({ desc, color, searchPage }) => {
             <a className="header__search">Search</a>
           </Link>
         )}
-        {desc}
+        <section className="header__desc">{desc}</section>
       </div>
     </header>
   );
