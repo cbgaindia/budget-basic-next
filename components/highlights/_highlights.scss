@@ -1,0 +1,57 @@
+@use '../../styles/tools' as *;
+
+.highlights {
+	min-height: 80px;
+	background-color: #29314f;
+	color: #ffffff;
+	padding: 1rem 0;
+
+	&__bar {
+		height: 60%;
+		width: 4px;
+		background-color: #a090ff;
+		border-radius: 4px;
+	}
+
+	&__container {
+		display: grid;
+		justify-content: space-between;
+		align-items: center;
+		height: 100%;
+		grid-template-columns: max-content 1fr max-content;
+	}
+
+  &__text {
+		margin: 1rem 1.5rem;
+		font-size: 12px;
+		line-height: 135%;
+		max-width: 900px;
+	}
+
+  &__controls {
+    @include control-button
+  }
+
+  &__back {
+		img {
+			transform: rotate(180deg);
+		}
+		margin-right: 0.5rem;
+	}
+
+  @include respond-to('lt-mobile') {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr max-content;
+
+    &__text,
+    span {
+      grid-row-start: 1;
+    }
+
+    &__controls {
+      justify-self: center;
+      margin-top: 1rem;
+      grid-column: 1 / 3;
+    }
+  }
+}

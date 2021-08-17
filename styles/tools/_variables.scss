@@ -2,3 +2,18 @@ $d: 700ms;
 $e: cubic-bezier(0.19, 1, 0.22, 1);
 $mobile: 640px;
 $midScreen: 800px;
+
+@mixin control-button {
+  button {
+    background: #0f1525;
+    border-radius: 2px;
+    border: none;
+    width: 43px;
+    height: 30px;
+
+    &.disabled {
+      background-color: rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+    }
+  }
+}

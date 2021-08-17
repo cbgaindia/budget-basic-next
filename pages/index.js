@@ -4,7 +4,7 @@ import Seo from 'components/seo';
 import Card from 'components/card/card';
 import { sortList } from 'utils/helpers';
 import Header from 'components/header';
-import Highlight from 'components/highlights';
+import Highlight from 'components/highlights/highlights';
 import Carousel from 'components/carousel/carousel';
 
 export default function Home({ homepage, chapters }) {
