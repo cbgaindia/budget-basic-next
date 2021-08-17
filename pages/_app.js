@@ -1,4 +1,4 @@
-import 'assets/css/style.css';
+import 'styles/app.css';
 import App from 'next/app';
 import Head from 'next/head';
 import React, { createContext } from 'react';

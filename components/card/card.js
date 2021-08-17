@@ -3,6 +3,8 @@ import Link from 'next/link';
 const bgColorIndex = [1, 2, 3, 4, 5, 6];
 
 export default function Card({ chapter }) {
+  bgColorIndex.push(bgColorIndex[chapter.index]);
+
   return (
     <Link key={chapter.index} href={`/${chapter.slug}`}>
       <a
@@ -15,7 +17,7 @@ export default function Card({ chapter }) {
               src="/assets/icons/coming_soon.png"
               alt="coming soon"
               aria-label="hidden"
-              className="comingSoon"
+              className="card__soon"
             />
           )}
 
@@ -24,15 +26,13 @@ export default function Card({ chapter }) {
               srcSet={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${chapter.icon.url}`}
               alt={chapter.title}
               media="(min-width: 640px)"
-              width="150"
-              height="120"
             />
 
             <img
               src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
               alt={`${chapter.title}-mobile`}
-              width="1"
-              height="1"
+              width="150"
+              height="120"
             />
           </picture>
 
