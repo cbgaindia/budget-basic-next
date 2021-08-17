@@ -1,0 +1,77 @@
+@use '../../styles/tools' as *;
+
+.header {
+	background-color: #29314f;
+	display: grid;
+	justify-content: center;
+	min-height: 184px;
+	color: #fff;
+
+	&__container {
+		display: grid;
+		grid-template-columns: max-content 1fr;
+		grid-template-rows: max-content 1fr;
+		position: relative;
+	}
+
+	.branding {
+		display: flex;
+		align-items: center;
+		margin-top: 1rem;
+		height: max-content;
+
+		&__logo {
+			width: max-content;
+			font-size: 1.3rem;
+			font-weight: normal;
+		}
+
+		&__seperator {
+			border-right: 1px solid rgba(255, 255, 255, 0.4);
+			margin: 0 16px;
+			height: 28px;
+		}
+		&__obi {
+			height: 28px;
+
+			img {
+				width: 11rem;
+				object-fit: contain;
+			}
+		}
+	}
+
+	&__desc {
+		display: grid;
+		grid-area: 2 / 1 / 2 / 3;
+		margin-top: 1rem;
+		padding: 1rem 0;
+
+		align-items: center;
+		font-weight: normal;
+		font-size: 16px;
+		line-height: 150%;
+		color: rgba(255, 255, 255, 0.7);
+		max-width: 700px;
+		width: 90vw;
+	}
+
+	&__search {
+		@include search_button;
+	}
+
+	@include respond-to('lt-tablet') {
+		display: flex;
+		padding: 1rem 2rem;
+
+		&__container {
+			width: 100%;
+			padding: 0;
+			grid-template-columns: 1fr;
+		}
+
+		&__search {
+			display: none;
+		}
+	}
+}

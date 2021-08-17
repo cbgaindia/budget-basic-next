@@ -3,7 +3,7 @@ import { fetchAPI } from 'lib/api';
 import Seo from 'components/seo';
 import Card from 'components/card/card';
 import { sortList } from 'utils/helpers';
-import Header from 'components/header';
+import Header from 'components/header/header';
 import Highlight from 'components/highlights/highlights';
 import Carousel from 'components/carousel/carousel';
 
