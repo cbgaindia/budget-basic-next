@@ -10,7 +10,7 @@ import Carousel from 'components/carousel/carousel';
 export default function Home({ homepage, chapters }) {
   sortList(chapters);
   function headerDesc() {
-    return <p>{homepage.heading}</p>;
+    return <p className="header__desc">{homepage.heading}</p>;
   }
 
   return (
@@ -20,25 +20,23 @@ export default function Home({ homepage, chapters }) {
       <Header desc={headerDesc()} color="#101524" />
       {homepage.highlight.length > 0 && <Highlight data={homepage.highlight} />}
 
-      <section className="searchMenu homeSearch" key="searchMenu">
+      <section className="home__mobile-search">
         <Link href="/search">
           <a>Search</a>
         </Link>
       </section>
-      <div className="home-wrapper">
-        <div className="homeCards">
-          {chapters.map((chapter, index) => {
-            const chapterDetails = {
-              title: chapter.Title,
-              slug: chapter.slug,
-              icon: chapter.icon,
-              Desc: chapter.Desc,
-              totalArticles: chapter.sections.length,
-              index,
-            };
-            return <Card chapter={chapterDetails} />;
-          })}
-        </div>
+      <div className="wrapper home__cards">
+        {chapters.map((chapter, index) => {
+          const chapterDetails = {
+            title: chapter.Title,
+            slug: chapter.slug,
+            icon: chapter.icon,
+            Desc: chapter.Desc,
+            totalArticles: chapter.sections.length,
+            index,
+          };
+          return <Card chapter={chapterDetails} />;
+        })}
       </div>
       <Carousel youtube={homepage.youtube} />
     </>
