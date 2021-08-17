@@ -51,7 +51,7 @@ export function generateSubHeadings() {
       const sideLink = document.querySelector(
         `div[keyid=${article.getAttribute('id')}]`
       );
-      const subHeadingList = sideLink.querySelector('ul');
+      const subHeadingList = sideLink.querySelector('.sub-heading');
 
       // if list is already populated, return
       if (subHeadingList.childNodes.length > 0) return;
@@ -67,9 +67,9 @@ export function generateSubHeadings() {
         a.appendChild(alpha);
         text.innerHTML = subHeading.childNodes[0].innerText;
         a.appendChild(text);
-        // a.innerHTML = `${alphabets[index]}. ${subHeading.childNodes[0].innerText}`;
         a.setAttribute('href', `#${subHeading.id}`);
         li.setAttribute('subid', subHeading.id);
+        li.setAttribute('class', 'sub-heading__link');
         li.appendChild(a);
         subHeadingList.appendChild(li);
       });

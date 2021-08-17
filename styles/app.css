@@ -765,11 +765,7 @@ button {
   }
 }
 
-.footer {
-  background-color: #0f1525;
-}
-
-nav.menu-dropdown {
+.menu {
   background-color: #ffffff;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
   height: 55px;
@@ -779,7 +775,7 @@ nav.menu-dropdown {
   position: sticky;
   top: 0;
 }
-nav.menu-dropdown button {
+.menu__button {
   background-color: transparent;
   width: -webkit-max-content;
   width: -moz-max-content;
@@ -787,8 +783,6 @@ nav.menu-dropdown button {
   border: none;
   cursor: pointer;
   outline: none;
-}
-nav.menu-dropdown .mobileContent .dropbtn {
   font-weight: 600;
   font-size: 1.3rem;
   line-height: 150%;
@@ -798,18 +792,18 @@ nav.menu-dropdown .mobileContent .dropbtn {
   justify-content: center;
   margin-left: 1.5rem;
 }
-nav.menu-dropdown .mobileContent .dropbtn p {
+.menu__button p {
   margin: 0;
 }
-nav.menu-dropdown .mobileContent .dropbtn .menuArrow {
+.menu__button.hide {
+  display: none;
+}
+.menu__content-icon {
   margin-left: 0.5rem;
   width: 1rem;
   transition: transform 0.2s ease-out;
 }
-nav.menu-dropdown .mobileContent .dropbtn.hide {
-  display: none;
-}
-nav.menu-dropdown .mobileContent .dropdown-content-mobile {
+.menu .content {
   list-style: none;
   z-index: 1;
   width: 100%;
@@ -824,54 +818,94 @@ nav.menu-dropdown .mobileContent .dropdown-content-mobile {
   max-height: 60vh;
   overflow-y: scroll;
 }
-nav.menu-dropdown .mobileContent .dropdown-content-mobile::-webkit-scrollbar-track {
+.menu .content::-webkit-scrollbar-track {
   background: #f6f5fa;
 }
-nav.menu-dropdown .mobileContent .dropdown-content-mobile > div.activeSidebar .menubarLink {
-  background: rgba(66, 47, 161, 0.1);
-  border: 1px solid #a090ff;
-  box-sizing: border-box;
-  border-radius: 5px;
-}
-nav.menu-dropdown .mobileContent .dropdown-content-mobile > div.activeSidebar .subHeading {
-  display: block;
-}
-nav.menu-dropdown .mobileContent .dropdown-content-mobile li {
+.menu .content__link {
   align-items: center;
   padding-right: 1rem;
 }
-nav.menu-dropdown .mobileContent .dropdown-content-mobile li a {
+.menu .content__link a {
   display: block;
   width: inherit;
   height: inherit;
-  margin: 0.5rem;
+  margin: 0 0.5rem;
   display: grid;
   grid-template-columns: -webkit-max-content 1fr;
   grid-template-columns: max-content 1fr;
   text-align: start;
   font-size: 1rem;
-  padding: 0.5rem 0;
 }
-nav.menu-dropdown .mobileContent .dropdown-content-mobile li a p {
+.menu .content__link a p {
   line-height: 150%;
 }
-nav.menu-dropdown .mobileContent .dropdown-content-mobile li a p:first-child {
+.menu .content__link a p:first-child {
   margin-right: 1rem;
 }
-nav.menu-dropdown .mobileContent.active .dropdown-content-mobile {
+.menu .content--active .content__link {
+  background: rgba(66, 47, 161, 0.1);
+  border: 1px solid #a090ff;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+.menu .content--active .sub-heading {
   display: block;
 }
-nav.menu-dropdown .mobileContent.active .menuArrow {
+.menu__dropdown--active .content {
+  display: block;
+}
+.menu__dropdown--active .menu__content-icon {
   transform: rotate(-180deg);
 }
-nav.menu-dropdown.active {
+.menu__search {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.menu__search-icon {
+  margin-right: 1.5rem;
+  width: 25px;
+}
+.menu__search-icon--hide {
+  display: none;
+}
+.menu--active {
   border: 1px solid #604294;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
-@media screen and (min-width: 1001px) {
-  nav.menu-dropdown {
+@media (min-width: 768px) {
+  .menu {
     display: none;
   }
+}
+.menu .sub-heading {
+  list-style: none;
+  display: none;
+  padding-left: 20px;
+}
+.menu .sub-heading__link {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 135%;
+  margin-left: 0.5rem;
+}
+.menu .sub-heading__link a {
+  display: block;
+  width: inherit;
+  height: inherit;
+  display: grid;
+  grid-template-columns: -webkit-max-content 1fr;
+  grid-template-columns: max-content 1fr;
+  grid-gap: 0.5rem;
+  text-align: start;
+}
+.menu .sub-heading__link--active {
+  color: #4b4797;
+  font-weight: bold;
+}
+
+.footer {
+  background-color: #0f1525;
 }
 
 .suggested {
@@ -1062,36 +1096,6 @@ figure.table {
 }
 figure.table::-webkit-scrollbar-track {
   background: white;
-}
-
-.subHeading {
-  list-style: none;
-  display: none;
-}
-.subHeading li {
-  font-weight: normal;
-  font-size: 14px;
-  line-height: 135%;
-  margin-left: 0.5rem;
-}
-.subHeading li a {
-  display: block;
-  width: inherit;
-  height: inherit;
-  display: grid;
-  grid-template-columns: -webkit-max-content 1fr;
-  grid-template-columns: max-content 1fr;
-  grid-gap: 0.5rem;
-  text-align: start;
-}
-.subHeading li.activeSubLink {
-  color: #4b4797;
-  font-weight: bold;
-}
-@media screen and (max-width: 1001px) {
-  .subHeading {
-    padding-left: 20px;
-  }
 }
 
 .tooltip-wrapper {

@@ -7,7 +7,7 @@ import useWindowDimensions from 'utils/useWindowDimensions';
 import Seo from 'components/seo';
 import Header from 'components/header/header';
 import Navigation from 'components/navigation/navigation';
-import Menu from 'components/menu';
+import Menu from 'components/menu/menu';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
 
 function handleSidebarAnimation() {
@@ -231,7 +231,7 @@ const Chapter = ({ chapter, chapters }) => {
                       </a>
                     </li>
 
-                    <ul className="subHeading" />
+                    <ul className="sub-heading" />
                   </div>
                 ))}
               </ul>
