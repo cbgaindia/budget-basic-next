@@ -67,9 +67,7 @@
 			}
 		}
 
-		table {
-			width: 100%;
-			border-collapse: collapse;
+		figure.table {
 			overflow-x: scroll;
 			scrollbar-color: rgb(100, 98, 98) white;
 
@@ -77,23 +75,28 @@
 				background: white;
 			}
 
-			td {
-				min-width: 100px;
-				padding: 0.5rem 0;
-				border: 0.2px solid hsla(221, 91%, 77%, 0.5) !important;
-				padding: 1rem !important;
-				word-wrap: break-word;
-			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
 
-			tr {
-				&.solitude {
-					background-color: hsla(223, 84%, 95%, 0.5);
+				td {
+					min-width: 100px;
+					padding: 0.5rem 0;
+					border: 0.2px solid hsla(221, 91%, 77%, 0.5) !important;
+					padding: 1rem !important;
+					word-wrap: break-word;
 				}
-				&.sol_border {
-					border-bottom: 1px solid #91b3fa !important;
-				}
-				&:first-of-type {
-					background-color: hsl(222, 83%, 95%);
+
+				tr {
+					&.solitude {
+						background-color: hsla(223, 84%, 95%, 0.5);
+					}
+					&.sol_border {
+						border-bottom: 1px solid #91b3fa !important;
+					}
+					&:first-of-type {
+						background-color: hsl(222, 83%, 95%);
+					}
 				}
 			}
 		}
@@ -110,9 +113,6 @@
 
 		@include respond-to('lt-tablet') {
 			scroll-margin-top: 65px;
-			display: block;
-			width: 100%;
-			padding: 0 1rem;
 
 			h2 {
 				margin-left: 1rem;
@@ -145,66 +145,72 @@
 			pointer-events: none;
 		}
 	}
-}
 
-.tooltip-wrapper {
-	position: relative;
-	font-weight: 600;
-
-	span {
-		color: #4b4797 !important;
+	@include respond-to('lt-tablet') {
+		display: block;
+		width: 100%;
+		padding: 0 1rem;
 	}
 
-	span[role='tooltip'] {
-		font-size: 0.8em;
-		bottom: 100%;
-		left: 50%;
-		margin-bottom: 15px;
-		opacity: 0;
-		padding: 0.5rem;
-		width: max-content;
-		max-width: 200px;
-		height: max-content;
-		transform: translateY(10px) translateX(-50%);
-		transition: all $d $e;
-		box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-		pointer-events: none;
-		position: absolute;
-		text-align: left;
-		background-color: #e2dff1;
-		color: black !important;
-		font-weight: 400;
+	.tooltip-wrapper {
+		position: relative;
+		font-weight: 600;
 
-		&:before {
-			bottom: -1.2em;
-			height: 1.2em;
-			left: 0;
-			width: 100%;
-			position: absolute;
-			content: ' ';
-			display: block;
+		span {
+			color: #4b4797 !important;
 		}
 
-		&:after {
-			border-left: solid transparent 0.8em;
-			border-right: solid transparent 0.8em;
-			border-top: solid rgba(66, 47, 161, 0.1) 0.8em;
-			bottom: -0.8em;
-			content: ' ';
-			height: 0;
-			left: 50%;
-			margin-left: -13px;
-			width: 0;
-			position: absolute;
-		}
-	}
-
-	&:hover,
-	&:focus {
 		span[role='tooltip'] {
-			opacity: 1;
-			pointer-events: auto;
-			transform: translateY(0px) translateX(-50%);
+			font-size: 0.8em;
+			bottom: 100%;
+			left: 50%;
+			margin-bottom: 15px;
+			opacity: 0;
+			padding: 0.5rem;
+			width: max-content;
+			max-width: 200px;
+			height: max-content;
+			transform: translateY(10px) translateX(-50%);
+			transition: all $d $e;
+			box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+			pointer-events: none;
+			position: absolute;
+			text-align: left;
+			background-color: #e2dff1;
+			color: black !important;
+			font-weight: 400;
+
+			&:before {
+				bottom: -1.2em;
+				height: 1.2em;
+				left: 0;
+				width: 100%;
+				position: absolute;
+				content: ' ';
+				display: block;
+			}
+
+			&:after {
+				border-left: solid transparent 0.8em;
+				border-right: solid transparent 0.8em;
+				border-top: solid rgba(66, 47, 161, 0.1) 0.8em;
+				bottom: -0.8em;
+				content: ' ';
+				height: 0;
+				left: 50%;
+				margin-left: -13px;
+				width: 0;
+				position: absolute;
+			}
+		}
+
+		&:hover,
+		&:focus {
+			span[role='tooltip'] {
+				opacity: 1;
+				pointer-events: auto;
+				transform: translateY(0px) translateX(-50%);
+			}
 		}
 	}
 }
