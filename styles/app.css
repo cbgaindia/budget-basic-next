@@ -250,10 +250,16 @@ button {
   border: none;
   width: 43px;
   height: 30px;
+  color: white;
+  font-size: 24px;
 }
 .highlights__controls button.disabled {
   background-color: rgba(255, 255, 255, 0.1);
   pointer-events: none;
+}
+.highlights__controls button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
 }
 .highlights__back {
   margin-right: 0.5rem;

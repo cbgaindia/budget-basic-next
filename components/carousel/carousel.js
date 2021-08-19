@@ -124,12 +124,16 @@ const Carousel = ({ youtube }) => {
             onClick={() => updateSlider(-1)}
             onKeyPress={() => updateSlider(-1)}
           >
-            <img
+            <svg
               width="24"
-              height="15"
-              src="/assets/icons/header_navigation.png"
-              alt="highlight back"
-            />
+              height="22"
+              xmlns="http://www.w3.org/2000/svg"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              fill="#ffffff"
+            >
+              <path d="M2.117 12l7.527 6.235-.644.765-9-7.521 9-7.479.645.764-7.529 6.236h21.884v1h-21.883z" />
+            </svg>
           </button>
           <button
             type="button"
@@ -137,12 +141,16 @@ const Carousel = ({ youtube }) => {
             onClick={() => updateSlider(1)}
             onKeyPress={() => updateSlider(1)}
           >
-            <img
+            <svg
               width="24"
-              height="15"
-              src="/assets/icons/header_navigation.png"
-              alt="highlight forward"
-            />
+              height="22"
+              xmlns="http://www.w3.org/2000/svg"
+              fillRule="evenodd"
+              clipRule="evenodd"
+              fill="#ffffff"
+            >
+              <path d="M21.883 12l-7.527 6.235.644.765 9-7.521-9-7.479-.645.764 7.529 6.236h-21.884v1h21.883z" />
+            </svg>
           </button>
         </div>
         <div className="videos">
