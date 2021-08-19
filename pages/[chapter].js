@@ -13,15 +13,15 @@ import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
 
 function goToTopHandler() {
   if (window.scrollY > 600)
-    document.querySelector('.backToTop').classList.add('active');
-  else document.querySelector('.backToTop').classList.remove('active');
+    document.querySelector('.back-top').classList.add('active');
+  else document.querySelector('.back-top').classList.remove('active');
 }
 
 const Chapter = ({ chapter, chapters }) => {
   const { width } = useWindowDimensions();
 
   useLayoutEffect(() => {
-    const jumpIcon = document.querySelector('.backToTop');
+    const jumpIcon = document.querySelector('.back-top');
     gsap.registerPlugin(ScrollTrigger);
 
     if (chapter.sections.length > 0) {
@@ -57,7 +57,7 @@ const Chapter = ({ chapter, chapters }) => {
   }
 
   return (
-    <div>
+    <>
       <Seo seo={seo} />
 
       <Header desc={headerDesc()} color="#29314F" />
@@ -65,24 +65,24 @@ const Chapter = ({ chapter, chapters }) => {
         <Menu chapter={chapter} isMobile={width < 768} />
       )}
       {chapter.sections.length > 0 ? (
-        <div className="article-content wrapper">
+        <div className="chapter wrapper">
           <Sidebar chapter={chapter} />
 
-          <section className="articles">
+          <section className="chapter__container">
             {chapter.sections.map((article) => (
-              <article id={article.slug} key={article.id}>
-                <div className="article_heading">
+              <article className="section" id={article.slug} key={article.id}>
+                <div className="section__heading">
                   <span />
                   <h2>
                     {article.Title}
-                    <a href={`#${article.slug}`} className="header-anchor">
+                    <a href={`#${article.slug}`} className="section__anchor">
                       #
                     </a>
                   </h2>
                 </div>
 
                 <div
-                  className="articleContent"
+                  className="section__content"
                   dangerouslySetInnerHTML={{ __html: article.Content }}
                 />
               </article>
@@ -90,7 +90,7 @@ const Chapter = ({ chapter, chapters }) => {
           </section>
         </div>
       ) : (
-        <div className="noContent">
+        <div className="no-content">
           <p>To be updated soon</p>
         </div>
       )}
@@ -99,7 +99,7 @@ const Chapter = ({ chapter, chapters }) => {
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
       />
-      <a className="backToTop" href="#to-top">
+      <a className="back-top" href="#to-top">
         <span className="screen-reader-text">Back to Top</span>
         <svg width="32" height="32" viewBox="0 0 100 100">
           <path
@@ -111,7 +111,7 @@ const Chapter = ({ chapter, chapters }) => {
           />
         </svg>
       </a>
-    </div>
+    </>
   );
 };
 

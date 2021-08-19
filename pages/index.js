@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 import { fetchAPI } from 'lib/api';
 import Seo from 'components/seo';
@@ -35,7 +36,11 @@ export default function Home({ homepage, chapters }) {
             totalArticles: chapter.sections.length,
             index,
           };
-          return <Card chapter={chapterDetails} />;
+          return (
+            <React.Fragment key={index}>
+              <Card chapter={chapterDetails} />
+            </React.Fragment>
+          );
         })}
       </div>
       <Carousel youtube={homepage.youtube} />

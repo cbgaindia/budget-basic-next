@@ -22,8 +22,9 @@ const Footer = () => (
       <div className="footer__links">
         <section className="footer__links-section">
           <p>{data.Dashboards.name}</p>
-          {data.Dashboards.links.map((link) => (
+          {data.Dashboards.links.map((link, index) => (
             <a
+              key={`footer_link-1.${index}`}
               className="link footer_link"
               rel="noopener noreferrer"
               href={link.value}
@@ -36,8 +37,9 @@ const Footer = () => (
 
         <section className="footer__links-section">
           <p>{data.Budget_Datasets.name}</p>
-          {data.Budget_Datasets.links.map((link) => (
+          {data.Budget_Datasets.links.map((link, index) => (
             <a
+              key={`footer_link-2.${index}`}
               className="link footer_link"
               rel="noopener noreferrer"
               href={link.value}
@@ -50,8 +52,9 @@ const Footer = () => (
 
         <section className="footer__links-section">
           <p>{data.OBI_Platform.name}</p>
-          {data.OBI_Platform.links.map((link) => (
+          {data.OBI_Platform.links.map((link, index) => (
             <a
+              key={`footer_link-3.${index}`}
               className="link footer_link"
               rel="noopener noreferrer"
               href={link.value}
@@ -67,8 +70,9 @@ const Footer = () => (
     <div className="attribute">
       <div className="attribute__container wrapper">
         <div className="attribute__links">
-          {data.Attr_Links.links.map((link) => (
+          {data.Attr_Links.links.map((link, index) => (
             <a
+              key={`attr_link-${index}`}
               rel="noopener noreferrer"
               href={link.value}
               target="_blank"
@@ -80,8 +84,9 @@ const Footer = () => (
         </div>
 
         <div className="attribute__logos">
-          {data.Attr_Logos.links.map((link) => (
+          {data.Attr_Logos.links.map((link, index) => (
             <a
+              key={`attr_logo-${index}`}
               rel="nofollow noopener noreferrer"
               href={link.value}
               target="_blank"
@@ -99,8 +104,9 @@ const Footer = () => (
         </div>
 
         <div className="attribute__social">
-          {data.Attr_Social.links.map((link) => (
+          {data.Attr_Social.links.map((link, index) => (
             <a
+              key={`attr_social-${index}`}
               rel="nofollow noopener noreferrer"
               href={link.value}
               target="_blank"

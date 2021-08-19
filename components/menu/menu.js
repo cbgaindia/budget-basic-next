@@ -72,7 +72,7 @@ const Menu = ({ chapter, isMobile }) => {
   function disableScroll() {
     document.querySelector('.menu').classList.toggle('menu--active');
     document.querySelector('body').classList.toggle('disable_scroll');
-    document.querySelector('.articles').classList.toggle('addBlur');
+    document.querySelector('.chapter').classList.toggle('chapter--blur');
   }
 
   function handleContentClick() {

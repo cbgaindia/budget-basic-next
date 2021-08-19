@@ -2,3 +2,235 @@
 @use '../../components/navigation/navigatiom';
 @use '../../components/menu/menu';
 @use '../../components/sidebar/sidebar';
+
+.chapter {
+	margin: 2rem auto;
+	display: grid;
+	grid-template-columns: 17rem 1fr;
+
+	p {
+		margin: 0.7rem 0;
+	}
+
+	&__container {
+		grid-column-start: 2;
+		margin-top: 1rem;
+	}
+
+	.section {
+		margin-bottom: 2.8rem;
+		scroll-margin-top: 2.8rem;
+		font-size: 16px;
+		line-height: 150%;
+
+		&__content {
+			margin-left: 3rem;
+		}
+
+		&__heading {
+			display: flex;
+			align-items: center;
+			margin-bottom: 1.2rem;
+
+			h2 {
+				font-weight: 600;
+				margin-left: 1.5rem;
+
+				&:hover,
+				&:focus {
+					.section__anchor {
+						opacity: 1;
+					}
+				}
+			}
+		}
+
+		&__anchor {
+			margin-left: 5px;
+			transition: opacity $d $e;
+			opacity: 0;
+		}
+
+		&__sub-heading {
+			font-weight: 700;
+			font-size: 16px;
+			line-height: 150%;
+			margin: 1.2rem 0;
+			scroll-margin-top: 1.2rem;
+		}
+
+		li {
+			margin-bottom: 0.5rem;
+
+			strong {
+				font-weight: 500;
+			}
+		}
+
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			overflow-x: scroll;
+			scrollbar-color: rgb(100, 98, 98) white;
+
+			&::-webkit-scrollbar-track {
+				background: white;
+			}
+
+			td {
+				min-width: 100px;
+				padding: 0.5rem 0;
+				border: 0.2px solid hsla(221, 91%, 77%, 0.5) !important;
+				padding: 1rem !important;
+				word-wrap: break-word;
+			}
+
+			tr {
+				&.solitude {
+					background-color: hsla(223, 84%, 95%, 0.5);
+				}
+				&.sol_border {
+					border-bottom: 1px solid #91b3fa !important;
+				}
+				&:first-of-type {
+					background-color: hsl(222, 83%, 95%);
+				}
+			}
+		}
+
+		figure {
+			margin: 0 auto;
+			max-width: 100%;
+
+			img {
+				width: 100%;
+				margin: 1rem 0;
+			}
+		}
+
+		@include respond-to('lt-tablet') {
+			scroll-margin-top: 65px;
+			display: block;
+			width: 100%;
+			padding: 0 1rem;
+
+			h2 {
+				margin-left: 1rem;
+			}
+
+			h3 {
+				scroll-margin-top: 65px;
+			}
+
+			&__content {
+				margin-left: 2rem;
+			}
+		}
+
+		a {
+			color: #a090ff;
+			text-decoration: underline;
+		}
+
+		span {
+			min-height: 40px;
+			height: 100%;
+			width: 4px;
+			background-color: #a090ff;
+			border-radius: 4px;
+		}
+
+		&--blur {
+			filter: blur(5px);
+			pointer-events: none;
+		}
+	}
+}
+
+.tooltip-wrapper {
+	position: relative;
+	font-weight: 600;
+
+	span {
+		color: #4b4797 !important;
+	}
+
+	span[role='tooltip'] {
+		font-size: 0.8em;
+		bottom: 100%;
+		left: 50%;
+		margin-bottom: 15px;
+		opacity: 0;
+		padding: 0.5rem;
+		width: max-content;
+		max-width: 200px;
+		height: max-content;
+		transform: translateY(10px) translateX(-50%);
+		transition: all $d $e;
+		box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+		pointer-events: none;
+		position: absolute;
+		text-align: left;
+		background-color: #e2dff1;
+		color: black !important;
+		font-weight: 400;
+
+		&:before {
+			bottom: -1.2em;
+			height: 1.2em;
+			left: 0;
+			width: 100%;
+			position: absolute;
+			content: ' ';
+			display: block;
+		}
+
+		&:after {
+			border-left: solid transparent 0.8em;
+			border-right: solid transparent 0.8em;
+			border-top: solid rgba(66, 47, 161, 0.1) 0.8em;
+			bottom: -0.8em;
+			content: ' ';
+			height: 0;
+			left: 50%;
+			margin-left: -13px;
+			width: 0;
+			position: absolute;
+		}
+	}
+
+	&:hover,
+	&:focus {
+		span[role='tooltip'] {
+			opacity: 1;
+			pointer-events: auto;
+			transform: translateY(0px) translateX(-50%);
+		}
+	}
+}
+
+.no-content {
+	width: 100%;
+	height: 35vh;
+	display: grid;
+	place-content: center;
+}
+
+.back-top {
+	position: fixed;
+	bottom: 20px;
+	right: 40px;
+	visibility: hidden;
+
+	opacity: 0;
+	transition: opacity $d $e, visibility $d $e;
+
+	svg {
+		fill: #604294;
+	}
+
+	&.active {
+		opacity: 1;
+		visibility: visible;
+	}
+}

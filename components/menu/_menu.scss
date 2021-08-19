@@ -68,11 +68,12 @@
 				display: block;
 				width: inherit;
 				height: inherit;
-				margin: 0 0.5rem;
+				margin: 0.5rem;
 				display: grid;
 				grid-template-columns: max-content 1fr;
 				text-align: start;
 				font-size: 1rem;
+				padding: 0.5rem 0;
 
 				p {
 					line-height: 150%;
@@ -116,8 +117,8 @@
 	}
 
 	&__search-icon {
-    margin-right: 1.5rem;
-    width: 25px;
+		margin-right: 1.5rem;
+		width: 25px;
 		&--hide {
 			display: none;
 		}
@@ -132,33 +133,32 @@
 		display: none;
 	}
 
-  .sub-heading {
-    list-style: none;
-    display: none;
-    padding-left: 20px;
-  
-    &__link {
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 135%;
-      margin-left: 0.5rem;
-  
-      a {
-        display: block;
-        width: inherit;
-        height: inherit;
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        grid-gap: 0.5rem;
-        text-align: start;
-      }
-  
-      &--active {
-        color: #4b4797;
-        font-weight: bold;
-      }
-    }
-  }
+	.sub-heading {
+		list-style: none;
+		display: none;
+		padding-left: 20px;
+
+		&__link {
+			font-weight: normal;
+			font-size: 14px;
+			line-height: 135%;
+			margin-left: 0.5rem;
+
+			a {
+				width: inherit;
+				height: inherit;
+				margin: 0.5rem;
+				display: grid;
+				grid-template-columns: max-content 1fr;
+				text-align: start;
+				font-size: 1rem;
+				padding: 0.5rem 0;
+			}
+
+			&--active {
+				color: #4b4797;
+				font-weight: bold;
+			}
+		}
+	}
 }
-
-

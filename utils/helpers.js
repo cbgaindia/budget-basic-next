@@ -45,6 +45,7 @@ export function generateSubHeadings() {
     const text = heading.childNodes[0].innerText;
     const id = text.toLowerCase().replace(/\W/g, '-');
     heading.setAttribute('id', id);
+    heading.setAttribute('class', 'section__sub-heading');
   });
 
   // adding subheadings to the sidebar for each article
