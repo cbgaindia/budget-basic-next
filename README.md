@@ -36,7 +36,7 @@ We welcome all contributions and pull requests!
 ## Features
 
 - 📱 **Responsive:** Use Desktop, Laptop or  Mobile devices. It's optimized for all.
-- ♿ **Accessible:** The platform is screen-reader friendly.
+- ♿ **Accessible:** The platform is screen-reader friendly. (In-Progress)
 - 🚀 **Performant:** It's fast!
 - 🌐 **JAMStack:** [Next.js](https://github.com/vercel/next.js) with [Strapi](https://github.com/strapi/strapi) headless CMS to make development process fast and efficient.
 - 🔍 **MeiliSearch:** Super fast search by using [Meilisearch](https://github.com/meilisearch/MeiliSearch) as a micro-service.
