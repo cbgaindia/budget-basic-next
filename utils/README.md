@@ -2,7 +2,7 @@
 
 The project includes a `/utils` folder which contains few helper functions.
 
-- `helpers.js` - contains functions that are used multiple times over different components.
+- `helpers.js` - contains functions that might be used multiple times over different components.
 - `use-isomorphic-layout-effect.js` - A React helper hook for scheduling a layout effect with a fallback to a regular effect.
 ```javascript
 import useWindowDimensions from 'utils/use-isomorphic-layout-effect.js'

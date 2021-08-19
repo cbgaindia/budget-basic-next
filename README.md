@@ -18,13 +18,12 @@ We welcome all contributions and pull requests!
 <p align="center">Visit<a href="https://budgetbasics.openbudgetsindia.org/"> Budget Basics</a></p>
 
 - [Features](#features)
-  - [For Developers](#for-developers)
 - [Getting Started](#getting-started)
   - [Environment Variables](#environment-variables)
   - [Backend](#backend)
 - [Guide](#guide)
-  - [Styling](#styling)
   - [Directory Structure](#directory-structure)
+  - [Styling](#styling)
   - [Components](#components)
   - [GSAP](#gsap)
 - [Data Fetching](#data-fetching)
@@ -36,21 +35,18 @@ We welcome all contributions and pull requests!
 
 ## Features
 
-- Fully Responsive Documentation platform.
-- JAMStack approach to make it fast and developer-friendly.
-- MeiliSearch to make search fast and easy.
-- Easy to add or remove components based on usage -
+- 📱 **Responsive:** Use Desktop, Laptop or  Mobile devices. It's optimized for all.
+- ♿ **Accessible:** The platform is screen-reader friendly.
+- 🚀 **Performant:** It's fast!
+- 🌐 **JAMStack:** [Next.js](https://github.com/vercel/next.js) with [Strapi](https://github.com/strapi/strapi) headless CMS to make development process fast and efficient.
+- 🔍 **MeiliSearch:** Super fast search by using [Meilisearch](https://github.com/meilisearch/MeiliSearch) as a micro-service.
+- 💄 **BEM & SASS:** The platfrom utilizes BEM methodology with SASS to make styling efficient and maintainable.
+- 💎 **Modular:** Easy to add or remove components based on usage -
   - Highlights to show multiple important content/news on the header
   - Custom lightweight carousel to show Youtube videos that are lazy-loaded.
   - Sticky sidebar to list all sections and sub-sections available.
-  - Footer Buttons to navigate to the next or previous category.
-
-### For Developers
-
-- Built with Nextjs and Headless CMS to make the whole developer experience a smooth ride.
-- Incremental Static Regeneration gives the advantage of both SSG and SSR.
-- MeiliSearch handles all of the search functionality with ease.
-- Sass preprocessor makes styling easy and efficient.
+  - Footer Buttons to navigate to the next or previous chapter. 
+  - and more..
 
 ## Getting Started
 
@@ -74,24 +70,10 @@ Follow the steps at [budget-basic-strapi](https://github.com/cbgaindia/budget-ba
 before booting up the frontend. This should set up Postgresql database, Strapi CMS and Meilisearch Instance.
 
 ## Guide
-
-### Styling
-
-This project uses a Sass preprocessor to handle styling. If you are using VSCode, you will need [Live Sass Compiler](https://marketplace.visualstudio.com/items?itemName=ritwickdey.live-sass)
-to convert sass to CSS.
-
-Style File is located at `/assets/css/style.scss`. It's a single file that includes all of the stylings for the platform.
-It's divided into sections to make it more accessible.
-
-On `/pages/[chapter].js`, there is a `stripTable` function which is a hacky way to add strip background styling to a table with
-dynamic row spans. You can find its usage on this [Codepen](https://codepen.io/PixeledCode/pen/BaRxmNw).
-
 ### Directory Structure
 
 ```
 budget-basics-next/
-┣ assets/
-┃ ┣ css/
 ┣ components/
 ┣ lib/
 ┣ pages/
@@ -99,13 +81,21 @@ budget-basics-next/
 ┃ ┣ assets/
 ┃ ┃ ┣ fonts/
 ┃ ┃ ┣ icons/
+┣ style/
+┃ ┣ pages/
+┃ ┣ tools/
 ┣ utils/
 ```
+
+### Styling
+
+This project follows BEM Methodology with Sass Preprocessor to make styling more efficient and future maintainable. Have a look around different files to know more about it. You can learn more about styling directory [here](/styles/README.md)
 ### Components
 
 It is a component-based project which makes it easier to add, edit or remove features in the future.
 
-All the components are available at `/components`.
+All the components are available at `/components`. Each component have it's own folder with it's styling file is included. This makes it easier to use that component on some other
+project. Larn more [here](components/README.md)
 
 ### GSAP
 
