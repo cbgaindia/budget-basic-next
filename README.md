@@ -36,17 +36,17 @@ We welcome all contributions and pull requests!
 ## Features
 
 - 📱 **Responsive:** Use Desktop, Laptop or  Mobile devices. It's optimized for all.
-- ♿ **Accessible:** The platform is screen-reader friendly.
+- ♿ **Accessible:** The platform is screen-reader friendly. (In-Progress)
 - 🚀 **Performant:** It's fast!
 - 🌐 **JAMStack:** [Next.js](https://github.com/vercel/next.js) with [Strapi](https://github.com/strapi/strapi) headless CMS to make development process fast and efficient.
 - 🔍 **MeiliSearch:** Super fast search by using [Meilisearch](https://github.com/meilisearch/MeiliSearch) as a micro-service.
-- 💄 **BEM & SASS:** The platfrom utilizes BEM methodology with SASS to make styling efficient and maintainable.
+- 💄 **BEM & SASS:** The platform utilizes BEM methodology with SASS to make styling efficient and maintainable.
 - 💎 **Modular:** Easy to add or remove components based on usage -
   - Highlights to show multiple important content/news on the header
   - Custom lightweight carousel to show Youtube videos that are lazy-loaded.
   - Sticky sidebar to list all sections and sub-sections available.
   - Footer Buttons to navigate to the next or previous chapter. 
-  - and more..
+  - and more...
 
 ## Getting Started
 
@@ -94,8 +94,8 @@ This project follows BEM Methodology with Sass Preprocessor to make styling more
 
 It is a component-based project which makes it easier to add, edit or remove features in the future.
 
-All the components are available at `/components`. Each component have it's own folder with it's styling file is included. This makes it easier to use that component on some other
-project. Larn more [here](components/README.md)
+All the components are available at `/components`. Each component has its folder with its styling file is included. This makes it easier to use that component on some other
+project. Learn more [here](components/README.md)
 
 ### GSAP
 
@@ -224,7 +224,7 @@ Install dependencies
   npm install
 ```
 
-Create .env in root folder and follows keys
+Create .env in the root folder and follows keys
 
 ```bash
 NEXT_PUBLIC_STRAPI_API_URL
