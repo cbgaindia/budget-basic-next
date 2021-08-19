@@ -15,7 +15,9 @@ const Seo = ({ seo }) => {
   const fullSeo = {
     ...seoWithDefaults,
     metaTitle: `${seoWithDefaults.metaTitle} - ${title} | ${siteName}`,
-    shareImage: getStrapiMedia(seoWithDefaults.shareImage),
+    shareImage:
+      getStrapiMedia(seoWithDefaults.icon) ||
+      getStrapiMedia(seoWithDefaults.shareImage),
   };
 
   if (router.route == '/') {

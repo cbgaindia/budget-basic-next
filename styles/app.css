@@ -904,6 +904,81 @@ button {
   font-weight: bold;
 }
 
+.sidebar {
+  margin-left: -36px;
+  width: 17rem;
+}
+.sidebar .content {
+  list-style: none;
+  padding: 0;
+  background: rgba(66, 47, 161, 0.05);
+  border-radius: 10px;
+  position: sticky;
+  top: 1rem;
+  z-index: 1;
+  width: 100%;
+}
+.sidebar .content__link {
+  align-items: center;
+  margin: 0.5rem;
+  font-size: 16px;
+}
+.sidebar .content__link a {
+  display: block;
+  width: inherit;
+  height: inherit;
+  margin: 0 0.5rem;
+  display: grid;
+  grid-template-columns: -webkit-max-content 1fr;
+  grid-template-columns: max-content 1fr;
+  grid-gap: 1rem;
+  text-align: start;
+}
+.sidebar .content--active .content__link {
+  background: rgba(66, 47, 161, 0.1);
+  border: 1px solid #a090ff;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.sidebar .content--active .sub-heading {
+  display: block;
+}
+.sidebar .content__container:hover .content__link {
+  background: rgba(66, 47, 161, 0.1);
+  border-color: transparent;
+  border-radius: 10px;
+}
+.sidebar .sub-heading {
+  list-style: none;
+  display: none;
+  padding-left: 20px;
+}
+.sidebar .sub-heading__link {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 135%;
+  margin-left: 0.5rem;
+}
+.sidebar .sub-heading__link a {
+  display: block;
+  width: inherit;
+  height: inherit;
+  display: grid;
+  grid-template-columns: -webkit-max-content 1fr;
+  grid-template-columns: max-content 1fr;
+  grid-gap: 0.5rem;
+  text-align: start;
+}
+.sidebar .sub-heading__link--active {
+  color: #4b4797;
+  font-weight: bold;
+}
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}
+
 .footer {
   background-color: #0f1525;
 }
@@ -921,172 +996,123 @@ button {
   padding-top: 0.5rem;
 }
 
-.content {
+.article-content {
   margin: 2rem auto;
   display: grid;
   grid-template-columns: 17rem 1fr;
 }
-.content a span {
+.article-content a span {
   color: #4b4797 !important;
 }
-.content p {
+.article-content p {
   margin: 0.7rem 0;
 }
-.content .sidebarPlaceholder {
-  margin-left: -36px;
-}
-.content .sidebar {
-  width: 17rem;
-  background: rgba(66, 47, 161, 0.05);
-  border-radius: 10px;
-  position: sticky;
-  top: 1rem;
-}
-.content .sidebar .dropdown-content {
-  list-style: none;
-  padding: 0;
-  z-index: 1;
-  width: 100%;
-}
-.content .sidebar .dropdown-content li.sidebarLink {
-  align-items: center;
-  margin: 0.5rem;
-  font-size: 16px;
-}
-.content .sidebar .dropdown-content li.sidebarLink a {
-  display: block;
-  width: inherit;
-  height: inherit;
-  margin: 0.5rem;
-  display: grid;
-  grid-template-columns: -webkit-max-content 1fr;
-  grid-template-columns: max-content 1fr;
-  grid-gap: 1rem;
-  text-align: start;
-}
-.content .sidebar .dropdown-content > div.activeSidebar .sidebarLink {
-  background: rgba(66, 47, 161, 0.1);
-  border-color: transparent;
-  box-shadow: 0 0 0 1px #a090ff;
-  border-radius: 10px;
-}
-.content .sidebar .dropdown-content > div.activeSidebar .subHeading {
-  display: block;
-}
-.content .sidebar .dropdown-content > div:hover .sidebarLink {
-  background: rgba(66, 47, 161, 0.1);
-  border-color: transparent;
-  border-radius: 10px;
-}
-.content .articles {
+.article-content .articles {
   grid-column-start: 2;
   margin-top: 1rem;
 }
-.content .articles a {
+.article-content .articles a {
   color: #a090ff;
   text-decoration: underline;
 }
-.content .articles .article_heading {
+.article-content .articles .article_heading {
   display: flex;
   align-items: center;
   margin-bottom: 1.2rem;
 }
-.content .articles .article_heading a {
+.article-content .articles .article_heading a {
   margin-left: 5px;
   transition: opacity 120ms ease;
   opacity: 0;
 }
-.content .articles .article_heading h2:hover a,
-.content .articles .article_heading h2:focus a {
+.article-content .articles .article_heading h2:hover a,
+.article-content .articles .article_heading h2:focus a {
   opacity: 1;
 }
-.content .articles span {
+.article-content .articles span {
   min-height: 40px;
   height: 100%;
   width: 4px;
   background-color: #a090ff;
   border-radius: 4px;
 }
-.content .articles article {
+.article-content .articles article {
   margin-bottom: 2.8rem;
   scroll-margin-top: 2.8rem;
   font-size: 16px;
   line-height: 150%;
 }
-.content .articles article table {
+.article-content .articles article table {
   width: 100%;
   border-collapse: collapse;
 }
-.content .articles article table td {
+.article-content .articles article table td {
   min-width: 100px;
   padding: 0.5rem 0;
   border: 0.2px solid rgba(143, 177, 250, 0.5) !important;
   padding: 1rem !important;
   word-wrap: break-word;
 }
-.content .articles article table tr.solitude {
+.article-content .articles article table tr.solitude {
   background-color: rgba(232, 238, 253, 0.5);
 }
-.content .articles article table tr.sol_border {
+.article-content .articles article table tr.sol_border {
   border-bottom: 1px solid #91b3fa !important;
 }
-.content .articles article table tr:first-of-type {
+.article-content .articles article table tr:first-of-type {
   background-color: #e8eefd;
 }
-.content .articles article h2 {
+.article-content .articles article h2 {
   font-weight: 600;
   margin-left: 1.5rem;
 }
-.content .articles article .articleContent {
+.article-content .articles article .articleContent {
   margin-left: 3rem;
 }
-.content .articles article h3 {
+.article-content .articles article h3 {
   font-weight: 700;
   font-size: 16px;
   line-height: 150%;
   margin: 1.2rem 0;
   scroll-margin-top: 1.2rem;
 }
-.content .articles article li {
+.article-content .articles article li {
   margin-bottom: 0.5rem;
 }
-.content .articles article li strong {
+.article-content .articles article li strong {
   font-weight: 500;
 }
-.content .articles article figure {
+.article-content .articles article figure {
   margin: 0 auto;
   max-width: 100%;
 }
-.content .articles article figure img {
+.article-content .articles article figure img {
   width: 100%;
   margin: 1rem 0;
 }
 @media screen and (max-width: 1001px) {
-  .content .articles article {
+  .article-content .articles article {
     scroll-margin-top: 65px;
   }
-  .content .articles article h2 {
+  .article-content .articles article h2 {
     margin-left: 1rem;
   }
-  .content .articles article h3 {
+  .article-content .articles article h3 {
     scroll-margin-top: 65px;
   }
-  .content .articles article .articleContent {
+  .article-content .articles article .articleContent {
     margin-left: 2rem;
   }
 }
-.content .articles.addBlur {
+.article-content .articles.addBlur {
   filter: blur(5px);
   pointer-events: none;
 }
 @media screen and (max-width: 1000px) {
-  .content {
+  .article-content {
     display: block;
     width: 100%;
     padding: 0 1rem;
-  }
-  .content .sidebar {
-    display: none;
   }
 }
 

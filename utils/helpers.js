@@ -1,3 +1,4 @@
+// Sort the chapters/sections based on their No.
 export function sortList(list) {
   list.sort((a, b) => {
     let first;
@@ -16,6 +17,7 @@ export function sortList(list) {
   return list;
 }
 
+// Generate LocaleString
 export function LocaleString(number) {
   return number.toLocaleString('en-US', {
     minimumIntegerDigits: 2,
@@ -23,6 +25,7 @@ export function LocaleString(number) {
   });
 }
 
+// Truncate String
 export function Truncate(str, length) {
   if (str.length <= length) return str;
   return `${str.substring(0, length)} ...`;
@@ -34,6 +37,7 @@ function generateAlphabets() {
   return alphabets;
 }
 
+// Generate subheading for Sidebar/Menu
 export function generateSubHeadings() {
   // adding ids to h3 tags (subheadings)
   const allHeadings = document.querySelectorAll('h3');
@@ -77,6 +81,78 @@ export function generateSubHeadings() {
   });
 }
 
+// Zebra strip complex table
+export function stripTable() {
+  const tables = document.querySelectorAll('table');
+  tables.forEach((table) => {
+    let check = 1;
+    const rows = table.querySelectorAll('tr');
+    let rowspan = 0;
+    let isRowspan = false;
+
+    rows.forEach((tr) => {
+      const tds = tr.querySelectorAll('td');
+      tds.forEach((td) => {
+        const rowLength = td.getAttribute('rowspan');
+        if (rowLength) {
+          isRowspan = true;
+          rowspan = Number(rowLength);
+        }
+      });
+      if (!isRowspan && check == 1) {
+        tr.classList.add('solitude');
+        check *= -1;
+      } else if (isRowspan && check == 1) {
+        tr.classList.add('solitude');
+        rowspan -= 1;
+        if (rowspan == 0) {
+          isRowspan = false;
+          check *= -1;
+          tr.classList.add('sol_border');
+        }
+      } else if (isRowspan && check == -1) {
+        rowspan -= 1;
+        if (rowspan == 0) {
+          isRowspan = false;
+          check *= -1;
+          tr.classList.add('sol_border');
+        }
+      } else {
+        check *= -1;
+        tr.classList.add('sol_border');
+      }
+    });
+  });
+}
+
+// adds the tooltip over links with href="#"
+export function tooltipKeyword(chapter) {
+  const tooltipKeywords = document.querySelectorAll('a[href="#"]');
+  tooltipKeywords.forEach((keyword, index) => {
+    const tooltip = chapter.tooltips.find(
+      (obj) => obj.keyword.toLowerCase() == keyword.innerText.toLowerCase()
+    );
+    keyword.addEventListener('click', (e) => {
+      e.preventDefault();
+    });
+    keyword.setAttribute(
+      'aria-describedby',
+      `${chapter.slug}-tooltip-${index}`
+    );
+    keyword.setAttribute('class', 'tooltip-wrapper');
+
+    if (tooltip) {
+      const span = document.createElement('span');
+      span.setAttribute('role', 'tooltip');
+      span.setAttribute('class', 'tooltip');
+      span.setAttribute('id', `${chapter.slug}-tooltip-${index}`);
+      span.innerText = tooltip.desc;
+      keyword.appendChild(span);
+    }
+  });
+}
+
+// Debounce Function
 export function debounce(func, timeout = 300) {
   let timer;
   return (...args) => {

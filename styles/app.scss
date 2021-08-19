@@ -23,7 +23,7 @@ $midScreen: 800px;
 	padding-top: 0.5rem;
 }
 
-.content {
+.article-content {
 	margin: 2rem auto;
 	display: grid;
 	grid-template-columns: 17rem 1fr;
@@ -34,64 +34,6 @@ $midScreen: 800px;
 
 	p {
 		margin: 0.7rem 0;
-	}
-
-	.sidebarPlaceholder {
-		margin-left: -36px;
-	}
-
-	// Desktop sidebar
-	.sidebar {
-		width: 17rem;
-		background: rgba(66, 47, 161, 0.05);
-		border-radius: 10px;
-		position: sticky;
-		top: 1rem;
-
-		.dropdown-content {
-			list-style: none;
-			padding: 0;
-
-			z-index: 1;
-			width: 100%;
-
-			li.sidebarLink {
-				align-items: center;
-				margin: 0.5rem;
-				font-size: 16px;
-
-				a {
-					display: block;
-					width: inherit;
-					height: inherit;
-					margin: 0.5rem;
-					display: grid;
-					grid-template-columns: max-content 1fr;
-					grid-gap: 1rem;
-					text-align: start;
-				}
-			}
-			> div {
-				&.activeSidebar {
-					.sidebarLink {
-						background: rgba(66, 47, 161, 0.1);
-						border-color: transparent;
-						box-shadow: 0 0 0 1px #a090ff;
-						border-radius: 10px;
-					}
-					.subHeading {
-						display: block;
-					}
-				}
-				&:hover {
-					.sidebarLink {
-						background: rgba(66, 47, 161, 0.1);
-						border-color: transparent;
-						border-radius: 10px;
-					}
-				}
-			}
-		}
 	}
 
 	.articles {
@@ -221,10 +163,6 @@ $midScreen: 800px;
 		display: block;
 		width: 100%;
 		padding: 0 1rem;
-
-		.sidebar {
-			display: none;
-		}
 	}
 }
 
@@ -236,8 +174,6 @@ figure.table {
 		background: white;
 	}
 }
-
-
 
 .tooltip-wrapper {
 	position: relative;
