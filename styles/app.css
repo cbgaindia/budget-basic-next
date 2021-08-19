@@ -45,12 +45,12 @@ a {
 :root {
   font-size: 12px;
 }
-@media (min-width: 400px) {
+@media (min-width: 480px) {
   :root {
     font-size: 16px;
   }
 }
-@media (min-width: 800px) {
+@media (min-width: 768px) {
   :root {
     font-size: 18px;
   }
@@ -267,7 +267,7 @@ button {
 .highlights__back img {
   transform: rotate(180deg);
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .highlights {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr -webkit-max-content;

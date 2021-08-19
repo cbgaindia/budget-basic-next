@@ -39,7 +39,7 @@
 		margin-right: 0.5rem;
 	}
 
-  @include respond-to('lt-mobile') {
+  @include respond-to('lt-tablet') {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr max-content;
 
