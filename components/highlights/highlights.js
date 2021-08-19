@@ -12,34 +12,34 @@ const Highlight = ({ data }) => {
   useEffect(() => {
     if (pos == 0) {
       document
-        .querySelector('.highlights-container .forward')
+        .querySelector('.highlights .highlights__forward')
         .classList.remove('disabled');
       document
-        .querySelector('.highlights-container .back')
+        .querySelector('.highlights .highlights__back')
         .classList.add('disabled');
     } else if (pos == data.length - 1) {
       document
-        .querySelector('.highlights-container .back')
+        .querySelector('.highlights .highlights__back')
         .classList.remove('disabled');
 
       document
-        .querySelector('.highlights-container .forward')
+        .querySelector('.highlights .highlights__forward')
         .classList.add('disabled');
-    } else if (document.querySelector('.highlights-container .disabled'))
+    } else if (document.querySelector('.highlights .disabled'))
       document
-        .querySelector('.highlights-container .disabled')
+        .querySelector('.highlights .disabled')
         .classList.remove('disabled');
   }, [pos, data.length]);
 
   return (
-    <div className="highlights-container">
-      <div className="wrapper">
-        <span />
-        <p className="highlight-text">{data[pos].Text}</p>
-        <div className="controls">
+    <div className="highlights">
+      <div className="highlights__container wrapper">
+        <span className="highlights__bar" />
+        <p className="highlights__text">{data[pos].Text}</p>
+        <div className="highlights__controls">
           <button
             type="button"
-            className="back"
+            className="highlights__back"
             onClick={() => updateHighlight(-1)}
             onKeyPress={() => updateHighlight(-1)}
           >
@@ -52,7 +52,7 @@ const Highlight = ({ data }) => {
           </button>
           <button
             type="button"
-            className="forward"
+            className="highlights__forward"
             onClick={() => updateHighlight(1)}
             onKeyPress={() => updateHighlight(1)}
           >

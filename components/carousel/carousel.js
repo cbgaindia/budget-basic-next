@@ -147,8 +147,9 @@ const Carousel = ({ youtube }) => {
         </div>
         <div className="videos">
           <div className="videos__container">
-            {youtube.map((video) => (
+            {youtube.map((video, index) => (
               <LiteYouTubeEmbed
+                key={`carousel-${index}`}
                 id={handleVideoLink(video.link)}
                 title={video.title}
                 noCookie

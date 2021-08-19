@@ -1,0 +1,84 @@
+@use '../../styles/tools' as *;
+
+.sidebar {
+	margin-left: -36px;
+	width: 17rem;
+
+	.content {
+		list-style: none;
+		padding: 0;
+		background: rgba(66, 47, 161, 0.05);
+		border-radius: 10px;
+		position: sticky;
+		top: 1rem;
+
+		z-index: 1;
+		width: 100%;
+
+		&__link {
+			align-items: center;
+			margin: 0.5rem;
+			font-size: 16px;
+
+			a {
+				display: block;
+				width: inherit;
+				height: inherit;
+				margin: 0 0.5rem;
+				display: grid;
+				grid-template-columns: max-content 1fr;
+				grid-gap: 1rem;
+				text-align: start;
+			}
+		}
+		&--active {
+			.content__link {
+				background: rgba(66, 47, 161, 0.1);
+				border: 1px solid #a090ff;
+				box-sizing: border-box;
+				border-radius: 10px;
+			}
+
+			.sub-heading {
+				display: block;
+			}
+		}
+		&__container:hover .content__link {
+			background: rgba(66, 47, 161, 0.1);
+			border-color: transparent;
+			border-radius: 10px;
+		}
+	}
+
+  .sub-heading {
+    list-style: none;
+    display: none;
+    padding-left: 20px;
+  
+    &__link {
+      font-weight: normal;
+      font-size: 14px;
+      line-height: 135%;
+      margin-left: 0.5rem;
+  
+      a {
+        display: block;
+        width: inherit;
+        height: inherit;
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        grid-gap: 0.5rem;
+        text-align: start;
+      }
+  
+      &--active {
+        color: #4b4797;
+        font-weight: bold;
+      }
+    }
+  }
+
+	@include respond-to('lt-tablet') {
+		display: none;
+	} 
+}

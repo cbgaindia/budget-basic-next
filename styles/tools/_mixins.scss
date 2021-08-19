@@ -1,0 +1,58 @@
+@use 'breakpoints' as *;
+@use 'variables' as *;
+
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin control-button {
+  button {
+    background: #0f1525;
+    border-radius: 2px;
+    border: none;
+    width: 43px;
+    height: 30px;
+
+    &.disabled {
+      background-color: rgba(255, 255, 255, 0.1);
+      pointer-events: none;
+    }
+  }
+}
+
+@mixin search_button {
+  width: 130px;
+		height: 38px;
+		box-sizing: border-box;
+		background: #4b4797;
+		border-radius: 4px;
+		border: 2px solid transparent;
+		font-weight: 400;
+		font-size: 16px;
+		color: #ffffff;
+		padding-left: 1rem;
+		display: flex;
+		align-items: center;
+		justify-self: flex-end;
+		margin-top: 1rem;
+
+		transition: background-color $d $e, border $d $e;
+		background-image: url(public/assets/icons/search.svg);
+		background-repeat: no-repeat;
+		background-position: right 10px center;
+
+		&:hover,
+		&:focus {
+			background-color: #273051;
+			border: 2px solid #4b4797;
+		}
+}

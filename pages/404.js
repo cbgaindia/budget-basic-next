@@ -1,5 +1,5 @@
-import Header from 'components/header';
-import Seo from 'components/seo';
+import Header from 'components/header/header';
+import Seo from 'components/seo/seo';
 
 export default function Custom404() {
   const seo = {

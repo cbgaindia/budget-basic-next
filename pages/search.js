@@ -1,9 +1,9 @@
 import React, { useState, useMemo } from 'react';
 import { MeiliSearch } from 'meilisearch';
-import Header from 'components/header';
+import Header from 'components/header/header';
 import Link from 'next/link';
 import { Truncate, debounce } from 'utils/helpers';
-import Seo from 'components/seo';
+import Seo from 'components/seo/seo';
 
 const client = new MeiliSearch({
   host: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
@@ -60,8 +60,9 @@ const Search = () => {
 
       <Header desc={<h2>Search</h2>} color="#29314F" searchPage />
 
-      <div className="searchPage wrapper">
+      <div className="search wrapper">
         <input
+          className="search__input"
           type="text"
           aria-label="Search through site content"
           placeholder="Search your keywords"
@@ -69,14 +70,14 @@ const Search = () => {
         />
 
         {showSearch && (
-          <div className="searchPageResults">
-            <p className="suggested">Top Results</p>
+          <div className="search__results">
+            <p className="search__headline">Top Results</p>
             {search.length > 0 ? (
               <ul>
                 {search.map((item, index) => (
                   <li key={`search-${index}`}>
                     <Link href={`/${item.slug}`}>
-                      <a role="link" tabIndex="0" className="searchTitle">
+                      <a role="link" tabIndex="0" className="search__title">
                         <div
                           dangerouslySetInnerHTML={{
                             __html: Truncate(item.title, 300),
@@ -84,7 +85,7 @@ const Search = () => {
                         />
                       </a>
                     </Link>
-                    <div className="searchChapter">
+                    <div className="search__chapter">
                       <Link href={`/${item.chapter_Slug}`}>
                         <a role="link">
                           <div
@@ -97,7 +98,7 @@ const Search = () => {
                     </div>
 
                     <div
-                      className="searchContent"
+                      className="search__content"
                       dangerouslySetInnerHTML={{
                         __html: Truncate(item.content, 300),
                       }}
@@ -106,7 +107,7 @@ const Search = () => {
                 ))}
               </ul>
             ) : (
-              <p className="noResults">No results found</p>
+              <p className="search__no-results">No results found</p>
             )}
           </div>
         )}

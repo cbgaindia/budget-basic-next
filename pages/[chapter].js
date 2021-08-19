@@ -2,187 +2,43 @@ import React from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { fetchAPI } from 'lib/api';
-import { sortList, LocaleString, generateSubHeadings } from 'utils/helpers';
+import { sortList, stripTable, tooltipKeyword } from 'utils/helpers';
 import useWindowDimensions from 'utils/useWindowDimensions';
-import Seo from 'components/seo';
-import Header from 'components/header';
+import Seo from 'components/seo/seo';
+import Header from 'components/header/header';
 import Navigation from 'components/navigation/navigation';
-import Article from 'components/article';
-import Menu from 'components/menu';
+import Menu from 'components/menu/menu';
+import Sidebar from 'components/sidebar/sidebar';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
-
-function handleSidebarAnimation() {
-  const articles = gsap.utils.toArray('article');
-  articles.forEach((article) => {
-    const sideLink = document.querySelector(
-      `div[keyid=${article.getAttribute('id')}]`
-    );
-    ScrollTrigger.create({
-      id: `st-id`,
-      trigger: article,
-      start: 'top 60px',
-      end: 'bottom 10px',
-      refreshPriority: 1,
-      toggleActions: 'restart complete reverse reset',
-      onEnter() {
-        sideLink.classList.add('activeSidebar');
-      },
-      onLeave() {
-        sideLink.classList.remove('activeSidebar');
-      },
-      onEnterBack() {
-        sideLink.classList.add('activeSidebar');
-      },
-      onLeaveBack() {
-        sideLink.classList.remove('activeSidebar');
-      },
-    });
-  });
-}
-
-function handleSubheadingAnimation() {
-  const subheadings = gsap.utils.toArray('h3');
-  subheadings.forEach((subheading, index) => {
-    const subLink = document.querySelector(
-      `li[subid=${subheading.getAttribute('id')}]`
-    );
-    ScrollTrigger.create({
-      id: `subheading-id`,
-      trigger: subheading,
-      start: 'top 60px',
-      endTrigger: () =>
-        index == subheadings.length - 1 ? '.footer' : subheadings[index + 1],
-      end: () => (index < subheadings.length ? 'top 60px' : 'end 60px'),
-      refreshPriority: 1,
-      toggleActions: 'restart complete reverse reset',
-      onEnter() {
-        subLink.classList.add('activeSubLink');
-      },
-      onLeave() {
-        subLink.classList.remove('activeSubLink');
-      },
-      onEnterBack() {
-        subLink.classList.add('activeSubLink');
-      },
-      onLeaveBack() {
-        subLink.classList.remove('activeSubLink');
-      },
-    });
-  });
-}
-
-function stripTable() {
-  const tables = document.querySelectorAll('table');
-  tables.forEach((table) => {
-    let check = 1;
-    const rows = table.querySelectorAll('tr');
-    let rowspan = 0;
-    let isRowspan = false;
-
-    rows.forEach((tr) => {
-      const tds = tr.querySelectorAll('td');
-      tds.forEach((td) => {
-        const rowLength = td.getAttribute('rowspan');
-        if (rowLength) {
-          isRowspan = true;
-          rowspan = Number(rowLength);
-        }
-      });
-      if (!isRowspan && check == 1) {
-        tr.classList.add('solitude');
-        check *= -1;
-      } else if (isRowspan && check == 1) {
-        tr.classList.add('solitude');
-        rowspan -= 1;
-        if (rowspan == 0) {
-          isRowspan = false;
-          check *= -1;
-          tr.classList.add('sol_border');
-        }
-      } else if (isRowspan && check == -1) {
-        rowspan -= 1;
-        if (rowspan == 0) {
-          isRowspan = false;
-          check *= -1;
-          tr.classList.add('sol_border');
-        }
-      } else {
-        check *= -1;
-        tr.classList.add('sol_border');
-      }
-    });
-  });
-}
 
 function goToTopHandler() {
   if (window.scrollY > 600)
-    document.querySelector('.backToTop').classList.add('active');
-  else document.querySelector('.backToTop').classList.remove('active');
-}
-
-// adds the tooltip over links with href="#"
-function tooltipKeyword(chapter) {
-  const tooltipKeywords = document.querySelectorAll('p a[href="#"]');
-  tooltipKeywords.forEach((keyword, index) => {
-    const tooltip = chapter.tooltips.find(
-      (obj) => obj.keyword.toLowerCase() == keyword.innerText.toLowerCase()
-    );
-    keyword.addEventListener('click', (e) => {
-      e.preventDefault();
-    });
-    keyword.setAttribute(
-      'aria-describedby',
-      `${chapter.slug}-tooltip-${index}`
-    );
-    keyword.setAttribute('class', 'tooltip-wrapper');
-
-    if (tooltip) {
-      const span = document.createElement('span');
-      span.setAttribute('role', 'tooltip');
-      span.setAttribute('class', 'tooltip');
-      span.setAttribute('id', `${chapter.slug}-tooltip-${index}`);
-      span.innerText = tooltip.desc;
-      keyword.appendChild(span);
-    }
-  });
+    document.querySelector('.back-top').classList.add('active');
+  else document.querySelector('.back-top').classList.remove('active');
 }
 
 const Chapter = ({ chapter, chapters }) => {
   const { width } = useWindowDimensions();
 
   useLayoutEffect(() => {
+    const jumpIcon = document.querySelector('.back-top');
     gsap.registerPlugin(ScrollTrigger);
-    if (chapter.sections.length > 0) {
-      if (width >= 1001) {
-        handleSidebarAnimation();
-        generateSubHeadings();
-        handleSubheadingAnimation();
-      }
 
+    if (chapter.sections.length > 0) {
       stripTable();
       tooltipKeyword(chapter);
-
-      document.querySelectorAll('img').forEach((img) => {
-        if (img.complete) {
-          ScrollTrigger.refresh();
-        } else {
-          img.addEventListener('load', () => ScrollTrigger.refresh(), {
-            passive: true,
-          });
-        }
-      });
-
-      document.addEventListener('scroll', goToTopHandler);
     }
-    return () => {
-      document.removeEventListener('scroll', goToTopHandler);
 
-      if (ScrollTrigger.getById('st-id')) {
-        ScrollTrigger.getById('st-id').kill();
-      }
-      if (ScrollTrigger.getById('subheading-id')) {
-        ScrollTrigger.getById('subheading-id').kill();
-      }
+    // go-to-top
+    document.addEventListener('scroll', goToTopHandler);
+    jumpIcon.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    return () => {
+      jumpIcon.removeEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      document.removeEventListener('scroll', goToTopHandler);
     };
   }, [chapter, width]);
 
@@ -193,6 +49,7 @@ const Chapter = ({ chapter, chapters }) => {
     metaTitle: chapter.Title,
     metaDescription: chapter.Desc,
     article: true,
+    icon: chapter.icon,
   };
 
   function headerDesc() {
@@ -200,54 +57,40 @@ const Chapter = ({ chapter, chapters }) => {
   }
 
   return (
-    <div>
+    <>
       <Seo seo={seo} />
 
       <Header desc={headerDesc()} color="#29314F" />
-      {width < 1000 && chapter.sections.length > 0 && (
-        <Menu chapter={chapter} key="mobilemenu" isMobile={width < 1000} />
+      {width < 768 && chapter.sections.length > 0 && (
+        <Menu chapter={chapter} isMobile={width < 768} />
       )}
       {chapter.sections.length > 0 ? (
-        <div className="content wrapper">
-          <div className="sidebarPlaceholder">
-            <section className="sidebar" key="desktopSidebar">
-              <ul className="dropdown-content">
-                {chapter.sections.map((article, index) => (
-                  <div key={`menu-${article.id}`} keyid={article.slug}>
-                    <li className="sidebarLink">
-                      <a href={`#${article.slug}`}>
-                        <p>{LocaleString(index + 1)}</p>
-                        <p>{article.Title}</p>
-                      </a>
-                    </li>
+        <div className="chapter wrapper">
+          <Sidebar chapter={chapter} />
 
-                    <ul className="subHeading" />
-                  </div>
-                ))}
-              </ul>
-            </section>
-          </div>
-
-          <section className="articles">
+          <section className="chapter__container">
             {chapter.sections.map((article) => (
-              <article id={article.slug} key={article.id}>
-                <div className="article_heading">
+              <article className="section" id={article.slug} key={article.id}>
+                <div className="section__heading">
                   <span />
                   <h2>
                     {article.Title}
-                    <a href={`#${article.slug}`} className="header-anchor">
+                    <a href={`#${article.slug}`} className="section__anchor">
                       #
                     </a>
                   </h2>
                 </div>
 
-                <Article article={article.Content} />
+                <div
+                  className="section__content"
+                  dangerouslySetInnerHTML={{ __html: article.Content }}
+                />
               </article>
             ))}
           </section>
         </div>
       ) : (
-        <div className="noContent">
+        <div className="no-content">
           <p>To be updated soon</p>
         </div>
       )}
@@ -256,7 +99,7 @@ const Chapter = ({ chapter, chapters }) => {
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
       />
-      <a className="backToTop" href="#">
+      <a className="back-top" href="#to-top">
         <span className="screen-reader-text">Back to Top</span>
         <svg width="32" height="32" viewBox="0 0 100 100">
           <path
@@ -268,7 +111,7 @@ const Chapter = ({ chapter, chapters }) => {
           />
         </svg>
       </a>
-    </div>
+    </>
   );
 };
 

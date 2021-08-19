@@ -1,0 +1,80 @@
+@use '../../styles/tools' as *;
+
+.navigation {
+	width: 100%;
+	color: #fff;
+	background-color: #0f1525;
+
+	&__container {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		width: 100%;
+		max-width: 1260px;
+		padding: 1rem 0.5rem;
+		justify-content: space-between;
+	}
+	&__section {
+		width: 100%;
+	}
+
+	&__button {
+		display: grid;
+		grid-template-columns: max-content 1fr;
+
+		img {
+			cursor: pointer;
+			width: 3rem;
+		}
+
+		span {
+			p {
+				text-transform: uppercase;
+				font-weight: bold;
+				font-size: 12px;
+			}
+
+			h2 {
+				font-weight: normal;
+				font-size: 1.2rem;
+				line-height: 135%;
+			}
+		}
+
+		&--back {
+			justify-self: start;
+			span {
+				padding-left: 1rem;
+			}
+		}
+
+		&--forward {
+			text-align: end;
+			justify-self: end;
+			grid-template-columns: 1fr max-content;
+
+			img {
+				order: 1;
+				transform: scaleX(-1);
+			}
+			span {
+				padding-right: 1rem;
+			}
+		}
+	}
+
+	@include respond-to('lt-tablet') {
+		&__section {
+			a {
+				span {
+					p {
+						font-size: 0.8rem;
+					}
+
+					h2 {
+						font-size: 1rem;
+					}
+				}
+			}
+		}
+	}
+}

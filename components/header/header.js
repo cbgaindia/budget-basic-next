@@ -7,18 +7,18 @@ const Header = ({ desc, color, searchPage }) => {
 
   return (
     <header className="header" style={{ backgroundColor: color }}>
-      <div className="wrapper">
+      <div className="header__container wrapper">
         <section className="branding">
           <Link href="/">
-            <a className="logo">
-              <h1>{title}</h1>
+            <a>
+              <h1 className="branding__logo">{title}</h1>
             </a>
           </Link>
 
-          <span className="icon-seperator" />
+          <span className="branding__seperator" />
 
           <a
-            className="obiHeader"
+            className="branding__obi"
             rel="noopener noreferrer"
             href="https://openbudgetsindia.org/"
             target="_blank"
@@ -33,10 +33,10 @@ const Header = ({ desc, color, searchPage }) => {
         </section>
         {!searchPage && (
           <Link href="/search">
-            <a className="searchLink">Search</a>
+            <a className="header__search">Search</a>
           </Link>
         )}
-        <section className="headerDesc">{desc}</section>
+        <section className="header__desc">{desc}</section>
       </div>
     </header>
   );
