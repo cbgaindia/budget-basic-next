@@ -3,7 +3,7 @@ import { MeiliSearch } from 'meilisearch';
 import Header from 'components/header/header';
 import Link from 'next/link';
 import { Truncate, debounce } from 'utils/helpers';
-import Seo from 'components/seo';
+import Seo from 'components/seo/seo';
 
 const client = new MeiliSearch({
   host: process.env.NEXT_PUBLIC_MEILISEARCH_URL,

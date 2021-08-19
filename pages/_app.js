@@ -3,7 +3,7 @@ import App from 'next/app';
 import Head from 'next/head';
 import React, { createContext } from 'react';
 import { fetchAPI } from 'lib/api';
-import Layout from 'components/layout';
+import Layout from 'components/layout/layout';
 import NextNprogress from 'nextjs-progressbar';
 import Router from 'next/router';
 import smoothscroll from 'smoothscroll-polyfill';

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { fetchAPI } from 'lib/api';
-import Seo from 'components/seo';
+import Seo from 'components/seo/seo';
 import Card from 'components/card/card';
 import { sortList } from 'utils/helpers';
 import Header from 'components/header/header';

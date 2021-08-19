@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { fetchAPI } from 'lib/api';
 import { sortList, stripTable, tooltipKeyword } from 'utils/helpers';
 import useWindowDimensions from 'utils/useWindowDimensions';
-import Seo from 'components/seo';
+import Seo from 'components/seo/seo';
 import Header from 'components/header/header';
 import Navigation from 'components/navigation/navigation';
 import Menu from 'components/menu/menu';
