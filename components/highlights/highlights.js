@@ -43,6 +43,7 @@ const Highlight = ({ data }) => {
             onClick={() => updateHighlight(-1)}
             onKeyPress={() => updateHighlight(-1)}
           >
+            <span className="screen-reader-text">Previous Highlight</span>
             <svg
               width="24"
               height="22"
@@ -60,6 +61,7 @@ const Highlight = ({ data }) => {
             onClick={() => updateHighlight(1)}
             onKeyPress={() => updateHighlight(1)}
           >
+            <span className="screen-reader-text">Next Highlight</span>
             <svg
               width="24"
               height="22"

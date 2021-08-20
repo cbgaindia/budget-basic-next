@@ -10,7 +10,7 @@ const Header = ({ desc, color, searchPage }) => {
       <div className="header__container wrapper">
         <section className="branding">
           <Link href="/">
-            <a>
+            <a role="banner">
               <h1 className="branding__logo">{title}</h1>
             </a>
           </Link>
@@ -25,7 +25,7 @@ const Header = ({ desc, color, searchPage }) => {
           >
             <img
               src="/assets/obi_header.png"
-              alt="Open Budgets India Logo"
+              alt="Open Budgets India"
               width={201}
               height={28}
             />
@@ -33,7 +33,9 @@ const Header = ({ desc, color, searchPage }) => {
         </section>
         {!searchPage && (
           <Link href="/search">
-            <a className="header__search">Search</a>
+            <a aria-label="Search Page" className="header__search">
+              Search
+            </a>
           </Link>
         )}
         {desc && <section className="header__desc">{desc}</section>}

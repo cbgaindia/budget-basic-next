@@ -122,12 +122,12 @@ export const Attr_Links = {
 export const Attr_Logos = {
   links: [
     {
-      alt: 'cc logo obi',
+      alt: 'creative commons licence',
       src: '/assets/icons/cc-by-logo.svg',
       value: 'https://creativecommons.org/licenses/by/4.0/',
     },
     {
-      alt: 'open data logo obi',
+      alt: 'open definition licence',
       src: '/assets/icons/open_data_logo.png',
       value: 'https://opendefinition.org/od/2.1/en/',
     },
@@ -137,17 +137,17 @@ export const Attr_Logos = {
 export const Attr_Social = {
   links: [
     {
-      alt: 'github logo obi',
+      alt: 'CBGA India github repo',
       src: '/assets/icons/github-icon.svg',
       value: 'https://github.com/cbgaindia',
     },
     {
-      alt: 'twitter logo obi',
+      alt: 'Open Budgets India twitter page',
       src: '/assets/icons/twitter-icon.svg',
       value: 'https://twitter.com/OpenBudgetsIn',
     },
     {
-      alt: 'facebook logo obi',
+      alt: 'Open Budgets India facebook page',
       src: '/assets/icons/facebook-icon.svg',
       value: 'https://www.facebook.com/OpenBudgetsIndia',
     },

@@ -56,6 +56,12 @@ a {
   }
 }
 
+:focus {
+  outline-width: 3px;
+  outline-color: #78aeda;
+  outline-style: solid;
+}
+
 html,
 body {
   padding: 0;
@@ -256,10 +262,6 @@ button {
 .highlights__controls button.disabled {
   background-color: rgba(255, 255, 255, 0.1);
   pointer-events: none;
-}
-.highlights__controls button::-moz-focus-inner {
-  padding: 0;
-  border: 0;
 }
 .highlights__back {
   margin-right: 0.5rem;
@@ -466,6 +468,10 @@ button {
           user-select: none;
   cursor: -webkit-grab;
   cursor: grab;
+  margin-bottom: 1.5rem;
+  list-style: none;
+  align-self: flex-end;
+  padding-left: 0;
 }
 .carousel .videos::-webkit-scrollbar {
   display: none;
@@ -474,19 +480,11 @@ button {
   cursor: -webkit-grabbing;
   cursor: grabbing;
 }
-.carousel .videos__container {
-  display: flex;
-  overflow: none;
-  align-self: flex-end;
-  margin-bottom: 2rem;
-}
-.carousel .videos__container iframe {
+.carousel iframe {
   width: 360px;
   height: 190px;
   margin-right: 2rem;
-  display: grid;
-  place-content: center;
-  transition: transform 0.3s ease;
+  border: none;
 }
 
 .yt-lite {

@@ -18,28 +18,28 @@ function buttonDisable() {
       const scrollLeftMax = scrollWidth - clientWidth;
       if (scrollLeft <= 0) {
         document
-          .querySelector('.carousel .carousel__forward')
-          .classList.remove('disabled');
+          .querySelector('.carousel__forward')
+          .classList.remove('carousel__forward--disable');
         document
-          .querySelector('.carousel .carousel__back')
-          .classList.add('disabled');
+          .querySelector('.carousel__back')
+          .classList.add('carousel__back--disable');
       }
       if (scrollLeft >= scrollLeftMax - 10) {
         document
-          .querySelector('.carousel .carousel__back')
-          .classList.remove('disabled');
+          .querySelector('.carousel__back')
+          .classList.remove('carousel__back--disable');
 
         document
-          .querySelector('.carousel .carousel__forward')
-          .classList.add('disabled');
-      } else if (
-        scrollLeft > 10 &&
-        scrollLeft < scrollLeftMax &&
-        document.querySelector('.carousel .disabled')
-      )
+          .querySelector('.carousel__forward')
+          .classList.add('carousel__forward--disable');
+      } else if (scrollLeft > 10 && scrollLeft < scrollLeftMax) {
         document
-          .querySelector('.carousel .disabled')
-          .classList.remove('disabled');
+          .querySelector('.carousel__back')
+          .classList.remove('carousel__back--disable');
+        document
+          .querySelector('.carousel__forward')
+          .classList.remove('carousel__forward--disable');
+      }
     },
     { passive: true }
   );
@@ -106,11 +106,15 @@ const Carousel = ({ youtube }) => {
   useEffect(() => {
     if (document.querySelector('.videos').scrollLeft == 0)
       document
-        .querySelector('.carousel .carousel__back')
-        .classList.add('disabled');
+        .querySelector('.carousel__back')
+        .classList.add('carousel__back--disable');
 
     buttonDisable();
     scrollOnDrag();
+
+    document.querySelectorAll('.lty-playbtn').forEach((playButton) => {
+      playButton.setAttribute('role', 'tab');
+    });
   }, []);
 
   return (
@@ -120,10 +124,13 @@ const Carousel = ({ youtube }) => {
         <div className="carousel__controls">
           <button
             type="button"
+            tabIndex="-1"
             className="carousel__back"
             onClick={() => updateSlider(-1)}
             onKeyPress={() => updateSlider(-1)}
           >
+            <span className="screen-reader-text">Previous Carousel Video</span>
+
             <svg
               width="24"
               height="22"
@@ -137,10 +144,13 @@ const Carousel = ({ youtube }) => {
           </button>
           <button
             type="button"
+            tabIndex="-1"
             className="carousel__forward"
             onClick={() => updateSlider(1)}
             onKeyPress={() => updateSlider(1)}
           >
+            <span className="screen-reader-text">Next Carousel Video</span>
+
             <svg
               width="24"
               height="22"
@@ -153,18 +163,19 @@ const Carousel = ({ youtube }) => {
             </svg>
           </button>
         </div>
-        <div className="videos">
-          <div className="videos__container">
-            {youtube.map((video, index) => (
+        <ul className="videos" role="tablist">
+          {youtube.map((video, index) => (
+            <li key={`youtube-${index}`} role="presentation">
               <LiteYouTubeEmbed
                 key={`carousel-${index}`}
                 id={handleVideoLink(video.link)}
                 title={video.title}
+                params="disablekb=1"
                 noCookie
               />
-            ))}
-          </div>
-        </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );

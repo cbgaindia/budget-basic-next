@@ -55,6 +55,12 @@ a {
 	}
 }
 
+:focus {
+	outline-width: 3px;
+	outline-color: #78aeda;
+	outline-style: solid;
+}
+
 html,
 body {
 	padding: 0;
