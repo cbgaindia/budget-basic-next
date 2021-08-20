@@ -99,7 +99,7 @@ project. Learn more [here](components/README.md)
 
 ### GSAP
 
-To handle animation for sidebar in desktop and menubar for mobile, [GSAP](https://greensock.com/gsap/) is used. You will find following
+To handle styling on scroll for sidebar in desktop and menubar for mobile, [GSAP](https://greensock.com/gsap/) is used. You will find following
 function in `/pages/[chapter].js`:
 - `handleSidebarAnimation`
 - `handleSubheadingAnimation` 
@@ -108,7 +108,7 @@ and the following in `/components/menu.js`:
 - `handleMenuAnimation`
 - `handleSubheadingAnimation`
 
-These functions use GSAP [ScrollTrigger](https://greensock.com/scrolltrigger/) to handle pinning and other animations.
+These functions use GSAP [ScrollTrigger](https://greensock.com/scrolltrigger/) to add classes to `Menu` and `Sidebar`.
 
 ## Data Fetching
 
