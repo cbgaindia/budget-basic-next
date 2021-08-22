@@ -4,13 +4,13 @@ This project uses a Sass preprocessor to handle styling. If you are using VSCode
 
 
 
-Main style file is located at `app.scss` includes style from all pages. This file will only load stylesheets usign `@use` rule.
+Main style file located at `app.scss` includes style from all pages. This file will only load stylesheets usign `@use` rule.
 
 ## Directories
 
 ### Tools
 
-Includes stylesheets which include `breakpoints` for screen-sizes, `mixins`, `variables` and `global` styles.
+Contains stylesheets which include `breakpoints`, `mixins`, `variables` and `global` styles.
 
 ### Pages
 
