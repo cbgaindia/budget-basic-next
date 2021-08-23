@@ -67,7 +67,7 @@
 		@include search_button;
 	}
 
-	@include respond-to('lt-tablet') {
+	@include respond-to('lt-laptop') {
 		display: flex;
 		padding: 1rem 2rem;
 

@@ -78,7 +78,7 @@
     }
   }
 
-	@include respond-to('lt-tablet') {
+	@include respond-to('lt-laptop') {
 		display: none;
 	} 
 }

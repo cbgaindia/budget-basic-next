@@ -10,7 +10,6 @@ import Navigation from 'components/navigation/navigation';
 import Menu from 'components/menu/menu';
 import Sidebar from 'components/sidebar/sidebar';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
-import Skiplink from 'components/skiplink/skiplink';
 
 function goToTopHandler() {
   if (window.scrollY > 600)
@@ -33,7 +32,12 @@ const Chapter = ({ chapter, chapters }) => {
     // go-to-top
     document.addEventListener('scroll', goToTopHandler);
     jumpIcon.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.querySelector('#top-of-site-pixel-anchor').focus({
+          preventScroll: true,
+        });
+      }, 10);
     });
     return () => {
       jumpIcon.removeEventListener('click', () => {
@@ -60,14 +64,16 @@ const Chapter = ({ chapter, chapters }) => {
   return (
     <>
       <Seo seo={seo} />
-      <Skiplink />
 
       <Header desc={headerDesc()} color="#29314F" />
-      {width < 768 && chapter.sections.length > 0 && (
-        <Menu chapter={chapter} isMobile={width < 768} />
+      {width < 1025 && chapter.sections.length > 0 && (
+        <Menu chapter={chapter} isMobile={width < 1025} />
       )}
+      <div className="skiptarget">
+        <span id="maincontent">-</span>
+      </div>
       {chapter.sections.length > 0 ? (
-        <div className="chapter wrapper">
+        <main id="main" className="chapter wrapper">
           <Sidebar chapter={chapter} />
 
           <section className="chapter__container">
@@ -90,7 +96,7 @@ const Chapter = ({ chapter, chapters }) => {
               </article>
             ))}
           </section>
-        </div>
+        </main>
       ) : (
         <div className="no-content">
           <p>To be updated soon</p>
@@ -101,7 +107,7 @@ const Chapter = ({ chapter, chapters }) => {
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
       />
-      <a className="back-top" href="#to-top">
+      <button type="button" className="back-top">
         <span className="screen-reader-text">Back to Top</span>
         <svg width="32" height="32" viewBox="0 0 100 100">
           <path
@@ -112,7 +118,7 @@ const Chapter = ({ chapter, chapters }) => {
           1.4297-0.96094 2.2891-0.96094 0.86328 0 1.6914 0.34766 2.293 0.96094l22.918 25c0.88672 1.2891 0.6875 3.0352-0.47266 4.0898-1.1562 1.0508-2.9141 1.0859-4.1133 0.078125z"
           />
         </svg>
-      </a>
+      </button>
     </>
   );
 };

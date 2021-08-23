@@ -7,7 +7,6 @@ import { sortList } from 'utils/helpers';
 import Header from 'components/header/header';
 import Highlight from 'components/highlights/highlights';
 import Carousel from 'components/carousel/carousel';
-import Skiplink from 'components/skiplink/skiplink';
 
 export default function Home({ homepage, chapters }) {
   sortList(chapters);
@@ -18,7 +17,6 @@ export default function Home({ homepage, chapters }) {
   return (
     <>
       <Seo seo={homepage.seo} />
-      <Skiplink />
 
       <Header desc={headerDesc()} color="#101524" />
       {homepage.highlight.length > 0 && <Highlight data={homepage.highlight} />}
@@ -28,7 +26,10 @@ export default function Home({ homepage, chapters }) {
           <a>Search</a>
         </Link>
       </section>
-      <main id="main" className="wrapper home__cards">
+      <div className="skiptarget">
+        <span id="maincontent">-</span>
+      </div>
+      <main id="main" tabIndex="-1" className="wrapper home__cards">
         {chapters.map((chapter, index) => {
           const chapterDetails = {
             title: chapter.Title,
