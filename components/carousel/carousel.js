@@ -9,42 +9,6 @@ function updateSlider(n) {
     .scrollTo({ left: scrollPos + n * 350, behavior: 'smooth' });
 }
 
-function buttonDisable() {
-  document.querySelector('.videos').addEventListener(
-    'scroll',
-    () => {
-      const { scrollLeft, scrollWidth, clientWidth } =
-        document.querySelector('.videos');
-      const scrollLeftMax = scrollWidth - clientWidth;
-      if (scrollLeft <= 0) {
-        document
-          .querySelector('.carousel__forward')
-          .classList.remove('carousel__forward--disable');
-        document
-          .querySelector('.carousel__back')
-          .classList.add('carousel__back--disable');
-      }
-      if (scrollLeft >= scrollLeftMax - 10) {
-        document
-          .querySelector('.carousel__back')
-          .classList.remove('carousel__back--disable');
-
-        document
-          .querySelector('.carousel__forward')
-          .classList.add('carousel__forward--disable');
-      } else if (scrollLeft > 10 && scrollLeft < scrollLeftMax) {
-        document
-          .querySelector('.carousel__back')
-          .classList.remove('carousel__back--disable');
-        document
-          .querySelector('.carousel__forward')
-          .classList.remove('carousel__forward--disable');
-      }
-    },
-    { passive: true }
-  );
-}
-
 function scrollOnDrag() {
   const slider = document.querySelector('.videos');
   let isDown = false;
@@ -104,12 +68,6 @@ function handleVideoLink(link) {
 
 const Carousel = ({ youtube }) => {
   useEffect(() => {
-    if (document.querySelector('.videos').scrollLeft == 0)
-      document
-        .querySelector('.carousel__back')
-        .classList.add('carousel__back--disable');
-
-    buttonDisable();
     scrollOnDrag();
 
     document.querySelectorAll('.lty-playbtn').forEach((playButton) => {
@@ -127,7 +85,6 @@ const Carousel = ({ youtube }) => {
             tabIndex="-1"
             className="carousel__back"
             onClick={() => updateSlider(-1)}
-            onKeyPress={() => updateSlider(-1)}
           >
             <span className="screen-reader-text">Previous Carousel Video</span>
 
@@ -147,7 +104,6 @@ const Carousel = ({ youtube }) => {
             tabIndex="-1"
             className="carousel__forward"
             onClick={() => updateSlider(1)}
-            onKeyPress={() => updateSlider(1)}
           >
             <span className="screen-reader-text">Next Carousel Video</span>
 
@@ -165,7 +121,11 @@ const Carousel = ({ youtube }) => {
         </div>
         <ul className="videos" role="tablist">
           {youtube.map((video, index) => (
-            <li key={`youtube-${index}`} role="presentation">
+            <li
+              key={`youtube-${index}`}
+              role="presentation"
+              title={video.title}
+            >
               <LiteYouTubeEmbed
                 key={`carousel-${index}`}
                 id={handleVideoLink(video.link)}

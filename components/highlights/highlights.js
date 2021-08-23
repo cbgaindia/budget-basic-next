@@ -1,47 +1,53 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import Link from 'next/link';
 
 const Highlight = ({ data }) => {
-  const [pos, setPos] = useState(0);
+  let pos = 0;
 
   function updateHighlight(n) {
-    if (n == -1 && pos == 0) return;
-    if (n == 1 && pos == data.length - 1) return;
+    if (n == -1 && pos == 0) pos = data.length - 1;
+    else if (n == 1 && pos == data.length - 1) pos = 0;
+    else pos += n;
 
-    setPos(pos + n);
+    document
+      .querySelector(`.news__item--current`)
+      .classList.remove('news__item--current');
+    document
+      .querySelector(`#highlight-${pos}`)
+      .classList.add('news__item--current');
   }
   useEffect(() => {
-    if (pos == 0) {
-      document
-        .querySelector('.highlights .highlights__forward')
-        .classList.remove('disabled');
-      document
-        .querySelector('.highlights .highlights__back')
-        .classList.add('disabled');
-    } else if (pos == data.length - 1) {
-      document
-        .querySelector('.highlights .highlights__back')
-        .classList.remove('disabled');
-
-      document
-        .querySelector('.highlights .highlights__forward')
-        .classList.add('disabled');
-    } else if (document.querySelector('.highlights .disabled'))
-      document
-        .querySelector('.highlights .disabled')
-        .classList.remove('disabled');
-  }, [pos, data.length]);
+    document.querySelector('#highlight-0').classList.add('news__item--current');
+  }, []);
 
   return (
     <div className="highlights">
       <div className="highlights__container wrapper">
         <span className="highlights__bar" />
-        <p className="highlights__text">{data[pos].Text}</p>
+        <ul className="news">
+          {data.map((highlight, index) => (
+            <li
+              key={`highlight-${index}`}
+              id={`highlight-${index}`}
+              className="news__item"
+              aria-live="polite"
+            >
+              {highlight.Link ? (
+                <Link href={`/${highlight.Link}`}>
+                  <a className="highlights__text">{highlight.Text}</a>
+                </Link>
+              ) : (
+                <p className="highlights__text">{highlight.Text}</p>
+              )}
+            </li>
+          ))}
+        </ul>
+
         <div className="highlights__controls">
           <button
             type="button"
             className="highlights__back"
             onClick={() => updateHighlight(-1)}
-            onKeyPress={() => updateHighlight(-1)}
           >
             <span className="screen-reader-text">Previous Highlight</span>
             <svg
@@ -59,7 +65,6 @@ const Highlight = ({ data }) => {
             type="button"
             className="highlights__forward"
             onClick={() => updateHighlight(1)}
-            onKeyPress={() => updateHighlight(1)}
           >
             <span className="screen-reader-text">Next Highlight</span>
             <svg

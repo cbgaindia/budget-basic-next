@@ -10,6 +10,7 @@ import Navigation from 'components/navigation/navigation';
 import Menu from 'components/menu/menu';
 import Sidebar from 'components/sidebar/sidebar';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
+import Skiplink from 'components/skiplink/skiplink';
 
 function goToTopHandler() {
   if (window.scrollY > 600)
@@ -59,6 +60,7 @@ const Chapter = ({ chapter, chapters }) => {
   return (
     <>
       <Seo seo={seo} />
+      <Skiplink />
 
       <Header desc={headerDesc()} color="#29314F" />
       {width < 768 && chapter.sections.length > 0 && (
