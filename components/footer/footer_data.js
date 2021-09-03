@@ -125,11 +125,13 @@ export const Attr_Logos = {
       alt: 'creative commons licence',
       src: '/assets/icons/cc-by-logo.svg',
       value: 'https://creativecommons.org/licenses/by/4.0/',
+      dimensions: [67, 24],
     },
     {
       alt: 'open definition licence',
       src: '/assets/icons/open_data_logo.png',
       value: 'https://opendefinition.org/od/2.1/en/',
+      dimensions: [80, 15],
     },
   ],
 };

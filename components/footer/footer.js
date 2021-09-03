@@ -96,8 +96,8 @@ const Footer = () => (
                 src={link.src}
                 alt={link.alt}
                 layout="fixed"
-                width={67}
-                height={23}
+                width={link.dimensions[0]}
+                height={link.dimensions[1]}
               />
             </a>
           ))}
