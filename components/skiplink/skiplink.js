@@ -1,6 +1,8 @@
 const Skiplink = () => (
   <>
-    <span className="skip-blank">&nbsp;</span>
+    <span id="top-of-site-pixel-anchor" tabIndex="-1">
+      &nbsp;
+    </span>
     <a className="skip-to-content-link" href="#maincontent">
       Skip to content
     </a>

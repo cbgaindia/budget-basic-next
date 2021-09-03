@@ -135,11 +135,6 @@ button {
   word-wrap: normal !important;
 }
 
-.skip-blank {
-  position: absolute;
-  transform: translateY(-100%);
-}
-
 .skiptarget {
   width: 1px;
   height: 1px;

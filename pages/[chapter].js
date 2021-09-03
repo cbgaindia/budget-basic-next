@@ -107,7 +107,7 @@ const Chapter = ({ chapter, chapters }) => {
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
       />
-      <button type="button" className="back-top">
+      <a href="#to-top" type="button" className="back-top">
         <span className="screen-reader-text">Back to Top</span>
         <svg width="32" height="32" viewBox="0 0 100 100">
           <path
@@ -118,7 +118,7 @@ const Chapter = ({ chapter, chapters }) => {
           1.4297-0.96094 2.2891-0.96094 0.86328 0 1.6914 0.34766 2.293 0.96094l22.918 25c0.88672 1.2891 0.6875 3.0352-0.47266 4.0898-1.1562 1.0508-2.9141 1.0859-4.1133 0.078125z"
           />
         </svg>
-      </button>
+      </a>
     </>
   );
 };
