@@ -33,7 +33,7 @@ const Highlight = ({ data }) => {
               aria-live="polite"
             >
               {highlight.Link ? (
-                <Link href={`/${highlight.Link}`}>
+                <Link href={`${highlight.Link}`}>
                   <a className="highlights__text">{highlight.Text}</a>
                 </Link>
               ) : (
