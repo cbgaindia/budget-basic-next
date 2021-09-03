@@ -4,7 +4,6 @@ import Header from 'components/header/header';
 import Link from 'next/link';
 import { Truncate, debounce } from 'utils/helpers';
 import Seo from 'components/seo/seo';
-import Skiplink from 'components/skiplink/skiplink';
 
 const client = new MeiliSearch({
   host: process.env.NEXT_PUBLIC_MEILISEARCH_URL,
@@ -58,11 +57,14 @@ const Search = () => {
   return (
     <>
       <Seo seo={seo} />
-      <Skiplink />
 
       <Header desc={<h2>Search</h2>} color="#29314F" searchPage />
 
-      <div className="search wrapper">
+      <div className="skiptarget">
+        <span id="maincontent">-</span>
+      </div>
+
+      <main id="main" className="search wrapper">
         <input
           className="search__input"
           type="text"
@@ -113,7 +115,7 @@ const Search = () => {
             )}
           </div>
         )}
-      </div>
+      </main>
     </>
   );
 };

@@ -32,14 +32,11 @@ const Header = ({ desc, color, searchPage }) => {
           </a>
         </section>
         {!searchPage && (
-          <a href="/search" aria-label="Search Page" className="header__search">
-            Search
-          </a>
-          // <Link href="/search">
-          //   <a aria-label="Search Page" className="header__search">
-          //     Search
-          //   </a>
-          // </Link>
+          <Link href="/search">
+            <a aria-label="Search Page" className="header__search">
+              Search
+            </a>
+          </Link>
         )}
         {desc && <section className="header__desc">{desc}</section>}
       </div>
