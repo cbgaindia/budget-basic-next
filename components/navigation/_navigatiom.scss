@@ -15,6 +15,11 @@
 	}
 	&__section {
 		width: 100%;
+		
+		&:last-of-type{
+			width: fit-content;
+			justify-self: end;
+		}
 	}
 
 	&__button {

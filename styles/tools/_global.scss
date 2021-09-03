@@ -55,6 +55,12 @@ a {
 	}
 }
 
+:focus {
+	outline-width: 3px;
+	outline-color: #78aeda;
+	outline-style: solid;
+}
+
 html,
 body {
 	padding: 0;
@@ -77,11 +83,13 @@ body {
 	&.disable_scroll {
 		overflow: hidden;
 	}
+	scroll-margin-top: 65px;
 }
 
 a {
 	color: inherit;
 	text-decoration: none;
+	width: fit-content;
 }
 
 * {
@@ -91,6 +99,14 @@ a {
 button {
 	cursor: pointer;
 	border: none;
+}
+
+#top-of-site-pixel-anchor {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	top: 500px;
+	left: 0;
 }
 
 .footer {

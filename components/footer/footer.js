@@ -12,7 +12,7 @@ const Footer = () => (
       >
         <Image
           src="/assets/obi_footer_square_logo.svg"
-          alt="Open budgets India logo"
+          alt="Open budgets India"
           layout="intrinsic"
           width={234}
           height={138}

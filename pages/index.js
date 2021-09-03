@@ -26,7 +26,10 @@ export default function Home({ homepage, chapters }) {
           <a>Search</a>
         </Link>
       </section>
-      <div className="wrapper home__cards">
+      <div className="skiptarget">
+        <span id="maincontent">-</span>
+      </div>
+      <main id="main" tabIndex="-1" className="wrapper home__cards">
         {chapters.map((chapter, index) => {
           const chapterDetails = {
             title: chapter.Title,
@@ -42,7 +45,7 @@ export default function Home({ homepage, chapters }) {
             </React.Fragment>
           );
         })}
-      </div>
+      </main>
       <Carousel youtube={homepage.youtube} />
     </>
   );

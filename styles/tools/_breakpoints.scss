@@ -1,10 +1,10 @@
 $breakpoints: (
-  'mt-mobile':  ( min-width:  480px ),
+  'mt-mobile':  ( min-width:  481px ),
   'lt-mobile':  ( max-width:  480px ),
-  'mt-tablet':  ( min-width:  768px ),
+  'mt-tablet':  ( min-width:  769px ),
   'lt-tablet':  ( max-width:  768px ),
-  'mt-laptop':  ( min-width:  1024px ),
+  'mt-laptop':  ( min-width:  1025px ),
   'lt-laptop':  ( max-width:  1024px ),
-  'mt-desktop':  ( min-width:  1200px ),
+  'mt-desktop':  ( min-width:  1201px ),
   'lt-desktop':  ( max-width:  1200px ),
 ) !default;

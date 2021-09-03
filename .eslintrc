@@ -14,8 +14,7 @@
 	"extends": [
 		"@ijsto",
 		"plugin:import/errors",
-		"plugin:import/warnings",
-		"plugin:import/typescript"
+		"plugin:import/warnings"
 	],
 	"settings": {
 		"import/resolver": {

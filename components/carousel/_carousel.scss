@@ -29,11 +29,10 @@
 			border: none;
 			width: 43px;
 			height: 30px;
-
-			&.disabled {
-				background-color: rgba(255, 255, 255, 0.1);
-				pointer-events: none;
-			}
+		}
+		&--disabled {
+			background-color: rgba(255, 255, 255, 0.1);
+			pointer-events: none;
 		}
 	}
 
@@ -50,6 +49,10 @@
 		scrollbar-width: none;
 		user-select: none;
 		cursor: grab;
+		margin-bottom: 1.5rem;
+		list-style: none;
+		align-self: flex-end;
+		padding-left: 0;
 
 		&::-webkit-scrollbar {
 			display: none;
@@ -59,21 +62,13 @@
 			cursor: grabbing;
 		}
 
-		&__container {
-			display: flex;
-			overflow: none;
-			align-self: flex-end;
-			margin-bottom: 2rem;
-
-			iframe {
-				width: 360px;
-				height: 190px;
-				margin-right: 2rem;
-				display: grid;
-				place-content: center;
-				transition: transform 0.3s ease;
-			}
-		}
+	}
+	iframe {
+		width: 360px;
+		height: 190px;
+		margin-right: 2rem;
+		border: none;
+		
 	}
 }
 

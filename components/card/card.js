@@ -15,8 +15,7 @@ export default function Card({ chapter }) {
           {chapter.totalArticles == 0 && (
             <img
               src="/assets/icons/coming_soon.png"
-              alt="coming soon"
-              aria-label="hidden"
+              alt=""
               className="card__soon"
             />
           )}
@@ -24,13 +23,12 @@ export default function Card({ chapter }) {
           <picture className="card__image">
             <source
               srcSet={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${chapter.icon.url}`}
-              alt={chapter.title}
               media="(min-width: 640px)"
             />
 
             <img
               src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs="
-              alt={`${chapter.title}-mobile`}
+              alt=""
               width="150"
               height="120"
             />

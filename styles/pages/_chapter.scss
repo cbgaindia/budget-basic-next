@@ -49,6 +49,11 @@
 			margin-left: 5px;
 			transition: opacity $d $e;
 			opacity: 0;
+
+			&:hover,
+			&:focus {
+				opacity: 1;
+			}
 		}
 
 		&__sub-heading {
@@ -111,7 +116,7 @@
 			}
 		}
 
-		@include respond-to('lt-tablet') {
+		@include respond-to('lt-laptop') {
 			scroll-margin-top: 65px;
 
 			h2 {
@@ -146,7 +151,7 @@
 		}
 	}
 
-	@include respond-to('lt-tablet') {
+	@include respond-to('lt-laptop') {
 		display: block;
 		width: 100%;
 		padding: 0 1rem;

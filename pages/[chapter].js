@@ -32,7 +32,12 @@ const Chapter = ({ chapter, chapters }) => {
     // go-to-top
     document.addEventListener('scroll', goToTopHandler);
     jumpIcon.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        document.querySelector('#top-of-site-pixel-anchor').focus({
+          preventScroll: true,
+        });
+      }, 10);
     });
     return () => {
       jumpIcon.removeEventListener('click', () => {
@@ -61,11 +66,14 @@ const Chapter = ({ chapter, chapters }) => {
       <Seo seo={seo} />
 
       <Header desc={headerDesc()} color="#29314F" />
-      {width < 768 && chapter.sections.length > 0 && (
-        <Menu chapter={chapter} isMobile={width < 768} />
+      {width < 1025 && chapter.sections.length > 0 && (
+        <Menu chapter={chapter} isMobile={width < 1025} />
       )}
+      <div className="skiptarget">
+        <span id="maincontent">-</span>
+      </div>
       {chapter.sections.length > 0 ? (
-        <div className="chapter wrapper">
+        <main id="main" className="chapter wrapper">
           <Sidebar chapter={chapter} />
 
           <section className="chapter__container">
@@ -88,7 +96,7 @@ const Chapter = ({ chapter, chapters }) => {
               </article>
             ))}
           </section>
-        </div>
+        </main>
       ) : (
         <div className="no-content">
           <p>To be updated soon</p>
@@ -99,7 +107,7 @@ const Chapter = ({ chapter, chapters }) => {
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
       />
-      <a className="back-top" href="#to-top">
+      <a href="#to-top" type="button" className="back-top">
         <span className="screen-reader-text">Back to Top</span>
         <svg width="32" height="32" viewBox="0 0 100 100">
           <path
