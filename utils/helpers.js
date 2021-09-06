@@ -54,7 +54,7 @@ export function generateSubHeadings() {
     const subHeadings = article.querySelectorAll('h3');
     if (subHeadings.length > 0) {
       const sideLink = document.querySelector(
-        `div[keyid=${article.getAttribute('id')}]`
+        `[keyid=${article.getAttribute('id')}]`
       );
       const subHeadingList = sideLink.querySelector('.sub-heading');
 

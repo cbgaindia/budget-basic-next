@@ -9,7 +9,7 @@ function handleSidebarAnimation() {
   const articles = gsap.utils.toArray('article');
   articles.forEach((article) => {
     const sideLink = document.querySelector(
-      `div[keyid=${article.getAttribute('id')}]`
+      `[keyid=${article.getAttribute('id')}]`
     );
     ScrollTrigger.create({
       id: `st-id`,
@@ -45,7 +45,9 @@ function handleSubheadingAnimation() {
       trigger: subheading,
       start: 'top 60px',
       endTrigger: () =>
-        index == subheadings.length - 1 ? '.footer' : subheadings[index + 1],
+        index == subheadings.length - 1
+          ? subheading.parentElement.parentElement.nextSibling
+          : subheadings[index + 1],
       end: () => (index < subheadings.length ? 'top 60px' : 'end 60px'),
       refreshPriority: 1,
       toggleActions: 'restart complete reverse reset',
@@ -102,20 +104,17 @@ const Sidebar = ({ chapter }) => {
     <section className="sidebar">
       <ul className="content">
         {chapter.sections.map((article, index) => (
-          <div
-            className="content__container"
+          <li
+            className="content__container content__link"
             key={`menu-${article.id}`}
             keyid={article.slug}
           >
-            <li className="content__link">
-              <a href={`#${article.slug}`}>
-                <p>{LocaleString(index + 1)}</p>
-                <p>{article.Title}</p>
-              </a>
-            </li>
-
+            <a href={`#${article.slug}`}>
+              <p>{LocaleString(index + 1)}</p>
+              <p>{article.Title}</p>
+            </a>
             <ul className="sub-heading" />
-          </div>
+          </li>
         ))}
       </ul>
     </section>

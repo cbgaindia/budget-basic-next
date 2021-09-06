@@ -1000,26 +1000,16 @@ button {
   grid-gap: 1rem;
   text-align: start;
 }
-.sidebar .content--active .content__link {
-  background: rgba(66, 47, 161, 0.1);
-  border: 1px solid #a090ff;
-  box-sizing: border-box;
-  border-radius: 10px;
+.sidebar .content--active {
+  font-weight: bold;
+  color: #4b4797;
 }
-.sidebar .content--active .sub-heading {
-  display: block;
-}
-.sidebar .content__container:hover .content__link {
-  background: rgba(66, 47, 161, 0.1);
-  border-color: transparent;
-  border-radius: 10px;
-}
-.sidebar .content:focus-within .sub-heading {
-  display: block;
+.sidebar .content--active li {
+  font-weight: normal;
+  color: black;
 }
 .sidebar .sub-heading {
   list-style: none;
-  display: none;
   padding-left: 20px;
 }
 .sidebar .sub-heading__link {
@@ -1039,8 +1029,8 @@ button {
   text-align: start;
 }
 .sidebar .sub-heading__link--active {
-  color: #4b4797;
-  font-weight: bold;
+  color: #4b4797 !important;
+  font-weight: 500 !important;
 }
 .sidebar .sub-heading:focus-within {
   display: block;
