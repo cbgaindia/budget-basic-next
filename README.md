@@ -10,9 +10,9 @@
 </a>
 </p>
 
-Budget Basics aims to demystify concepts and processes of Government budgets in India. 
-Built as a documentation platform, it provides the content in easily digestible form. 
-This is the front end of the platform built using nextjs. 
+Budget Basics aims to demystify concepts and processes of Government budgets in India.
+Built as a documentation platform, it provides the content in easily digestible form.
+This is the front end of the platform built using nextjs.
 We welcome all contributions and pull requests!
 
 <p align="center">Visit<a href="https://budgetbasics.openbudgetsindia.org/"> Budget Basics</a></p>
@@ -35,8 +35,8 @@ We welcome all contributions and pull requests!
 
 ## Features
 
-- 📱 **Responsive:** Use Desktop, Laptop or  Mobile devices. It's optimized for all.
-- ♿ **Accessible:** The platform is screen-reader friendly. (In-Progress)
+- 📱 **Responsive:** Use Desktop, Laptop or Mobile devices. It's optimized for all.
+- ♿ **Accessible:** The platform is screen-reader friendly.
 - 🚀 **Performant:** It's fast!
 - 🌐 **JAMStack:** [Next.js](https://github.com/vercel/next.js) with [Strapi](https://github.com/strapi/strapi) headless CMS to make development process fast and efficient.
 - 🔍 **MeiliSearch:** Super fast search by using [Meilisearch](https://github.com/meilisearch/MeiliSearch) as a micro-service.
@@ -45,7 +45,7 @@ We welcome all contributions and pull requests!
   - Highlights to show multiple important content/news on the header
   - Custom lightweight carousel to show Youtube videos that are lazy-loaded.
   - Sticky sidebar to list all sections and sub-sections available.
-  - Footer Buttons to navigate to the next or previous chapter. 
+  - Footer Buttons to navigate to the next or previous chapter.
   - and more...
 
 ## Getting Started
@@ -70,6 +70,7 @@ Follow the steps at [budget-basic-strapi](https://github.com/cbgaindia/budget-ba
 before booting up the frontend. This should set up Postgresql database, Strapi CMS and Meilisearch Instance.
 
 ## Guide
+
 ### Directory Structure
 
 ```
@@ -90,6 +91,7 @@ budget-basics-next/
 ### Styling
 
 This project follows BEM Methodology with Sass Preprocessor to make styling more efficient and future maintainable. Have a look around different files to know more about it. You can learn more about styling directory [here](/styles/README.md)
+
 ### Components
 
 It is a component-based project which makes it easier to add, edit or remove features in the future.
@@ -101,10 +103,12 @@ project. Learn more [here](components/README.md)
 
 To handle styling on scroll for sidebar in desktop and menubar for mobile, [GSAP](https://greensock.com/gsap/) is used. You will find following
 function in `/pages/[chapter].js`:
-- `handleSidebarAnimation`
-- `handleSubheadingAnimation` 
 
-and the following in `/components/menu.js`: 
+- `handleSidebarAnimation`
+- `handleSubheadingAnimation`
+
+and the following in `/components/menu.js`:
+
 - `handleMenuAnimation`
 - `handleSubheadingAnimation`
 
@@ -124,22 +128,22 @@ import React, { createContext } from 'react'
 export const GlobalContext = createContext({})
 
 function MyApp({ Component, pageProps }) {
- const { global } = pageProps
- return (
-    <>
-      <Layout>
-        <GlobalContext.Provider value={global}>
-          <Component {...pageProps} />
-        </GlobalContext.Provider>
-      </Layout>
-    </>
-  );
+	const { global } = pageProps
+	return (
+		<>
+			<Layout>
+				<GlobalContext.Provider value={global}>
+					<Component {...pageProps} />
+				</GlobalContext.Provider>
+			</Layout>
+		</>
+	)
 }
 
 MyApp.getInitialProps = async (ctx) => {
- const appProps = await App.getInitialProps(ctx)
- const global = await fetchAPI('/global')
- return { ...appProps, pageProps: { global } }
+	const appProps = await App.getInitialProps(ctx)
+	const global = await fetchAPI('/global')
+	return { ...appProps, pageProps: { global } }
 }
 ```
 
@@ -150,9 +154,9 @@ import React, { useContext } from 'react'
 import { GlobalContext } from 'pages/_app'
 
 const Search = ({ Component, pageProps }) => {
- const { articles } = useContext(GlobalContext)
+	const { articles } = useContext(GlobalContext)
 
- // some cool stuff
+	// some cool stuff
 }
 ```
 
@@ -164,12 +168,12 @@ We can fetch all of that and all of different chapters (categories) easily:
 
 ```javascript
 export async function getStaticProps() {
- const homepage = await fetchAPI('/homepage')
- const chapters = await fetchAPI('/chapters') 
- return {
-  props: { homepage, chapters },
-  revalidate: 1,
- }
+	const homepage = await fetchAPI('/homepage')
+	const chapters = await fetchAPI('/chapters')
+	return {
+		props: { homepage, chapters },
+		revalidate: 1,
+	}
 }
 ```
 
@@ -183,24 +187,24 @@ requires `getStaticPaths` to list paths during build time. [Read more](https://n
 
 ```javascript
 export async function getStaticPaths() {
- const chapters = await fetchAPI('/chapters')
- return {
-  paths: chapters.map((chapter) => ({
-   params: {
-    chapter: chapter.slug,
- 	 },
-  })),
-  fallback: false,
- }
+	const chapters = await fetchAPI('/chapters')
+	return {
+		paths: chapters.map((chapter) => ({
+			params: {
+				chapter: chapter.slug,
+			},
+		})),
+		fallback: false,
+	}
 }
 
 export async function getStaticProps({ params }) {
- const chapter = await fetchAPI(`/chapters?slug=${params.chapter}`)
- const chapters = await fetchAPI(`/chapters`) 
- return {
-  props: { chapter: chapter[0], chapters },
-  revalidate: 1,
- }
+	const chapter = await fetchAPI(`/chapters?slug=${params.chapter}`)
+	const chapters = await fetchAPI(`/chapters`)
+	return {
+		props: { chapter: chapter[0], chapters },
+		revalidate: 1,
+	}
 }
 ```
 
@@ -228,7 +232,7 @@ Create .env in the root folder and follows keys
 
 ```bash
 NEXT_PUBLIC_STRAPI_API_URL
-NEXT_PUBLIC_MEILISEARCH_URL 
+NEXT_PUBLIC_MEILISEARCH_URL
 NEXT_PUBLIC_MEILISEARCH_API
 ```
 
@@ -243,7 +247,6 @@ or build and start production mode
 ```bash
   npm run build && npm run start
 ```
-
 
 ## Contributing
 
