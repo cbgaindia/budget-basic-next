@@ -24,14 +24,15 @@ const Highlight = ({ data }) => {
     <div className="highlights">
       <div className="highlights__container wrapper">
         <span className="highlights__bar" />
-        <ul className="news">
+
+        <ul className="news" aria-live="polite">
           {data.map((highlight, index) => (
             <li
               key={`highlight-${index}`}
               id={`highlight-${index}`}
               className="news__item"
-              aria-live="polite"
             >
+              <span className="screen-reader-text">New Highlight:</span>
               {highlight.Link ? (
                 <Link href={`${highlight.Link}`}>
                   <a className="highlights__text">{highlight.Text}</a>

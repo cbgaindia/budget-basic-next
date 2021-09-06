@@ -86,15 +86,11 @@
 		}
 
 		&--active {
-			.content__link {
-				background: rgba(66, 47, 161, 0.1);
-				border: 1px solid #a090ff;
-				box-sizing: border-box;
-				border-radius: 5px;
-			}
-
-			.sub-heading {
-				display: block;
+			font-weight: bold;
+			color: #4b4797;
+			li {
+				font-weight: normal;
+				color: black;
 			}
 		}
 	}
@@ -135,7 +131,6 @@
 
 	.sub-heading {
 		list-style: none;
-		display: none;
 		padding-left: 20px;
 
 		&__link {
@@ -156,8 +151,8 @@
 			}
 
 			&--active {
-				color: #4b4797;
-				font-weight: bold;
+				color: #4b4797 !important;
+				font-weight: 500 !important;
 			}
 		}
 	}

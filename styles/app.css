@@ -907,14 +907,13 @@ button {
 .menu .content__link a p:first-child {
   margin-right: 1rem;
 }
-.menu .content--active .content__link {
-  background: rgba(66, 47, 161, 0.1);
-  border: 1px solid #a090ff;
-  box-sizing: border-box;
-  border-radius: 5px;
+.menu .content--active {
+  font-weight: bold;
+  color: #4b4797;
 }
-.menu .content--active .sub-heading {
-  display: block;
+.menu .content--active li {
+  font-weight: normal;
+  color: black;
 }
 .menu__dropdown--active .content {
   display: block;
@@ -945,7 +944,6 @@ button {
 }
 .menu .sub-heading {
   list-style: none;
-  display: none;
   padding-left: 20px;
 }
 .menu .sub-heading__link {
@@ -966,8 +964,8 @@ button {
   padding: 0.5rem 0;
 }
 .menu .sub-heading__link--active {
-  color: #4b4797;
-  font-weight: bold;
+  color: #4b4797 !important;
+  font-weight: 500 !important;
 }
 
 .sidebar {

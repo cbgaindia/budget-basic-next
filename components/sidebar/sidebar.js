@@ -106,7 +106,7 @@ const Sidebar = ({ chapter }) => {
         {chapter.sections.map((article, index) => (
           <li
             className="content__container content__link"
-            key={`menu-${article.id}`}
+            key={`sidebar-${article.id}`}
             keyid={article.slug}
           >
             <a href={`#${article.slug}`}>

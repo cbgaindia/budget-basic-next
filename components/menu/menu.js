@@ -10,7 +10,7 @@ function handleMenuAnimation() {
 
   articles.forEach((article, index) => {
     const sideLink = document.querySelector(
-      `div[keyid=${article.getAttribute('id')}]`
+      `[keyid=${article.getAttribute('id')}]`
     );
     ScrollTrigger.create({
       id: `st-id-${index}`,
@@ -75,7 +75,8 @@ const Menu = ({ chapter, isMobile }) => {
     document.querySelector('.chapter').classList.toggle('chapter--blur');
   }
 
-  function handleContentClick() {
+  function handleContentClick(e) {
+    e.stopPropagation();
     disableScroll();
     document
       .querySelector('.menu__dropdown')
@@ -92,8 +93,8 @@ const Menu = ({ chapter, isMobile }) => {
       generateSubHeadings();
       handleSubheadingAnimation();
 
-      document.querySelectorAll('.sub-heading li').forEach((list) => {
-        list.addEventListener('click', handleContentClick, { passive: true });
+      document.querySelectorAll('.menu__dropdown li').forEach((list) => {
+        list.addEventListener('click', handleContentClick);
       });
     }
 
@@ -102,7 +103,7 @@ const Menu = ({ chapter, isMobile }) => {
         ScrollTrigger.getById('st-id-mobile').kill();
       }
 
-      document.querySelectorAll('.sub-heading li').forEach((list) => {
+      document.querySelectorAll('.menu__dropdown li').forEach((list) => {
         list.removeEventListener('click', handleContentClick);
       });
     };
@@ -125,16 +126,17 @@ const Menu = ({ chapter, isMobile }) => {
         </button>
         <ul className="content">
           {chapter.sections.map((article, index) => (
-            <div key={`menu-${article.id}`} keyid={article.slug}>
-              <li className="content__link">
-                <a href={`#${article.slug}`} onClick={handleContentClick}>
-                  <p>{LocaleString(index + 1)}</p>
-                  <p>{article.Title}</p>
-                </a>
-              </li>
-
+            <li
+              className="content__container content__link"
+              key={`menu-${article.id}`}
+              keyid={article.slug}
+            >
+              <a href={`#${article.slug}`}>
+                <p>{LocaleString(index + 1)}</p>
+                <p>{article.Title}</p>
+              </a>
               <ul className="sub-heading" />
-            </div>
+            </li>
           ))}
         </ul>
       </section>
