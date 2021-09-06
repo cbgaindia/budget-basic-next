@@ -80,13 +80,14 @@ const Chapter = ({ chapter, chapters }) => {
             {chapter.sections.map((article) => (
               <article className="section" id={article.slug} key={article.id}>
                 <div className="section__heading">
-                  <span />
-                  <h2>
-                    {article.Title}
-                    <a href={`#${article.slug}`} className="section__anchor">
-                      #
-                    </a>
-                  </h2>
+                  <span className="section__bar" />
+                  <h2>{article.Title}</h2>
+                  <a href={`#${article.slug}`} className="section__anchor">
+                    <span aria-hidden="true">#</span>
+                    <span className="screen-reader-text">
+                      {`Section titled ${article.Title}`}
+                    </span>
+                  </a>
                 </div>
 
                 <div

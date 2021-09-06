@@ -43,42 +43,53 @@
 				display: block;
 			}
 		}
-		&__container:hover .content__link {
-			background: rgba(66, 47, 161, 0.1);
-			border-color: transparent;
-			border-radius: 10px;
+		&__container {
+			&:hover .content__link {
+				background: rgba(66, 47, 161, 0.1);
+				border-color: transparent;
+				border-radius: 10px;
+			}
+		}
+		&:focus-within {
+			.sub-heading {
+				display: block;
+			}
 		}
 	}
 
-  .sub-heading {
-    list-style: none;
-    display: none;
-    padding-left: 20px;
-  
-    &__link {
-      font-weight: normal;
-      font-size: 14px;
-      line-height: 135%;
-      margin-left: 0.5rem;
-  
-      a {
-        display: block;
-        width: inherit;
-        height: inherit;
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        grid-gap: 0.5rem;
-        text-align: start;
-      }
-  
-      &--active {
-        color: #4b4797;
-        font-weight: bold;
-      }
-    }
-  }
+	.sub-heading {
+		list-style: none;
+		display: none;
+		padding-left: 20px;
+
+		&__link {
+			font-weight: normal;
+			font-size: 14px;
+			line-height: 135%;
+			margin-left: 0.5rem;
+
+			a {
+				display: block;
+				width: inherit;
+				height: inherit;
+				display: grid;
+				grid-template-columns: max-content 1fr;
+				grid-gap: 0.5rem;
+				text-align: start;
+			}
+
+			&--active {
+				color: #4b4797;
+				font-weight: bold;
+			}
+		}
+
+		&:focus-within {
+			display: block;
+		}
+	}
 
 	@include respond-to('lt-laptop') {
 		display: none;
-	} 
+	}
 }

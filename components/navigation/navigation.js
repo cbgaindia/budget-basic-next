@@ -7,12 +7,9 @@ const Navigation = ({ back, forward }) => (
         {back != undefined && (
           <Link href={`/${back.slug}`}>
             <a className="navigation__button navigation__button--back">
-              <img
-                src="assets/icons/arrowBack.svg"
-                alt="back arrow budget basics"
-              />
+              <img src="assets/icons/arrowBack.svg" alt="" />
               <span>
-                <p>go back to</p>
+                <p>go back to:</p>
                 <h2>{back.Title}</h2>
               </span>
             </a>
@@ -25,12 +22,9 @@ const Navigation = ({ back, forward }) => (
           <>
             <Link href={`/${forward.slug}`}>
               <a className="navigation__button navigation__button--forward">
-                <img
-                  src="assets/icons/arrowBack.svg"
-                  alt="back arrow budget basics"
-                />
+                <img src="assets/icons/arrowBack.svg" alt="" />
                 <span>
-                  <p>read next</p>
+                  <p>read next:</p>
                   <h2>{forward.Title}</h2>
                 </span>
               </a>

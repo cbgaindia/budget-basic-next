@@ -1014,6 +1014,9 @@ button {
   border-color: transparent;
   border-radius: 10px;
 }
+.sidebar .content:focus-within .sub-heading {
+  display: block;
+}
 .sidebar .sub-heading {
   list-style: none;
   display: none;
@@ -1038,6 +1041,9 @@ button {
 .sidebar .sub-heading__link--active {
   color: #4b4797;
   font-weight: bold;
+}
+.sidebar .sub-heading:focus-within {
+  display: block;
 }
 @media (max-width: 1024px) {
   .sidebar {
@@ -1079,13 +1085,15 @@ button {
   font-weight: 600;
   margin-left: 1.5rem;
 }
-.chapter .section__heading h2:hover .section__anchor, .chapter .section__heading h2:focus .section__anchor {
+.chapter .section__heading:hover .section__anchor, .chapter .section__heading:focus .section__anchor {
   opacity: 1;
 }
 .chapter .section__anchor {
   margin-left: 5px;
   transition: opacity 700ms cubic-bezier(0.19, 1, 0.22, 1);
   opacity: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 .chapter .section__anchor:hover, .chapter .section__anchor:focus {
   opacity: 1;
@@ -1156,7 +1164,7 @@ button {
   color: #a090ff;
   text-decoration: underline;
 }
-.chapter .section span {
+.chapter .section__bar {
   min-height: 40px;
   height: 100%;
   width: 4px;
