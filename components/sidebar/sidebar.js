@@ -101,7 +101,7 @@ const Sidebar = ({ chapter }) => {
   }, [chapter, width]);
 
   return (
-    <section className="sidebar">
+    <nav className="sidebar">
       <ul className="content">
         {chapter.sections.map((article, index) => (
           <li
@@ -117,7 +117,7 @@ const Sidebar = ({ chapter }) => {
           </li>
         ))}
       </ul>
-    </section>
+    </nav>
   );
 };
 

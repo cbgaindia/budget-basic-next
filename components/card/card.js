@@ -13,11 +13,14 @@ export default function Card({ chapter }) {
       >
         <section className="card__content">
           {chapter.totalArticles == 0 && (
-            <img
-              src="/assets/icons/coming_soon.png"
-              alt=""
-              className="card__soon"
-            />
+            <>
+              <img
+                src="/assets/icons/coming_soon.png"
+                alt=""
+                className="card__soon"
+              />
+              <span className="screen-reader-text">Coming Soon:</span>
+            </>
           )}
 
           <picture className="card__image">
