@@ -8,6 +8,11 @@
 	display: grid;
 	grid-template-columns: 17rem 1fr;
 
+	&--blur {
+		filter: blur(5px);
+		pointer-events: none;
+	}
+
 	p {
 		margin: 0.7rem 0;
 	}
@@ -143,11 +148,6 @@
 			width: 4px;
 			background-color: #a090ff;
 			border-radius: 4px;
-		}
-
-		&--blur {
-			filter: blur(5px);
-			pointer-events: none;
 		}
 	}
 

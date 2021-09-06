@@ -80,7 +80,7 @@ body {
 	white-space: -o-pre-wrap;
 	word-wrap: break-word;
 
-	&.disable_scroll {
+	&.scroll--disable {
 		overflow: hidden;
 	}
 	scroll-margin-top: 65px;

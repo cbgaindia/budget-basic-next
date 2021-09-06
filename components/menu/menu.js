@@ -71,7 +71,7 @@ function handleSubheadingAnimation() {
 const Menu = ({ chapter, isMobile }) => {
   function disableScroll() {
     document.querySelector('.menu').classList.toggle('menu--active');
-    document.querySelector('body').classList.toggle('disable_scroll');
+    document.querySelector('body').classList.toggle('scroll--disable');
     document.querySelector('.chapter').classList.toggle('chapter--blur');
   }
 

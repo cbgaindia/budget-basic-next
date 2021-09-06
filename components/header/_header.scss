@@ -55,7 +55,7 @@
 		max-width: 700px;
 		width: 90vw;
 	}
-	
+
 	h2 {
 		font-size: 1.5rem;
 		font-weight: 400;
@@ -67,7 +67,7 @@
 		@include search_button;
 	}
 
-	@include respond-to('lt-laptop') {
+	@include respond-to('lt-tablet') {
 		display: flex;
 		padding: 1rem 2rem;
 

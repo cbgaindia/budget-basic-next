@@ -81,7 +81,7 @@ body {
   word-wrap: break-word;
   scroll-margin-top: 65px;
 }
-body.disable_scroll {
+body.scroll--disable {
   overflow: hidden;
 }
 
@@ -242,7 +242,7 @@ button {
   background-color: #273051;
   border: 2px solid #4b4797;
 }
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   .header {
     display: flex;
     padding: 1rem 2rem;
@@ -1050,6 +1050,10 @@ button {
   display: grid;
   grid-template-columns: 17rem 1fr;
 }
+.chapter--blur {
+  filter: blur(5px);
+  pointer-events: none;
+}
 .chapter p {
   margin: 0.7rem 0;
 }
@@ -1158,10 +1162,6 @@ button {
   width: 4px;
   background-color: #a090ff;
   border-radius: 4px;
-}
-.chapter .section--blur {
-  filter: blur(5px);
-  pointer-events: none;
 }
 @media (max-width: 1024px) {
   .chapter {

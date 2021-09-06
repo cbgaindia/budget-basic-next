@@ -17,18 +17,24 @@ function MyApp({ Component, pageProps }) {
   React.useEffect(() => {
     const handleRouteChange = (url) => {
       ga.pageview(url);
+
+      // change focus to top
+      document.querySelector('#top-of-site-pixel-anchor').focus();
     };
 
     const resetScroll = () => {
-      document.body.classList.remove('disable_scroll');
-      if (document.querySelector('.articles'))
-        document.querySelector('.articles').classList.remove('addBlur');
-      if (document.querySelector('.menu-dropdown')) {
-        document.querySelector('.menu-dropdown').classList.remove('active');
-        document.querySelector('.mobileContent').classList.remove('active');
-        document.querySelector('.searchMenu').classList.remove('active');
-        document.querySelector('.dropbtn').classList.remove('hide');
-        document.querySelector('.searchIcon').classList.remove('hide');
+      // remove classes for blur and scroll disable
+      document.body.classList.remove('scroll--disable');
+      if (document.querySelector('.chapter'))
+        document.querySelector('.chapter').classList.remove('chapter--blur');
+      if (document.querySelector('.menu__dropdown')) {
+        document
+          .querySelector('.menu__dropdown')
+          .classList.remove('menu__dropdown--active');
+        document
+          .querySelector('.menu__search-icon')
+          .classList.remove('menu__search-icon--hide');
+        document.querySelector('.content').classList.remove('content--active');
       }
     };
 
