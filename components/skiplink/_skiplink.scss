@@ -12,8 +12,9 @@
 	left: 50%;
 	padding: 8px;
 	position: absolute;
-	transform: translateY(-100%);
+	transform: translateY(-150%);
 	transition: transform 0.3s;
+	line-height: 1.5;
 
 	&:focus {
 		transform: translateY(0%);

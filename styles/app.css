@@ -106,7 +106,7 @@ button {
   position: absolute;
   width: 1px;
   height: 1px;
-  top: 500px;
+  top: -100px;
   left: 0;
 }
 
@@ -133,6 +133,8 @@ button {
   position: absolute;
   width: 1px;
   word-wrap: normal !important;
+  color: #222222;
+  background-color: #dddddd;
 }
 
 .skiptarget {
@@ -149,8 +151,9 @@ button {
   left: 50%;
   padding: 8px;
   position: absolute;
-  transform: translateY(-100%);
+  transform: translateY(-150%);
   transition: transform 0.3s;
+  line-height: 1.5;
 }
 .skip-to-content-link:focus {
   transform: translateY(0%);
@@ -302,7 +305,7 @@ button {
   display: block;
   margin: 1rem 1.5rem;
   font-size: 14px;
-  line-height: 135%;
+  line-height: 1.5;
   max-width: 900px;
 }
 .highlights__controls button {
@@ -1110,6 +1113,10 @@ button {
   width: 100%;
   border-collapse: collapse;
 }
+.chapter .section figure.table table th {
+  background-color: #e8eefd;
+  border: 0.2px solid rgba(143, 177, 250, 0.5);
+}
 .chapter .section figure.table table td {
   min-width: 100px;
   padding: 0.5rem 0;
@@ -1122,9 +1129,6 @@ button {
 }
 .chapter .section figure.table table tr.sol_border {
   border-bottom: 1px solid #91b3fa !important;
-}
-.chapter .section figure.table table tr:first-of-type {
-  background-color: #e8eefd;
 }
 .chapter .section figure {
   margin: 0 auto;

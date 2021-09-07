@@ -82,7 +82,20 @@ export function generateSubHeadings() {
   });
 }
 
-// Zebra strip complex table
+function addTableHead(table, row) {
+  const thead = document.createElement('thead');
+  const tr = document.createElement('tr');
+
+  row.querySelectorAll('td').forEach((td) => {
+    const th = document.createElement('th');
+    th.innerHTML = td.innerHTML;
+    tr.appendChild(th);
+  });
+  thead.appendChild(tr);
+  return thead;
+}
+
+// Zebra strip table
 export function stripTable() {
   const tables = document.querySelectorAll('table');
   tables.forEach((table) => {
@@ -91,13 +104,22 @@ export function stripTable() {
     let rowspan = 0;
     let isRowspan = false;
 
-    rows.forEach((tr) => {
+    if (!table.tHead) {
+      const thead = addTableHead(table, rows[0]);
+      table.insertBefore(thead, table.children[0]);
+      table.children[1].children[0].remove();
+    }
+
+    rows.forEach((tr, index) => {
       const tds = tr.querySelectorAll('td');
       tds.forEach((td) => {
         const rowLength = td.getAttribute('rowspan');
         if (rowLength) {
           isRowspan = true;
           rowspan = Number(rowLength);
+        }
+        if (index == 0) {
+          td.setAttribute('role', 'columnheader');
         }
       });
       if (!isRowspan && check == 1) {

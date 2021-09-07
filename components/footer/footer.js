@@ -8,11 +8,10 @@ const Footer = () => (
         rel="noopener noreferrer"
         className="footer__logo"
         href="https://openbudgetsindia.org/en/"
-        target="_blank"
       >
         <Image
           src="/assets/obi_footer_square_logo.svg"
-          alt="Open budgets India"
+          alt="Open budgets India Footer"
           layout="intrinsic"
           width={234}
           height={138}
@@ -28,7 +27,6 @@ const Footer = () => (
               className="link footer_link"
               rel="noopener noreferrer"
               href={link.value}
-              target="_blank"
             >
               {link.title}
             </a>
@@ -43,7 +41,6 @@ const Footer = () => (
               className="link footer_link"
               rel="noopener noreferrer"
               href={link.value}
-              target="_blank"
             >
               {link.title}
             </a>
@@ -58,7 +55,6 @@ const Footer = () => (
               className="link footer_link"
               rel="noopener noreferrer"
               href={link.value}
-              target="_blank"
             >
               {link.title}
             </a>
@@ -75,7 +71,6 @@ const Footer = () => (
               key={`attr_link-${index}`}
               rel="noopener noreferrer"
               href={link.value}
-              target="_blank"
               className="link footer_link"
             >
               {link.title}
@@ -89,7 +84,6 @@ const Footer = () => (
               key={`attr_logo-${index}`}
               rel="nofollow noopener noreferrer"
               href={link.value}
-              target="_blank"
               className="link footer_link"
             >
               <Image
@@ -109,7 +103,6 @@ const Footer = () => (
               key={`attr_social-${index}`}
               rel="nofollow noopener noreferrer"
               href={link.value}
-              target="_blank"
               className="link footer_link"
             >
               <Image

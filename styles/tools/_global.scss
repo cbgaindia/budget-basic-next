@@ -105,7 +105,7 @@ button {
 	position: absolute;
 	width: 1px;
 	height: 1px;
-	top: 500px;
+	top: -100px;
 	left: 0;
 }
 
@@ -131,4 +131,6 @@ button {
 	position: absolute;
 	width: 1px;
 	word-wrap: normal !important;
+	color: #222222;
+	background-color: #dddddd;
 }

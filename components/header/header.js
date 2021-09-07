@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import Link from 'next/link';
 import { GlobalContext } from 'pages/_app';
+import Image from 'next/image';
 
 const Header = ({ desc, color, searchPage }) => {
   const { title } = useContext(GlobalContext);
@@ -10,7 +11,7 @@ const Header = ({ desc, color, searchPage }) => {
       <div className="header__container wrapper">
         <section className="branding">
           <Link href="/">
-            <a role="banner">
+            <a>
               <h1 className="branding__logo">{title}</h1>
             </a>
           </Link>
@@ -21,11 +22,11 @@ const Header = ({ desc, color, searchPage }) => {
             className="branding__obi"
             rel="noopener noreferrer"
             href="https://openbudgetsindia.org/"
-            target="_blank"
           >
-            <img
+            <Image
               src="/assets/obi_header.png"
               alt="Open Budgets India"
+              layout="fixed"
               width={201}
               height={28}
             />
@@ -33,8 +34,8 @@ const Header = ({ desc, color, searchPage }) => {
         </section>
         {!searchPage && (
           <Link href="/search">
-            <a aria-label="Search Page" className="header__search">
-              Search
+            <a className="header__search">
+              Search <span className="screen-reader-text">Page</span>
             </a>
           </Link>
         )}

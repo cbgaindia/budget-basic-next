@@ -90,6 +90,11 @@
 				width: 100%;
 				border-collapse: collapse;
 
+				th {
+					background-color: hsl(222, 83%, 95%);
+					border: 0.2px solid hsla(221, 91%, 77%, 0.5);
+				}
+
 				td {
 					min-width: 100px;
 					padding: 0.5rem 0;
@@ -104,9 +109,6 @@
 					}
 					&.sol_border {
 						border-bottom: 1px solid #91b3fa !important;
-					}
-					&:first-of-type {
-						background-color: hsl(222, 83%, 95%);
 					}
 				}
 			}
