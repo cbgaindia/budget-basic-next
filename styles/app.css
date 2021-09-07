@@ -753,6 +753,7 @@ button {
   grid-template-rows: max-content;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+  padding-left: 0;
 }
 @media screen and (max-width: 1240px) {
   .home__cards {
