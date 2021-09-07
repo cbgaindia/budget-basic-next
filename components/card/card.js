@@ -6,12 +6,12 @@ export default function Card({ chapter }) {
   bgColorIndex.push(bgColorIndex[chapter.index]);
 
   return (
-    <Link key={chapter.index} href={`/${chapter.slug}`}>
-      <a
-        className={chapter.Desc ? 'card card--desc' : 'card'}
-        bgcolor={bgColorIndex[chapter.index]}
-      >
-        <section className="card__content">
+    <li
+      className={chapter.Desc ? 'card card--desc' : 'card'}
+      bgcolor={bgColorIndex[chapter.index]}
+    >
+      <Link key={chapter.index} href={`/${chapter.slug}`}>
+        <a className="card__content">
           {chapter.totalArticles == 0 && (
             <>
               <img
@@ -22,6 +22,7 @@ export default function Card({ chapter }) {
               <span className="screen-reader-text">Coming Soon:</span>
             </>
           )}
+          <h2 className="card__title">{chapter.title}</h2>
 
           <picture className="card__image">
             <source
@@ -37,10 +38,9 @@ export default function Card({ chapter }) {
             />
           </picture>
 
-          <h2 className="card__title">{chapter.title}</h2>
           {chapter.Desc && <p className="card__desc">{chapter.Desc}</p>}
-        </section>
-      </a>
-    </Link>
+        </a>
+      </Link>
+    </li>
   );
 }

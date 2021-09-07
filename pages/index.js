@@ -29,22 +29,24 @@ export default function Home({ homepage, chapters }) {
       <div className="skiptarget">
         <span id="maincontent">-</span>
       </div>
-      <main id="main" tabIndex="-1" className="wrapper home__cards">
-        {chapters.map((chapter, index) => {
-          const chapterDetails = {
-            title: chapter.Title,
-            slug: chapter.slug,
-            icon: chapter.icon,
-            Desc: chapter.Desc,
-            totalArticles: chapter.sections.length,
-            index,
-          };
-          return (
-            <React.Fragment key={index}>
-              <Card chapter={chapterDetails} />
-            </React.Fragment>
-          );
-        })}
+      <main id="main" tabIndex="-1" className="wrapper">
+        <ul className="home__cards">
+          {chapters.map((chapter, index) => {
+            const chapterDetails = {
+              title: chapter.Title,
+              slug: chapter.slug,
+              icon: chapter.icon,
+              Desc: chapter.Desc,
+              totalArticles: chapter.sections.length,
+              index,
+            };
+            return (
+              <React.Fragment key={index}>
+                <Card chapter={chapterDetails} />
+              </React.Fragment>
+            );
+          })}
+        </ul>
       </main>
       <Carousel youtube={homepage.youtube} />
     </>

@@ -1,7 +1,7 @@
 @use '../../styles/tools' as *;
 
 @mixin card-background($color1, $color2) {
-  background: linear-gradient(218.46deg, $color1, $color2)
+	background: linear-gradient(218.46deg, $color1, $color2);
 }
 
 .card {
@@ -62,6 +62,7 @@
 		font-weight: 600;
 		font-size: 1.3rem;
 		line-height: 135%;
+		order: 1;
 	}
 
 	&__soon {
@@ -75,32 +76,32 @@
 		font-size: 1rem;
 		padding: 0 1rem;
 		color: #000000;
-    opacity: 0;
+		opacity: 0;
 	}
 
 	&[bgcolor='1'] {
-    @include card-background(#9779d3 9.79%, #febbba 74.73%);
+		@include card-background(#9779d3 9.79%, #febbba 74.73%);
 	}
 
 	&[bgcolor='2'] {
-    @include card-background(#f4b65e 9.79%, #e8d5d4 96.99%);
+		@include card-background(#f4b65e 9.79%, #e8d5d4 96.99%);
 	}
 
 	&[bgcolor='3'] {
-    @include card-background(#479aaa 9.79%, #c9d8fc 96.99%);
+		@include card-background(#479aaa 9.79%, #c9d8fc 96.99%);
 	}
 
 	&[bgcolor='4'] {
-    @include card-background(#c9d8fc 9.79%, #e8d5d4 96.99%);
+		@include card-background(#c9d8fc 9.79%, #e8d5d4 96.99%);
 	}
 
 	&[bgcolor='5'] {
-    @include card-background(#ff928e 9.79%, #febbba 74.73%);
+		@include card-background(#ff928e 9.79%, #febbba 74.73%);
 	}
 
 	&[bgcolor='6'],
 	&[bgcolor='0'] {
-    @include card-background(#d14981 9.79%, #dae3fe 79.73%);
+		@include card-background(#d14981 9.79%, #dae3fe 79.73%);
 	}
 
 	@include respond-to('lt-tablet') {
@@ -122,25 +123,26 @@
 			opacity: 1;
 		}
 
-    &__soon {
-      width: 85px;
-    }
+		&__soon {
+			width: 85px;
+		}
 	}
 }
 
 @include respond-to('mt-tablet') {
 	.card--desc {
 		.card__image,
-		.card__title, .card__desc {
+		.card__title,
+		.card__desc {
 			transition: transform $d $e, opacity $d $e;
 		}
 
-    .card__desc {
+		.card__desc {
 			opacity: 0;
 			transform: translateY(1rem);
 		}
 
-    &:hover,
+		&:hover,
 		&:focus {
 			.card__image {
 				opacity: 0;
@@ -165,6 +167,5 @@
 				transition-duration: 0s;
 			}
 		}
-
 	}
 }
