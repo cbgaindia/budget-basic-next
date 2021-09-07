@@ -1118,6 +1118,7 @@ button {
 .chapter .section figure.table table th {
   background-color: #e8eefd;
   border: 0.2px solid rgba(143, 177, 250, 0.5);
+  font-weight: 500;
 }
 .chapter .section figure.table table td {
   min-width: 100px;

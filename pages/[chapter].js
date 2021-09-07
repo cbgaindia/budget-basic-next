@@ -31,7 +31,8 @@ const Chapter = ({ chapter, chapters }) => {
 
     // go-to-top
     document.addEventListener('scroll', goToTopHandler);
-    jumpIcon.addEventListener('click', () => {
+    jumpIcon.addEventListener('click', (e) => {
+      e.preventDefault();
       window.setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
         document.querySelector('#top-of-site-pixel-anchor').focus({
@@ -108,7 +109,7 @@ const Chapter = ({ chapter, chapters }) => {
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
       />
-      <a href="#to-top" type="button" className="back-top">
+      <a href="#top-of-site-pixel-anchor" type="button" className="back-top">
         <span className="screen-reader-text">Back to Top</span>
         <svg width="32" height="32" viewBox="0 0 100 100">
           <path

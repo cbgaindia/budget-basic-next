@@ -97,7 +97,7 @@ export const OBI_Platform = {
     },
     {
       title: 'Video: Budget Basics (Hindi)',
-      value: 'https://www.youtube.com/watch?v=TovrkaW5HZY',
+      value: 'https://youtu.be/TovrkaW5HZY',
     },
   ],
 };
