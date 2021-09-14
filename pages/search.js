@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { MeiliSearch } from 'meilisearch';
 import Header from 'components/header/header';
 import Link from 'next/link';
@@ -13,6 +13,18 @@ const client = new MeiliSearch({
 const Search = () => {
   const [search, setSearch] = useState([]);
   const [showSearch, setShowSearch] = useState(false);
+
+  useEffect(() => {
+    const form = document.querySelector('.search__form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+    });
+    return () => {
+      form.removeEventListener('submit', (e) => {
+        e.preventDefault();
+      });
+    };
+  }, []);
 
   const seo = {
     metaTitle: 'Search',
@@ -65,19 +77,28 @@ const Search = () => {
       </div>
 
       <main id="main" className="search wrapper">
-        <input
-          className="search__input"
-          type="text"
-          aria-label="Search through site content"
-          placeholder="Search your keywords"
-          onChange={(e) => debouncedOnChange(e.target.value)}
-        />
+        <form className="search__form" autoComplete="off" role="search">
+          <div role="search">
+            <label className="search__label" htmlFor="search">
+              <span className="search__text">Search budget documents</span>
+              <input
+                id="search"
+                className="search__input"
+                type="search"
+                autoComplete="off"
+                inputMode="search"
+                placeholder="Search..."
+                onChange={(e) => debouncedOnChange(e.target.value)}
+              />
+            </label>
+          </div>
+        </form>
 
         {showSearch && (
           <div className="search__results">
             <p className="search__headline">Top Results</p>
             {search.length > 0 ? (
-              <ul>
+              <ol>
                 {search.map((item, index) => (
                   <li key={`search-${index}`}>
                     <Link href={`/${item.slug}`}>
@@ -109,7 +130,7 @@ const Search = () => {
                     />
                   </li>
                 ))}
-              </ul>
+              </ol>
             ) : (
               <p className="search__no-results">No results found</p>
             )}
