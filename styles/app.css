@@ -371,7 +371,7 @@ button {
 .card__content > * + * {
   margin-top: 1rem;
 }
-.card:hover, .card:focus {
+.card:hover, .card:focus-within {
   border: 2px solid #4b4797;
   box-shadow: 0px 8px 16px rgba(116, 111, 111, 0.14);
 }
@@ -460,14 +460,14 @@ button {
     opacity: 0;
     transform: translateY(1rem);
   }
-  .card--desc:hover .card__image, .card--desc:focus .card__image {
+  .card--desc:hover .card__image, .card--desc:focus-within .card__image {
     opacity: 0;
     transform: translateY(-30%);
   }
-  .card--desc:hover .card__title, .card--desc:focus .card__title {
+  .card--desc:hover .card__title, .card--desc:focus-within .card__title {
     transform: translateY(-9rem);
   }
-  .card--desc:hover .card__desc, .card--desc:focus .card__desc {
+  .card--desc:hover .card__desc, .card--desc:focus-within .card__desc {
     opacity: 1;
     transform: translateY(0);
     transition-delay: 87.5ms;
