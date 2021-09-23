@@ -11,6 +11,8 @@
 		border-radius: 10px;
 		position: sticky;
 		top: 1rem;
+		max-height: 75vh;
+		overflow-y: auto;
 
 		z-index: 1;
 		width: 100%;
