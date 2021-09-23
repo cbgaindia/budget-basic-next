@@ -1,5 +1,5 @@
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://schemes.openbudgetsindia.org/',
+  siteUrl: process.env.SITE_URL || 'https://budgetbasics.openbudgetsindia.org/',
   generateRobotsTxt: true,
   robotsTxtOptions: {
     policies: [
