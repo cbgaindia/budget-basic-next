@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://budgetbasics.openbudgetsindia.org/
+
+# Sitemaps
+Sitemap: https://budgetbasics.openbudgetsindia.org/sitemap.xml
