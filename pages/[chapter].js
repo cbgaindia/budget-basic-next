@@ -17,9 +17,23 @@ function goToTopHandler() {
   else document.querySelector('.back-top').classList.remove('active');
 }
 
+function romanizeNumber (num) {
+  if (isNaN(num))
+      return NaN;
+  var digits = String(+num).split(""),
+      key = ["","C","CC","CCC","CD","D","DC","DCC","DCCC","CM",
+             "","X","XX","XXX","XL","L","LX","LXX","LXXX","XC",
+             "","I","II","III","IV","V","VI","VII","VIII","IX"],
+      roman = "",
+      i = 3;
+  while (i--)
+      roman = (key[+digits.pop() + (i * 10)] || "") + roman;
+  return Array(+digits.join("") + 1).join("M") + roman;
+}
+
 const Chapter = ({ chapter, chapters }) => {
   const { width } = useWindowDimensions();
-
+  console.log("chapter", chapter);
   useLayoutEffect(() => {
     const jumpIcon = document.querySelector('.back-top');
     gsap.registerPlugin(ScrollTrigger);
@@ -78,9 +92,10 @@ const Chapter = ({ chapter, chapters }) => {
           <Sidebar chapter={chapter} />
 
           <section className="chapter__container">
-            {chapter.sections.map((article) => (
+            {chapter.sections.map((article, index) => (
               <article className="section" id={article.slug} key={article.id}>
                 <div className="section__heading">
+                  <h2 className="section_number_chap">{index+1}.</h2>
                   <span className="section__bar" />
                   <h2>{article.Title}</h2>
                   <a href={`#${article.slug}`} className="section__anchor">

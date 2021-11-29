@@ -139,19 +139,24 @@ export const Attr_Logos = {
 export const Attr_Social = {
   links: [
     {
-      alt: 'CBGA India github repo',
-      src: '/assets/icons/github-icon.svg',
-      value: 'https://github.com/cbgaindia',
+      alt: 'Open Budgets India facebook page',
+      src: '/assets/icons/fb_new_ico.png',
+      value: 'https://www.facebook.com/OpenBudgetsIndia',
     },
     {
       alt: 'Open Budgets India twitter page',
-      src: '/assets/icons/twitter-icon.svg',
+      src: '/assets/icons/twitter_new_ico.png',
       value: 'https://twitter.com/OpenBudgetsIn',
     },
     {
-      alt: 'Open Budgets India facebook page',
-      src: '/assets/icons/facebook-icon.svg',
-      value: 'https://www.facebook.com/OpenBudgetsIndia',
+      alt: 'Open Budgets India instagram page',
+      src: '/assets/icons/insta_new_ico.png',
+      value: '#',
+    },    
+    {
+      alt: 'Open Budgets India linkedin page',
+      src: '/assets/icons/linkedin_new_ico.png',
+      value: '#',
     },
   ],
 };
