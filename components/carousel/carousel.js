@@ -125,7 +125,11 @@ const Carousel = ({ youtube }) => {
               key={`youtube-${index}`}
               role="presentation"
               title={video.title}
+              className="youtubelist-text"
             >
+              <div className="youtubetext-overlay">
+              <p>{video.title}</p>
+              </div>
               <LiteYouTubeEmbed
                 key={`carousel-${index}`}
                 id={handleVideoLink(video.link)}
