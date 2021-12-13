@@ -83,6 +83,5 @@ export default function Card({ chapter }) {
         </a>
       </Link>
     </li>
-
   );
 }
