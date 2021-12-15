@@ -1714,6 +1714,18 @@ li.suggestion_card {
   font-weight: bold;
 }
 
+li.youtubelist-text:hover .youtubetext-overlay {
+  visibility: hidden;
+ opacity: 0;
+ transition: visibility 0s, opacity 0.5s linear;
+}
+
+li.youtubelist-text .youtubetext-overlay {
+    visibility: visible;
+ opacity: 1;
+}
+
+
 @media (max-width: 768px) {
   li.chapter_card_parent {
     width: 43%;
