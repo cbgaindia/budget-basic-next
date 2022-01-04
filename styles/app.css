@@ -24,14 +24,70 @@ a {
   padding: 0;
 }
 
-/* Scrollbar */
+
+/* width */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+background:#212142;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #121213; 
+}
+
+/* side bar */
+/* width */
+.content::-webkit-scrollbar {
+  width: 4px;
+}
+/* Track */
+.content::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 3px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+.content::-webkit-scrollbar-thumb {
+background:#363370;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+.content::-webkit-scrollbar-thumb:hover {
+  background: #363370; 
 }
 
 :root {
   font-size: 12px;
 }
+
+.section__heading {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 0;
+  background: #fff;
+}
+
+li.suggestion_card:nth-child(4n) {
+  margin-right: 0;
+}
+
+ul.new_home__cards {
+  padding: 0;
+  justify-content: center;
+}
+
 @media (min-width: 481px) {
   :root {
     font-size: 16px;
@@ -56,7 +112,8 @@ body {
 }
 
 html {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Mulish', sans-serif;
+  /* font-family: "Inter", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
 
 body {
@@ -689,8 +746,9 @@ li.youtubelist-text {
 li.youtubelist-text>.youtubetext-overlay {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: end;
   z-index: 1;
+  padding-bottom: 20px;
   position: absolute;
   height: 100%;
   text-align: center;
@@ -1124,6 +1182,10 @@ li.chapter_card_parent:nth-child(2), li.chapter_card_parent:nth-child(4) {
   border: 1px solid #604294;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
 }
+.chapter .section__heading{
+  margin-left: 2rem;
+}
+
 @media (min-width: 1025px) {
   .menu {
     display: none;
@@ -1336,8 +1398,11 @@ li.chapter_card_parent:nth-child(2), li.chapter_card_parent:nth-child(4) {
     scroll-margin-top: 65px;
   }
   .chapter .section__content {
-    margin-left: 2rem;
+    margin-left: 0rem;
   }
+  .chapter .section__heading {
+    margin-left: 0rem;
+}
 }
 .chapter .section a {
   color: #a090ff;
@@ -1355,6 +1420,9 @@ li.chapter_card_parent:nth-child(2), li.chapter_card_parent:nth-child(4) {
     display: block;
     width: 100%;
     padding: 0 1rem;
+  }
+  .section__heading{
+    top:50px;
   }
 }
 .chapter .tooltip-wrapper {
@@ -1517,9 +1585,6 @@ h2.section_number_chap {
 .chapter .section__bar {
   background-color: #F5899D;
 }
-.chapter .section__heading{
-  margin-left: 2rem;
-}
 .chapter__container {
   background: #FFFFFF;
   box-shadow: -15px -15px 30px rgba(0, 0, 0, 0.02), 15px 15px 30px rgba(0, 0, 0, 0.02);
@@ -1678,6 +1743,7 @@ ul.card_suggestion_ul {
   justify-content: center;
   flex-wrap: wrap;
   list-style: none;
+  padding: 0;
 }
 
 li.suggestion_card {
@@ -1714,11 +1780,26 @@ li.suggestion_card {
   font-weight: bold;
 }
 
+li.youtubelist-text:hover .youtubetext-overlay {
+  visibility: hidden;
+ opacity: 0;
+ transition: visibility 0s, opacity 0.5s linear;
+}
+
+li.youtubelist-text .youtubetext-overlay {
+    visibility: visible;
+ opacity: 1;
+}
+
+
 @media (max-width: 768px) {
   li.chapter_card_parent {
     width: 43%;
 }
 
+.section__heading{
+  top:55px;
+}
 li.chapter_card_parent:nth-child(2n), li.chapter_card_parent:nth-child(2), li.chapter_card_parent:nth-child(4), li.chapter_card_parent,li.chapter_card_parent:nth-child(8n), 
 li.chapter_card_parent:nth-child(8n+6) {
     margin-right: 0;

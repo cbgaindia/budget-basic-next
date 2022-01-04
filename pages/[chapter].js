@@ -122,7 +122,9 @@ const Chapter = ({ homepage,chapter, chapters }) => {
                     <span className="section__bar" />
                     <h2>{article.Title}</h2>
                     <a href={`#${article.slug}`} className="section__anchor">
-                      <span aria-hidden="true">#</span>
+                      <span aria-hidden="true">
+                        {/* # */}
+                      </span>
                       <span className="screen-reader-text">
                         {`Section titled ${article.Title}`}
                       </span>
