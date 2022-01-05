@@ -81,7 +81,7 @@ const Navigation = ({ back, forward }) => (
                   <img className="image_pre_next_navigation" src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${forward.icon.url}`} alt="" />
                 </div>
                 <span>
-                  <p>next Chapter</p>
+                  <p>Next Chapter</p>
                   <h2>{forward.Title}</h2>
                 </span>
               </a>
