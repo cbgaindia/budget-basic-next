@@ -1379,7 +1379,7 @@ li.chapter_card_parent:nth-child(2), li.chapter_card_parent:nth-child(4) {
 }
 .chapter .section__sub-heading {
   font-weight: 700;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 150%;
   margin: 1.2rem 0;
   scroll-margin-top: 1.2rem;
