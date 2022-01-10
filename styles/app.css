@@ -900,7 +900,7 @@ li.chapter_card_parent:nth-child(8n+2) a.new_card__content picture.new_card__ima
 }
 
 li.chapter_card_parent:nth-child(2) a.new_card__content picture.new_card__image img {
-  min-height: 190px;
+  min-height: 160px;
 }
 
 li.chapter_card_parent:nth-child(2), li.chapter_card_parent:nth-child(4) {
@@ -913,16 +913,16 @@ li.chapter_card_parent:nth-child(2), li.chapter_card_parent:nth-child(4) {
   text-overflow: ellipsis;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
 }
 
 .card_text_container h2.new_card__title {
-  height: 70px;
+  /* height: 70px; */
   overflow: hidden;
   text-overflow: ellipsis;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: start;
 }
 @media (max-width: 768px) {
   .footer__main {
@@ -1927,4 +1927,9 @@ li.suggestion_card {
 }
 
 }
+a.new_card__content img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
 /*# sourceMappingURL=app.css.map */
