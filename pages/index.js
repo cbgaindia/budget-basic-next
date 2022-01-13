@@ -13,7 +13,7 @@ export default function Home({ homepage, chapters }) {
   
   function HeaderDesc() {
     return (
-      <div className="homepage_heading_new_container">
+      <div className="homepage_heading_new_container wrapper">
          <h1 className="homepage_heading_new">{homepage.heading}</h1>
       </div>
     )
