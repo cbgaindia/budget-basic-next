@@ -1691,6 +1691,12 @@ h2.section_number_chap {
   padding: 30px 100px;
 }
 
+.chapter_head_heading_new {
+  position: sticky;
+  top: 75px;
+  background: #fff;
+}
+
 nav.sidebar .content {
   border-top: 7px solid #363370;
   background: #fff;
@@ -1852,6 +1858,11 @@ li.youtubelist-text .youtubetext-overlay {
  opacity: 1;
 }
 
+@media (max-width: 1024px) {
+  .chapter_head_heading_new {
+    top: 115px;
+}
+}
 
 @media (max-width: 768px) {
   li.chapter_card_parent {
