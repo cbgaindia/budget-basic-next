@@ -103,9 +103,9 @@ const Sidebar = ({ chapter }) => {
   return (
     <nav className="sidebar">
       <ul className="content">
-      <div className="sidebar_cahp_head">
+      {/* <div className="sidebar_cahp_head">
         <h4>{chapter.Title}</h4>
-      </div>
+      </div> */}
       
         {chapter.sections.map((article, index) => (
           <li
