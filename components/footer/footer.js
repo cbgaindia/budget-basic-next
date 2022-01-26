@@ -84,7 +84,9 @@ const Footer = () => (
       </div>
 
         <div className="attribute__links">
-         <p className="footer_text_rights">All Right Reserved 2021 @Open Budgets India</p>
+         <p className="footer_text_rights">
+           All Right Reserved 2021 @Open Budgets India,<br/>
+           Last Updated on December 31, 2021</p>
         </div>
 
         <div className="attribute__social">

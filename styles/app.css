@@ -732,7 +732,9 @@ footer.footer, .footer .attribute {
 footer.footer {padding-top: 20px;padding-bottom: 20px;}
 p.footer_text_rights {
   font-size: 14px;
+  text-align: center;
 }
+
 button.lty-playbtn {
   display: none !important;
 }
