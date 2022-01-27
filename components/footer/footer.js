@@ -3,7 +3,7 @@ import * as data from './footer_data';
 
 const Footer = () => (
   <footer className="footer">
-    <div className="footer__main wrapper">
+    {/* <div className="footer__main wrapper">
       <a
         rel="noopener noreferrer"
         className="footer__logo"
@@ -61,40 +61,33 @@ const Footer = () => (
           ))}
         </section>
       </div>
-    </div>
+    </div> */}
 
     <div className="attribute">
       <div className="attribute__container wrapper">
-        <div className="attribute__links">
-          {data.Attr_Links.links.map((link, index) => (
-            <a
-              key={`attr_link-${index}`}
-              rel="noopener noreferrer"
-              href={link.value}
-              className="link footer_link"
-            >
-              {link.title}
-            </a>
-          ))}
-        </div>
+       
+        <div className="footer_logo_new_container"> 
+          <a
+            rel="noopener noreferrer"
+            className="footer__logo"
+            href="https://openbudgetsindia.org/en/"
+          >
+            <Image
+              src="/assets/obi_footer_square_logo.svg"
+              alt="Open budgets India Footer"
+              layout="intrinsic"
+              width={80}
+              height={30}
+              className="footer_logo_img_new"
+            />
+          </a>
+      </div>
 
-        <div className="attribute__logos">
-          {data.Attr_Logos.links.map((link, index) => (
-            <a
-              key={`attr_logo-${index}`}
-              rel="nofollow noopener noreferrer"
-              href={link.value}
-              className="link footer_link"
-            >
-              <Image
-                src={link.src}
-                alt={link.alt}
-                layout="fixed"
-                width={link.dimensions[0]}
-                height={link.dimensions[1]}
-              />
-            </a>
-          ))}
+        <div className="attribute__links">
+         <p className="footer_text_rights">
+         All Right Reserved 2022 <br/>
+         @Centre for Budget and Governance Accountability (CBGA),
+         <br/>Last Updated on December 31, 2021</p>
         </div>
 
         <div className="attribute__social">
@@ -109,12 +102,13 @@ const Footer = () => (
                 src={link.src}
                 alt={link.alt}
                 layout="fixed"
-                width={23}
-                height={23}
+                width={30}
+                height={30}
               />
             </a>
           ))}
         </div>
+
       </div>
     </div>
   </footer>
