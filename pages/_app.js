@@ -20,7 +20,12 @@ function MyApp({ Component, pageProps }) {
       if (process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_NEW) ga.pageviewNew(url);
 
       // change focus to top
-      document.querySelector('#top-of-site-pixel-anchor').focus();
+      if(url.includes('#')){
+        let idPresent = url.split('#').pop();
+        document.querySelector(`#${idPresent}`).focus();
+      } else {
+        document.querySelector('#top-of-site-pixel-anchor').focus();
+      }
     };
 
     const resetScroll = () => {
