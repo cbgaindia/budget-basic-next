@@ -12,6 +12,7 @@ import Menu from 'components/menu/menu';
 import Sidebar from 'components/sidebar/sidebar';
 import useLayoutEffect from 'utils/use-isomorphic-layout-effect';
 import Carousel from 'components/carousel/carousel';
+import { useRouter } from 'next/router';
 
 function goToTopHandler() {
   if (window.scrollY > 600)
@@ -35,6 +36,7 @@ function romanizeNumber (num) {
 
 const Chapter = ({ homepage,chapter, chapters }) => {
   const { width } = useWindowDimensions();
+  const router = useRouter();
   useLayoutEffect(() => {
     const jumpIcon = document.querySelector('.back-top');
     gsap.registerPlugin(ScrollTrigger);
@@ -42,6 +44,16 @@ const Chapter = ({ homepage,chapter, chapters }) => {
     if (chapter.sections.length > 0) {
       stripTable();
       tooltipKeyword(chapter);
+    }
+    let url = router.pathname;
+    if(url.includes('#')){
+      let idPresent = url.split('#').pop();
+      let element =  document.querySelector(`#${idPresent}`);
+      element.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'nearest',
+      });
     }
 
     // go-to-top
