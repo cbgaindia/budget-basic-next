@@ -778,7 +778,7 @@ li.youtubelist-text>.youtubetext-overlay {
 .homepage_heading_new_container {
   /* width: 70%; */
   margin: 0 auto;
-  padding: 20px 20px 10px;
+  padding: 40px 20px;
 }
 
 h1.homepage_heading_new {
@@ -1283,7 +1283,7 @@ margin-top:-30px;
   background: rgba(66, 47, 161, 0.05);
   border-radius: 10px;
   position: sticky;
-  top: 5rem;
+  top: 1rem;
   max-height: 75vh;
   overflow-y: auto;
   z-index: 1;
@@ -1353,7 +1353,7 @@ margin-top:-30px;
 }
 
 .chapter {
-  margin: 0.5rem auto;
+  margin: 2rem auto;
   display: grid;
   grid-template-columns: 17rem 1fr;
 }
@@ -1448,7 +1448,7 @@ margin-top:-30px;
 }
 .chapter .section figure img {
   width: 100%;
-  margin: 0;
+  margin: 1rem 0;
 }
 @media (max-width: 1024px) {
   .chapter .section {
@@ -1690,11 +1690,7 @@ h2.section_number_chap {
 
 .chapter_head_heading_new h1 {
   color: #2E2F33;
-  padding: 15px 100px;
-}
-
-ul.new_home__cards {
-  margin-bottom: 0;
+  padding: 30px 100px;
 }
 
 .chapter_head_heading_new {
@@ -1722,19 +1718,7 @@ li.content__container.content__link:last-child {
 .naviagetion_container_new {
   display: flex;
   justify-content: space-around;
-  padding: 2rem 0;
-}
-
-.naviagetion_container_new.align-item-right {
-  justify-content: flex-end;
-}
-
-.naviagetion_container_new.align-item-left {
-  justify-content: flex-start;
-}
-
-li.suggestion_card:nth-child(8n+5),li.suggestion_card:nth-child(8n+6),li.suggestion_card:nth-child(8n+7),li.suggestion_card:nth-child(8n) {
-  margin-bottom: 0;
+  padding: 3rem 0px 5rem;
 }
 
 a.navigation__button_new {
@@ -1815,12 +1799,12 @@ a.navigation__button_new.navigation__button_new--forward.navigation__button_new 
 }
 section.seggestion-section-chapter-page {
   background: #C06C84;
-  padding: 1rem 0px;
+  padding: 3rem 0px;
 }
 
 .suggestion_head h2 {
   color: #fff;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   margin-left: 2rem;
 }
 ul.card_suggestion_ul {
@@ -1949,7 +1933,7 @@ ul.card_suggestion_ul {
 
 @media (max-width: 500px) {
 .homepage_heading_new_container {
-  padding: 20px 0px 10px;
+  padding: 40px 0px;
 }
 
 li.chapter_card_parent {
@@ -1975,7 +1959,9 @@ h1.homepage_heading_new {
 }
 
 .chapter_head_heading_new h1 {
-  padding: 20px 20px 10px;
+  padding: 30px;
+  padding-left: 60px;
+  padding-right: 20px;
 }
 
 li.suggestion_card {

@@ -149,7 +149,6 @@ const Chapter = ({ homepage,chapter, chapters }) => {
       <Navigation
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
-        currentchapter={chapter.Chapter_No}
       />
     <section className="seggestion-section-chapter-page">
       <div className="wrapper">

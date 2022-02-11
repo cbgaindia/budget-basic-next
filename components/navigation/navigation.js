@@ -14,7 +14,7 @@ function romanizeNumber (num) {
   return Array(+digits.join("") + 1).join("M") + roman;
 }
 
-const Navigation = ({ back, forward, currentchapter = 4 }) => (
+const Navigation = ({ back, forward }) => (
   // <footer className="navigation">
   //   <div className="navigation__container wrapper">
   //     <section className="navigation__section">
@@ -50,7 +50,7 @@ const Navigation = ({ back, forward, currentchapter = 4 }) => (
   // </footer>
   <section className="fowrdard_and_backward_container">
     <div className="wrapper">
-      <div className={`naviagetion_container_new ${currentchapter === 1 ? 'align-item-right' : currentchapter === 12 ? 'align-item-left' : '' }`} > 
+      <div className="naviagetion_container_new"> 
       {back != undefined && (
         <div className="new_pre_chaper">
             <Link href={`/${back.slug}`}>
