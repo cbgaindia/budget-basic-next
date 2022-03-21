@@ -14,7 +14,7 @@ function romanizeNumber (num) {
   return Array(+digits.join("") + 1).join("M") + roman;
 }
 
-const Navigation = ({ back, forward, currentchapter = 4 }) => (
+const Navigation = ({ back, forward, currentchapter = 4, isHindi = false }) => (
   // <footer className="navigation">
   //   <div className="navigation__container wrapper">
   //     <section className="navigation__section">
@@ -53,7 +53,7 @@ const Navigation = ({ back, forward, currentchapter = 4 }) => (
       <div className={`naviagetion_container_new ${currentchapter === 1 ? 'align-item-right' : currentchapter === 12 ? 'align-item-left' : '' }`} > 
       {back != undefined && (
         <div className="new_pre_chaper">
-            <Link href={`/${back.slug}`}>
+            <Link href={isHindi ? `/hn/${back.slug}` : `/${back.slug}`}>
               <a className="navigation__button_new navigation__button_new--back">
                 <div className="navaigation_img">
                     <div className="chapter_page_roam_navigation_page">
@@ -63,7 +63,7 @@ const Navigation = ({ back, forward, currentchapter = 4 }) => (
                 </div>
                 <span>
                   <p>Previous Section</p>
-                  <h2>{back.Title}</h2>
+                  <h2>{isHindi ? back.TitleHindi : back.Title}</h2>
                 </span>
               </a>
             </Link>
@@ -72,7 +72,7 @@ const Navigation = ({ back, forward, currentchapter = 4 }) => (
 
           {forward != undefined && (
              <div className="new_next_chaper">
-              <Link href={`/${forward.slug}`}>
+              <Link href={isHindi ? `/hn/${forward.slug}` : `/${forward.slug}` }>
               <a className="navigation__button_new navigation__button_new--forward">
                 <div className="navaigation_img">
                     <div className="chapter_page_roam_navigation_page">
@@ -82,7 +82,7 @@ const Navigation = ({ back, forward, currentchapter = 4 }) => (
                 </div>
                 <span>
                   <p>Next Section</p>
-                  <h2>{forward.Title}</h2>
+                  <h2>{isHindi ? forward.TitleHindi : forward.Title}</h2>
                 </span>
               </a>
               </Link>
