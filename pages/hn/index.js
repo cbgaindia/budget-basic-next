@@ -37,7 +37,7 @@ export default function Home({ homepage, chapters }) {
     <>
       <Seo seo={homepage.seo} />
 
-      <Header color="#212142" />
+      <Header color="#212142" isHindi={true} />
       {/* {homepage.highlight.length > 0 && <Highlight data={homepage.highlight} />} */}
 
       <section className="home__mobile-search">

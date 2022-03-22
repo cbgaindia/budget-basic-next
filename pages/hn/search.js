@@ -70,7 +70,7 @@ const Search = () => {
     <>
       <Seo seo={seo} />
 
-      <Header desc={<h2>Search</h2>} color="#29314F" searchPage />
+      <Header desc={<h2>Search</h2>} color="#29314F" searchPage isHindi={true}/>
 
       <div className="skiptarget">
         <span id="maincontent">-</span>

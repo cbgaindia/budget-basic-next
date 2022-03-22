@@ -96,6 +96,24 @@ ul.new_home__cards {
   justify-content: center;
 }
 
+select#language-select {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  color: #e2e2e7 !important;
+  font-weight: bold;
+}
+
+select#language-select:focus {
+  outline-width: 0px;
+}
+
+select#language-select:active {
+  color: #fff;
+  background: #212142;
+  font-weight: bolder;
+}
+
 @media (min-width: 481px) {
   :root {
     font-size: 16px;

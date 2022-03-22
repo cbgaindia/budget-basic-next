@@ -98,7 +98,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
     <>
       <Seo seo={seo} />
 
-      <Header color="#212142" />
+      <Header color="#212142" isHindi={true} />
       {width < 1025 && chapter.sections.length > 0 && (
         <Menu chapter={chapter} isMobile={width < 1025} />
       )}
