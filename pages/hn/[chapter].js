@@ -129,7 +129,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
                     </picture>
                   </div>
                   <div className="chapter_head_heading_new">
-                    <h1>{chapter.Title}</h1>
+                    <h1>{chapter.TitleHindi}</h1>
                     </div>
             {chapter.sections.map((article, index) => (
               <article className="section chapter-content-container" id={article.slug} key={article.id}>
