@@ -24,7 +24,7 @@ const LanguageDropDown = ({isHindi}) => {
       <select name="languages" id="language-select" onChange={onSelectChange}>
           {['en','hn'].map((language) => (
               <option value={language} selected={ ( isHindi && language === 'hn') ? true : false }>
-                  {language === "en" ? "EN" : language === "hn" ? "HN" : null}
+                  {language === "en" ? "English" : language === "hn" ? "Hindi" : null}
               </option>
           ))}
       </select>
@@ -59,15 +59,17 @@ const Header = ({ desc, color, searchPage, isHindi=false }) => {
               height={28}
             />
           </a>
+        </section>
+        <section className='container-of-search'>
+          {!searchPage && (
+            <Link href="/search">
+              <a className="header__search">
+                Search <span className="screen-reader-text">Page</span>
+              </a>
+            </Link>
+          )}
           <LanguageDropDown isHindi={isHindi} />
         </section>
-        {!searchPage && (
-          <Link href="/search">
-            <a className="header__search">
-              Search <span className="screen-reader-text">Page</span>
-            </a>
-          </Link>
-        )}
         {desc && <section className="header__desc">{desc}</section>}
       </div>
     </header>

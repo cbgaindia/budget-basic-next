@@ -100,8 +100,8 @@ select#language-select {
   margin-left: 10px;
   background: transparent;
   border: none;
-  color: #e2e2e7 !important;
-  font-weight: bold;
+  color: #fff !important;
+  font-weight: 400;
 }
 
 select#language-select:focus {
@@ -111,7 +111,17 @@ select#language-select:focus {
 select#language-select:active {
   color: #fff;
   background: #212142;
-  font-weight: bolder;
+}
+section.container-of-search {
+  display: flex;
+  justify-content: end;
+}
+
+select#language-select {
+  margin-top: 1rem;
+  padding-right: 15px;
+  padding-left: 30px;
+  margin-left: 1rem;
 }
 
 @media (min-width: 481px) {
