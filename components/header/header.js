@@ -2,8 +2,36 @@ import React, { useContext } from 'react';
 import Link from 'next/link';
 import { GlobalContext } from 'pages/_app';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 
-const Header = ({ desc, color, searchPage }) => {
+const LanguageDropDown = ({isHindi}) => {
+  const router = useRouter()
+  const onSelectChange = (e) => {
+      const locale = e.target.value;
+      const { chapter } = router.query;
+      let url = router.pathname;
+    if(locale === 'hn') {
+      if(!url.startsWith("/hn")){
+        chapter ? router.push(`/hn/${chapter}`) : router.push(`/hn`)
+       }
+    } else {
+      if(url.startsWith("/hn")){
+        chapter ? router.push(`/${chapter}`) : router.push(`/`)
+       }
+    }
+  }
+  return (
+      <select name="languages" id="language-select" onChange={onSelectChange}>
+          {['en','hn'].map((language) => (
+              <option value={language} selected={ ( isHindi && language === 'hn') ? true : false }>
+                  {language === "en" ? "English" : language === "hn" ? "Hindi" : null}
+              </option>
+          ))}
+      </select>
+  )
+}
+
+const Header = ({ desc, color, searchPage, isHindi=false }) => {
   const { title } = useContext(GlobalContext);
 
   return (
@@ -32,13 +60,16 @@ const Header = ({ desc, color, searchPage }) => {
             />
           </a>
         </section>
-        {!searchPage && (
-          <Link href="/search">
-            <a className="header__search">
-              Search <span className="screen-reader-text">Page</span>
-            </a>
-          </Link>
-        )}
+        <section className='container-of-search'>
+          {!searchPage && (
+            <Link href="/search">
+              <a className="header__search">
+                Search <span className="screen-reader-text">Page</span>
+              </a>
+            </Link>
+          )}
+          <LanguageDropDown isHindi={isHindi} />
+        </section>
         {desc && <section className="header__desc">{desc}</section>}
       </div>
     </header>
