@@ -172,7 +172,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
     <section className="seggestion-section-chapter-page">
       <div className="wrapper">
           <div className="suggestion_head">
-            <h2>You may also like</h2>
+            <h2>आपको यह भी पसंद आ सकता हैं</h2>
           </div>
           <div className="card_suggestion_container">
           <ul className="card_suggestion_ul">
@@ -207,7 +207,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
         </div>
       </div>   
     </section>
-      <Carousel youtube={homepage.youtube} />
+      <Carousel youtube={homepage.youtube} isHindi={true}/>
 
       <a href="#top-of-site-pixel-anchor" type="button" className="back-top">
         <span className="screen-reader-text">Back to Top</span>

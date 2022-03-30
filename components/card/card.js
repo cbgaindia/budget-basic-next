@@ -2,11 +2,11 @@ import Link from 'next/link';
 
 const bgColorIndex = [1, 2, 3, 4, 5, 6];
 
-export default function Card({ chapter }) {
+export default function Card({ chapter, isHindi=false }) {
   bgColorIndex.push(bgColorIndex[chapter.index]);
   return (
         <li
-      className="chapter_card_parent"
+      className={isHindi ? "chapter_card_parent hn" : "chapter_card_parent"}
     > 
       <div className="product_card_rom_count_cont">
         <p className="product_card_roman_number">{chapter?.chapterNumber}</p>
