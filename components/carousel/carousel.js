@@ -66,7 +66,7 @@ function handleVideoLink(link) {
   return link;
 }
 
-const Carousel = ({ youtube }) => {
+const Carousel = ({ youtube, isHindi=false }) => {
   useEffect(() => {
     scrollOnDrag();
 
@@ -78,7 +78,7 @@ const Carousel = ({ youtube }) => {
   return (
     <div className="carousel">
       <div className="carousel__container wrapper">
-        <p className="carousel__heading">Related Videos</p>
+        <p className="carousel__heading"> { isHindi ? 'संबंधित वीडियो' : 'Related Videos'}</p>
         <div className="carousel__controls">
           <button
             type="button"

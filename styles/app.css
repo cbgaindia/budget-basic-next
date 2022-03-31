@@ -108,6 +108,13 @@ select#language-select:focus {
   outline-width: 0px;
 }
 
+.language-div {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
 select#language-select:active {
   color: #fff;
   background: #212142;
@@ -890,6 +897,10 @@ li.chapter_card_parent {
 }
 li.chapter_card_parent:nth-child(4n) {
   margin-right: 0;
+}
+
+li.chapter_card_parent.hn:nth-child(12n+3) {
+  margin-bottom: 60px;
 }
 
 li.chapter_card_parent:nth-child(12n+1) .new_card__image img,

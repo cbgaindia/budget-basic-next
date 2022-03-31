@@ -66,13 +66,13 @@ export default function Home({ homepage, chapters }) {
             };
             return (
               <React.Fragment key={index}>
-                <Card chapter={chapterDetails} />
+                <Card chapter={chapterDetails} isHindi={true} />
               </React.Fragment>
             );
           })}
         </ul>
       </main>
-      <Carousel youtube={homepage.youtube} />
+      <Carousel youtube={homepage.youtube} isHindi={true} />
     </>
   );
 }

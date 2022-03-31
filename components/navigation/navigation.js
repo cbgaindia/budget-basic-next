@@ -62,7 +62,7 @@ const Navigation = ({ back, forward, currentchapter = 4, isHindi = false }) => (
                   <img className="image_pre_next_navigation" src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${back.icon.url}`} alt="" />
                 </div>
                 <span>
-                  <p>Previous Section</p>
+                  <p>{isHindi ? 'पूर्व खंड' : 'Previous Section'}</p>
                   <h2>{isHindi ? back.TitleHindi : back.Title}</h2>
                 </span>
               </a>
@@ -81,7 +81,7 @@ const Navigation = ({ back, forward, currentchapter = 4, isHindi = false }) => (
                   <img className="image_pre_next_navigation" src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${forward.icon.url}`} alt="" />
                 </div>
                 <span>
-                  <p>Next Section</p>
+                  <p>{isHindi ? 'अगला खंड' : 'Next Section'}</p>
                   <h2>{isHindi ? forward.TitleHindi : forward.Title}</h2>
                 </span>
               </a>
