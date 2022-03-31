@@ -172,7 +172,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
     <section className="seggestion-section-chapter-page">
       <div className="wrapper">
           <div className="suggestion_head">
-            <h2>आपको यह भी पसंद आ सकता हैं</h2>
+            <h2>आपको यह भी पसंद आएगा</h2>
           </div>
           <div className="card_suggestion_container">
           <ul className="card_suggestion_ul">

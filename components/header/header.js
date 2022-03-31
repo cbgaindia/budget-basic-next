@@ -67,7 +67,7 @@ const Header = ({ desc, color, searchPage, isHindi=false }) => {
           {!searchPage && (
             <Link href="/search">
               <a className="header__search">
-                { isHindi ? 'यहाँ खोजे' : 'Search' } <span className="screen-reader-text">Page</span>
+                { isHindi ? 'खोजें' : 'Search' } <span className="screen-reader-text">Page</span>
               </a>
             </Link>
           )}
