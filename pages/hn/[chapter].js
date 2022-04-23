@@ -36,10 +36,19 @@ function romanizeNumber (num) {
 
 const Chapter = ({ homepage,chapter, chapters }) => {
   chapter.sections = chapter.sections.map(ele => {
-    ele.Title = ele.TitleHindi ? ele.TitleHindi : ele.Title;
-    ele.Content = ele.ContentHindi ? ele.ContentHindi : ele.Content;
+    ele.Title = ele.TitleHindi ? ele.TitleHindi : "";
+    ele.Content = ele.ContentHindi ? ele.ContentHindi : "";
     return ele;
-  })
+  });
+  const sectionLength = chapter.sections.length;
+  let blankChapter = 0;
+  chapter.sections.forEach(ele => {
+    !(ele.Title && ele.Content) && blankChapter++;
+    if(sectionLength === blankChapter){
+      chapter.sections = [];
+    }
+  });
+
   const { width } = useWindowDimensions();
   const router = useRouter();
   useLayoutEffect(() => {
@@ -159,7 +168,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
         </main>
       ) : (
         <div className="no-content">
-          <p>To be updated soon</p>
+          <p>यह सेक्शन जल्द ही अपडेट किया जायेगा |</p>
         </div>
       )}
 
