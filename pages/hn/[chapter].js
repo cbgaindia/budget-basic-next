@@ -35,6 +35,20 @@ function romanizeNumber (num) {
 }
 
 const Chapter = ({ homepage,chapter, chapters }) => {
+  chapter.sections = chapter.sections.map(ele => {
+    ele.Title = ele.TitleHindi ? ele.TitleHindi : "";
+    ele.Content = ele.ContentHindi ? ele.ContentHindi : "";
+    return ele;
+  });
+  const sectionLength = chapter.sections.length;
+  let blankChapter = 0;
+  chapter.sections.forEach(ele => {
+    !(ele.Title && ele.Content) && blankChapter++;
+    if(sectionLength === blankChapter){
+      chapter.sections = [];
+    }
+  });
+
   const { width } = useWindowDimensions();
   const router = useRouter();
   useLayoutEffect(() => {
@@ -79,8 +93,8 @@ const Chapter = ({ homepage,chapter, chapters }) => {
   sortList(chapters);
 
   const seo = {
-    metaTitle: chapter.Title,
-    metaDescription: chapter.Desc,
+    metaTitle: chapter.TitleHindi,
+    metaDescription: chapter.DescHindi,
     article: true,
     icon: chapter.icon,
   };
@@ -93,7 +107,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
     <>
       <Seo seo={seo} />
 
-      <Header color="#212142" />
+      <Header color="#212142" isHindi={true} />
       {width < 1025 && chapter.sections.length > 0 && (
         <Menu chapter={chapter} isMobile={width < 1025} />
       )}
@@ -124,7 +138,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
                     </picture>
                   </div>
                   <div className="chapter_head_heading_new">
-                    <h1>{chapter.Title}</h1>
+                    <h1>{chapter.TitleHindi}</h1>
                     </div>
             {chapter.sections.map((article, index) => (
               <article className="section chapter-content-container" id={article.slug} key={article.id}>
@@ -154,18 +168,20 @@ const Chapter = ({ homepage,chapter, chapters }) => {
         </main>
       ) : (
         <div className="no-content">
-          <p>To be updated soon</p>
+          <p>यह सेक्शन जल्द ही अपडेट किया जायेगा |</p>
         </div>
       )}
 
       <Navigation
         back={chapters[chapter.Chapter_No - 2]}
         forward={chapters[chapter.Chapter_No]}
+        currentchapter={chapter.Chapter_No}
+        isHindi={true}
       />
     <section className="seggestion-section-chapter-page">
       <div className="wrapper">
           <div className="suggestion_head">
-            <h2>You may also like</h2>
+            <h2>आपको यह भी पसंद आएगा</h2>
           </div>
           <div className="card_suggestion_container">
           <ul className="card_suggestion_ul">
@@ -173,7 +189,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
             if(chapter.Chapter_No !== chap.Chapter_No && index < 9)
             return (
               <li className="suggestion_card">
-                <Link key={chap.index} href={`/${chap.slug}`}>
+                <Link key={chap.index} href={`/hn/${chap.slug}`}>
                   <a>
                 <div className="suggestion_img_container">
                   <img src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${chap.icon.url}`} />
@@ -182,7 +198,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
                     <p>{romanizeNumber(chap.Chapter_No)}</p>
                   </div>
                   <div className="chapter_suggestion_head">
-                    <h4>{chap.Title}</h4>
+                    <h4>{chap.TitleHindi}</h4>
                   </div>
                 </div>
                 </div>
@@ -200,7 +216,7 @@ const Chapter = ({ homepage,chapter, chapters }) => {
         </div>
       </div>   
     </section>
-      <Carousel youtube={homepage.youtube} />
+      <Carousel youtube={homepage.youtube} isHindi={true}/>
 
       <a href="#top-of-site-pixel-anchor" type="button" className="back-top">
         <span className="screen-reader-text">Back to Top</span>

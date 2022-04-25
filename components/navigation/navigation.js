@@ -53,7 +53,7 @@ const Navigation = ({ back, forward }) => (
       <div className="naviagetion_container_new"> 
       {back != undefined && (
         <div className="new_pre_chaper">
-            <Link href={`/${back.slug}`}>
+            <Link href={isHindi ? `/hn/${back.slug}` : `/${back.slug}`}>
               <a className="navigation__button_new navigation__button_new--back">
                 <div className="navaigation_img">
                     <div className="chapter_page_roam_navigation_page">
@@ -62,8 +62,8 @@ const Navigation = ({ back, forward }) => (
                   <img className="image_pre_next_navigation" src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${back.icon.url}`} alt="" />
                 </div>
                 <span>
-                  <p>Previous Section</p>
-                  <h2>{back.Title}</h2>
+                  <p>{isHindi ? 'पूर्व सेक्शन' : 'Previous Section'}</p>
+                  <h2>{isHindi ? back.TitleHindi : back.Title}</h2>
                 </span>
               </a>
             </Link>
@@ -72,7 +72,7 @@ const Navigation = ({ back, forward }) => (
 
           {forward != undefined && (
              <div className="new_next_chaper">
-              <Link href={`/${forward.slug}`}>
+              <Link href={isHindi ? `/hn/${forward.slug}` : `/${forward.slug}` }>
               <a className="navigation__button_new navigation__button_new--forward">
                 <div className="navaigation_img">
                     <div className="chapter_page_roam_navigation_page">
@@ -81,8 +81,8 @@ const Navigation = ({ back, forward }) => (
                   <img className="image_pre_next_navigation" src={`${process.env.NEXT_PUBLIC_STRAPI_API_URL}${forward.icon.url}`} alt="" />
                 </div>
                 <span>
-                  <p>Next Section</p>
-                  <h2>{forward.Title}</h2>
+                  <p>{isHindi ? 'अगला सेक्शन' : 'Next Section'}</p>
+                  <h2>{isHindi ? forward.TitleHindi : forward.Title}</h2>
                 </span>
               </a>
               </Link>

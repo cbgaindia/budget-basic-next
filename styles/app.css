@@ -96,6 +96,41 @@ ul.new_home__cards {
   justify-content: center;
 }
 
+select#language-select {
+  margin-left: 10px;
+  background: transparent;
+  border: none;
+  color: #fff !important;
+  font-weight: 400;
+}
+
+select#language-select:focus {
+  outline-width: 0px;
+}
+
+.language-div {
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    margin-left: 20px;
+    cursor: pointer;
+}
+
+select#language-select:active {
+  color: #fff;
+  background: #212142;
+}
+section.container-of-search {
+  display: flex;
+  justify-content: end;
+}
+
+select#language-select {
+  margin-top: 1rem;
+  padding-right: 15px;
+  padding-left: 30px;
+  margin-left: 1rem;
+}
+
 @media (min-width: 481px) {
   :root {
     font-size: 16px;
@@ -862,6 +897,10 @@ li.chapter_card_parent {
 }
 li.chapter_card_parent:nth-child(4n) {
   margin-right: 0;
+}
+
+li.chapter_card_parent.hn:nth-child(12n+3) {
+  margin-bottom: 60px;
 }
 
 li.chapter_card_parent:nth-child(12n+1) .new_card__image img,
@@ -1981,5 +2020,7 @@ a.new_card__content img {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
 }
-
+figcaption {
+  margin-top: -15px;
+}
 /*# sourceMappingURL=app.css.map */
