@@ -48,13 +48,12 @@ const Search = () => {
         })
         .then((res) => {
           const list = res.hits.map((elm) => ({
-            title: elm._formatted.Title,
+            title: elm._formatted.TitleHindi,
             slug: `${elm.chapter ? elm.chapter.slug : '/'}#${elm.slug}`,
-            content: formatContent(elm._formatted.formattedContent),
-            chapter_Title: elm.chapter.Title,
+            content: formatContent(elm._formatted.formattedContentHindi),
+            chapter_Title: elm.chapter.TitleHindi,
             chapter_Slug: elm.chapter.slug,
           }));
-
           setSearch(list);
           setShowSearch(true);
         });
@@ -80,14 +79,14 @@ const Search = () => {
         <form className="search__form" autoComplete="off" role="search">
           <div role="search">
             <label className="search__label" htmlFor="search">
-              <span className="search__text">Search budget documents</span>
+              <span className="search__text">बजट दस्तावेज़ खोजें</span>
               <input
                 id="search"
                 className="search__input"
                 type="search"
                 autoComplete="off"
                 inputMode="search"
-                placeholder="Search..."
+                placeholder="खोजें..."
                 onChange={(e) => debouncedOnChange(e.target.value)}
               />
             </label>
@@ -96,7 +95,7 @@ const Search = () => {
 
         {showSearch && (
           <div className="search__results">
-            <p className="search__headline">Top Results</p>
+            <p className="search__headline">शीर्ष परिणाम</p>
             {search.length > 0 ? (
               <ol>
                 {search.map((item, index) => (
@@ -132,7 +131,7 @@ const Search = () => {
                 ))}
               </ol>
             ) : (
-              <p className="search__no-results">No results found</p>
+              <p className="search__no-results">कोई परिणाम नहीं मिला</p>
             )}
           </div>
         )}
