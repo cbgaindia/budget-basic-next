@@ -100,7 +100,7 @@ const Search = () => {
               <ol>
                 {search.map((item, index) => (
                   <li key={`search-${index}`}>
-                    <Link href={`/${item.slug}`}>
+                    <Link href={`/hn/${item.slug}`}>
                       <a role="link" tabIndex="0" className="search__title">
                         <div
                           dangerouslySetInnerHTML={{
@@ -110,7 +110,7 @@ const Search = () => {
                       </a>
                     </Link>
                     <div className="search__chapter">
-                      <Link href={`/${item.chapter_Slug}`}>
+                      <Link href={`/hn/${item.chapter_Slug}`}>
                         <a role="link">
                           <div
                             dangerouslySetInnerHTML={{
